@@ -2,6 +2,7 @@ import Container from '@/components/Container';
 import styles from './DepartmentHero.module.css';
 import Image from 'next/image';
 import type { DepartmentHeroData } from '@/lib/constants';
+import { BASE_PATH } from '@/lib/basePath';
 
 interface DepartmentHeroProps {
   data: DepartmentHeroData;
@@ -70,7 +71,7 @@ export default function DepartmentHero({ data }: DepartmentHeroProps) {
         <Image src={data.heroImage} alt={data.heading.title} className={`w-full h-full object-cover`} />
         
         {/* Украшение */}
-        <div className={`absolute bottom-[5%] right-[4.69%] w-[35.25px] h-[35.25px] bg-[url('/images/dep-plus.svg')] bg-no-repeat bg-center bg-cover`}></div>
+        <div style={{ backgroundImage: `url('${BASE_PATH}/images/dep-plus.svg')` }} className={`absolute bottom-[5%] right-[4.69%] w-[35.25px] h-[35.25px] bg-no-repeat bg-center bg-cover`}></div>
       </div>
     </section>
   );

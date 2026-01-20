@@ -28,7 +28,7 @@
 .socialLink {
     width: 41.76px;
     height: 41.76px;
-    background: #fff url('/images/footer-telegram.svg') no-repeat center / cover;
+    background: #fff url('/urbanvet/images/footer-telegram.svg') no-repeat center / cover;
     transition: opacity 0.2s ease-in-out;
 }
 
