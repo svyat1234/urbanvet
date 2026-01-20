@@ -13,6 +13,14 @@ interface DepartmentPageProps {
   params: Promise<{ slug: string }>;
 }
 
+// BACKEND: для статического экспорта Next.js требует предгенерировать все возможные slug'и.
+// Потом, когда будет API, можно будет генерировать страницы динамически или использовать ISR.
+export async function generateStaticParams() {
+  return Object.keys(DEPARTMENTS).map((slug) => ({
+    slug,
+  }));
+}
+
 export default async function DepartmentPage({ params }: DepartmentPageProps) {
   const { slug } = await params;
   // BACKEND: сейчас данные страницы берём из `constants.ts` (DEPARTMENTS).

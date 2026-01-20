@@ -11,6 +11,14 @@ interface DoctorPageProps {
   params: Promise<{ slug: string }>;
 }
 
+// BACKEND: для статического экспорта Next.js требует предгенерировать все возможные slug'и.
+// Потом, когда будет API, можно будет генерировать страницы динамически или использовать ISR.
+export async function generateStaticParams() {
+  return DOCTORS.map((doctor) => ({
+    slug: doctor.slug || String(doctor.id),
+  }));
+}
+
 export default async function DoctorPage({ params }: DoctorPageProps) {
   const { slug } = await params;
 

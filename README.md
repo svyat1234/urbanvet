@@ -29,6 +29,36 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Deploy on GitHub Pages
+
+Проект настроен для автоматического деплоя на GitHub Pages.
+
+### Автоматический деплой (рекомендуется)
+
+1. Перейди в настройки репозитория на GitHub: `Settings` → `Pages`
+2. В разделе `Source` выбери `GitHub Actions`
+3. При каждом push в ветку `main` сайт автоматически соберётся и задеплоится
+4. Ссылка на сайт будет: `https://<username>.github.io/urbanvet` (или без `/urbanvet` если репозиторий в корне)
+
+### Ручной деплой
+
+Если нужно задеплоить вручную:
+
+```bash
+npm run export
+```
+
+Затем закоммить папку `out/` и запушить в ветку `gh-pages`.
+
+### Настройка basePath
+
+Если репозиторий находится в подпапке (не `username.github.io`), нужно раскомментировать в `next.config.ts`:
+
+```typescript
+basePath: '/urbanvet',
+assetPrefix: '/urbanvet',
+```
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.

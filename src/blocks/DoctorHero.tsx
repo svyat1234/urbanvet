@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import styles from './DoctorHero.module.css';
 import Container from '@/components/Container';
 import Image from 'next/image';
@@ -28,13 +29,15 @@ export default function DoctorHero({ doctor, content }: DoctorHeroProps) {
                     UI: кнопка "назад" работает от history (откуда пришли).
                     Fallback: если страница открыта в новом табе — можно передать `?from=/...&fromLabel=...`
                     BACKEND: для канонических "крошек" лучше отдавать массив ссылок с CMS/API и передавать в `PageNav items=[...]`. */}
-                <PageNav
-                  className={styles.nav}
-                  // UI: если страница врача открыта напрямую (без history/from),
-                  // показываем дефолтную крошку "Врачи".
-                  // BACKEND: позже заменить на реальные крошки из CMS/API через `items`.
-                  defaultItems={[{ label: 'Врачи', href: '/doctors' }]}
-                />
+                <Suspense fallback={<div className="h-[2.375rem]" />}>
+                  <PageNav
+                    className={styles.nav}
+                    // UI: если страница врача открыта напрямую (без history/from),
+                    // показываем дефолтную крошку "Врачи".
+                    // BACKEND: позже заменить на реальные крошки из CMS/API через `items`.
+                    defaultItems={[{ label: 'Врачи', href: '/doctors' }]}
+                  />
+                </Suspense>
 
                 {/* Заголовок */}
                 <h1 className={`text-[3.75rem] font-[Circe] font-normal max-w-[49.125rem] leading-[120%] uppercase`}>
