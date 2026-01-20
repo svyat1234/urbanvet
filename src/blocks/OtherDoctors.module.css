@@ -1,0 +1,67 @@
+.section {
+  display: block;
+}
+
+.peekWrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.rightMask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  pointer-events: none;
+  background: #fff;
+}
+
+.section :global(.swiper-slide) .link {
+  opacity: 0.5;
+}
+
+.link {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Следующий элемент после .swiper-slide-active (независимо от класса) */
+.section :global(.swiper-slide-next) + * .link {
+  opacity: 1;
+}
+
+.link:hover {
+  opacity: 0.8 !important;
+}
+
+.button {
+  width: 53px;
+  height: 53px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F9F9F9;
+  border-radius: 50%;
+  transition: all 0.1s ease-in;
+}
+
+.button svg {
+  width: 27px;
+  height: 24px;
+}
+
+.button svg path {
+  transition: all 0.1s ease-in;
+}
+
+.buttonNext {
+  transform: scaleX(-1);
+}
+
+.button:hover {
+  background: black;
+}
+
+.button:hover svg path {
+  fill: white;
+}

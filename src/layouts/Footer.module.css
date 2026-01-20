@@ -1,0 +1,48 @@
+.link {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 100%;
+    transition: opacity 0.2s ease-in-out;
+    height: fit-content;
+}
+
+.link:hover {
+    opacity: 0.7;
+}
+
+.contactLink {
+    padding: 1rem 1.8751rem;
+    font-size: 0.875rem;
+    line-height: 90%;
+    border: 1px solid var(--dark);
+    border-radius: 100px;
+    transition: all 0.2s ease;
+}
+
+.contactLink:hover {
+    background: var(--dark);
+    color: #fff;
+    border-color: #fff;
+}
+
+.socialLink {
+    width: 41.76px;
+    height: 41.76px;
+    background: #fff url('/images/footer-telegram.svg') no-repeat center / cover;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.socialLink:hover {
+    opacity: 0.5;
+}
+
+.documentLink {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #8E8E8E;
+    transition: color 0.2s ease-in-out;
+}
+
+.documentLink:hover {
+    color: var(--dark);
+}

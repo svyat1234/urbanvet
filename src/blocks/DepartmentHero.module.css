@@ -1,0 +1,44 @@
+:root {
+  --doctorImageWrapWidth: 114px;
+}
+
+.doctorImageCards {
+  position: relative;
+  width: calc(var(--doctorImageWrapWidth) * 2);
+  height: var(--doctorImageWrapWidth);
+}
+
+.doctorImageWrap {
+  position: absolute;
+  width: var(--doctorImageWrapWidth);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  outline: 4px solid #fff;
+  outline-offset: -3.9px;
+  overflow: hidden;
+}
+
+.doctorImageWrap:nth-child(1) {
+  right: 0;
+  z-index: 3;
+}
+.doctorImageWrap:nth-child(2) {
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+.doctorImageWrap:nth-child(3) {
+  left: 0;
+  z-index: 1;
+}
+
+.doctorImageWrap:nth-child(n+2)::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  opacity: 0.9;
+}

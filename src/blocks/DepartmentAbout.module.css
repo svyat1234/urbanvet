@@ -1,0 +1,13 @@
+/* src/blocks/DepartmentAbout.module.css */
+.about {
+  /* Add styles here */
+}
+
+.aboutText {
+  font-size: 0.938rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #949494;
+  max-width: 423px;
+  width: 100%;
+}

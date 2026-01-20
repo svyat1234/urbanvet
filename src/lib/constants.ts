@@ -1,0 +1,784 @@
+import doctor1 from '@/assets/images/doctors/doctor-1.jpg';
+import doctor2 from '@/assets/images/doctors/doctor-2.jpg';
+import doctor3 from '@/assets/images/doctors/doctor-3.jpg';
+import doctor4 from '@/assets/images/doctors/doctor-4.jpg';
+import doctor5 from '@/assets/images/doctors/doctor-5.jpg';
+import doctor6 from '@/assets/images/doctors/doctor-6.jpg';
+import doctor7 from '@/assets/images/doctors/doctor-7.jpg';
+import doctor8 from '@/assets/images/doctors/doctor-8.jpg';
+import doctor9 from '@/assets/images/doctors/doctor-9.jpg';
+import departmentHero from '@/assets/images/department-hero.png';
+import serviceImage1 from '@/assets/images/services-1.png';
+import newsImage1 from '@/assets/images/news/news-1.png';
+import type { StaticImageData } from 'next/image';
+
+export interface Doctor {
+  id: number;
+  /**
+   * BACKEND:
+   * Уникальный slug для URL страницы врача `/doctors/[slug]`.
+   * Если slug не задан (на моках/во время миграции) — используем `id` как fallback.
+   */
+  slug?: string;
+  name: string;
+  position: string;
+  experience: string;
+  services: string[];
+  department: string;
+  photo: string | StaticImageData;
+}
+
+// Независимые данные карточек (могут использоваться в разных местах)
+export const DOCTORS: Doctor[] = [
+  {
+    id: 1,
+    // BACKEND: slug для страницы врача `/doctors/[slug]` (уникальный).
+    slug: 'visheva-anastasiya-yurevna-1',
+    name: "Вишева Анастасия Юрьевна",
+    position: "Терапевт",
+    experience: "Опыт: 4 года",
+    services: ["Терапия", "Диагностика", "Профилактика", "УЗИ", "Лаборатория", "Вакцинация"],
+    department: "Терапевтическое отделение",
+    photo: doctor1
+  },
+  {
+    id: 2,
+    // BACKEND: slug для страницы врача `/doctors/[slug]` (уникальный).
+    slug: 'vlasov-aleksey-maksimovich-2',
+    name: "Власов Алексей Максимович",
+    position: "Хирург",
+    experience: "Опыт: 5 лет",
+    services: ["Хирургия", "Диагностика", "УЗИ", "Лаборатория", "Травматология", "Ортопедия"],
+    department: "Хирургическое отделение",
+    photo: doctor2
+  },
+  {
+    id: 3,
+    name: "Винорова Ирина Алексеевна",
+    position: "Дерматолог",
+    experience: "Опыт: 8 лет",
+    services: ["Дерматология", "Диагностика", "Лаборатория", "Аллергология", "Трихология", "Профилактика"],
+    department: "Дерматологическое отделение",
+    photo: doctor3
+  },
+  {
+    id: 4,
+    name: "Вишева Анастасия Юрьевна",
+    position: "Кардиолог",
+    experience: "Опыт: 4 года",
+    services: ["Кардиология", "ЭКГ", "УЗИ сердца"],
+    department: "Кардиологическое отделение",
+    photo: doctor4
+  },
+  {
+    id: 5,
+    name: "Власов Алексей Максимович",
+    position: "Офтальмолог",
+    experience: "Опыт: 5 лет",
+    services: ["Офтальмология", "Микрохирургия глаза", "Диагностика зрения"],
+    department: "Офтальмологическое отделение",
+    photo: doctor5
+  },
+  {
+    id: 6,
+    name: "Винорова Ирина Алексеевна",
+    position: "Стоматолог",
+    experience: "Опыт: 8 лет",
+    services: ["Стоматология", "Чистка зубов", "Удаление зубов"],
+    department: "Стоматологическое отделение",
+    photo: doctor6
+  },
+  {
+    id: 7,
+    name: "Вишева Анастасия Юрьевна",
+    position: "Эндокринолог",
+    experience: "Опыт: 4 года",
+    services: ["Эндокринология", "Диабетология", "Гормональные нарушения"],
+    department: "Эндокринологическое отделение",
+    photo: doctor7
+  },
+  {
+    id: 8,
+    name: "Власов Алексей Максимович",
+    position: "Онколог",
+    experience: "Опыт: 5 лет",
+    services: ["Онкология", "Химиотерапия", "Паллиативная помощь"],
+    department: "Онкологическое отделение",
+    photo: doctor8
+  },
+  {
+    id: 9,
+    name: "Винорова Ирина Алексеевна",
+    position: "Онколог",
+    experience: "Опыт: 5 лет",
+    services: ["Онкология", "Химиотерапия", "Паллиативная помощь"],
+    department: "Онкологическое отделение",
+    photo: doctor9
+  },
+  {
+    id: 10,
+    name: "Винорова Ирина Алексеевна",
+    position: "Онколог",
+    experience: "Опыт: 5 лет",
+    services: ["Онкология", "Химиотерапия", "Паллиативная помощь"],
+    department: "Онкологическое отделение",
+    photo: doctor9
+  },
+  {
+    id: 11,
+    name: "Белов Дмитрий Олегович",
+    position: "Педиатр",
+    experience: "Опыт: 6 лет",
+    services: ["Педиатрия", "Детская терапия", "Вакцинация"],
+    department: "Педиатрическое отделение",
+    photo: doctor4
+  },
+  {
+    id: 12,
+    name: "Семенова Мария Аркадьевна",
+    position: "Кардиолог",
+    experience: "Опыт: 11 лет",
+    services: ["Кардиология", "Стресс-тесты", "Мониторинг ЭКГ"],
+    department: "Кардиологическое отделение",
+    photo: doctor6
+  },
+  {
+    id: 13,
+    name: "Иванов Сергей Эдуардович",
+    position: "Невролог",
+    experience: "Опыт: 10 лет",
+    services: ["Неврология", "Лечение мигрени", "Диагностика инсульта"],
+    department: "Неврологическое отделение",
+    photo: doctor7
+  },
+  {
+    id: 14,
+    name: "Полякова Анастасия Николаевна",
+    position: "Дерматолог",
+    experience: "Опыт: 8 лет",
+    services: ["Дерматология", "Удаление новообразований", "Косметология"],
+    department: "Дерматологическое отделение",
+    photo: doctor1
+  },
+  {
+    id: 15,
+    name: "Алексеев Константин Григорьевич",
+    position: "Хирург",
+    experience: "Опыт: 18 лет",
+    services: ["Хирургия", "Абдоминальные операции", "Миниинвазивная хирургия"],
+    department: "Хирургическое отделение",
+    photo: doctor2
+  },
+  {
+    id: 16,
+    name: "Петрова Любовь Васильевна",
+    position: "Терапевт",
+    experience: "Опыт: 13 лет",
+    services: ["Терапия", "Диагностика", "Профилактика"],
+    department: "Терапевтическое отделение",
+    photo: doctor3
+  },
+  {
+    id: 17,
+    name: "Тихонов Роман Владимирович",
+    position: "Уролог",
+    experience: "Опыт: 9 лет",
+    services: ["Урология", "Лечение простаты", "УЗИ органов мочеполовой системы"],
+    department: "Урологическое отделение",
+    photo: doctor4
+  },
+  {
+    id: 18,
+    name: "Гладкова Юлия Михайловна",
+    position: "Гинеколог",
+    experience: "Опыт: 7 лет",
+    services: ["Гинекология", "Планирование семьи", "УЗИ малого таза"],
+    department: "Гинекологическое отделение",
+    photo: doctor5
+  },
+  {
+    id: 19,
+    name: "Иванова Елена Сергеевна",
+    position: "Анестезиолог-реаниматолог",
+    experience: "Опыт: 12 лет",
+    services: ["Анестезиология", "Реанимация", "Мониторинг состояния"],
+    department: "Анестезиология и реанимация",
+    photo: doctor6
+  },
+  {
+    id: 20,
+    name: "Лебедев Павел Александрович",
+    position: "Реабилитолог",
+    experience: "Опыт: 4 года",
+    services: ["Реабилитация", "Лечебная физкультура", "Массаж"],
+    department: "Отделение реабилитации",
+    photo: doctor7
+  },
+  {
+    id: 21,
+    name: "Мартынова Софья Владимировна",
+    position: "Эндоскопист",
+    experience: "Опыт: 9 лет",
+    services: ["Эндоскопия", "Колоноскопия", "Биопсия"],
+    department: "Эндоскопическое отделение",
+    photo: doctor8
+  },
+  {
+    id: 22,
+    name: "Соколов Артём Сергеевич",
+    position: "Физиотерапевт",
+    experience: "Опыт: 5 лет",
+    services: ["Физиотерапия", "Лечение токами", "Ультразвук"],
+    department: "Физиотерапевтическое отделение",
+    photo: doctor9
+  },
+  {
+    id: 23,
+    name: "Волкова Наталья Михайловна",
+    position: "Психотерапевт",
+    experience: "Опыт: 8 лет",
+    services: ["Психотерапия", "Консультации", "Психологическая помощь"],
+    department: "Психотерапевтическое отделение",
+    photo: doctor1
+  },
+  {
+    id: 24,
+    name: "Гордеев Владимир Сергеевич",
+    position: "Отоларинголог (ЛОР)",
+    experience: "Опыт: 14 лет",
+    services: ["ЛОР", "Аудиометрия", "Операции на ЛОР-органах"],
+    department: "ЛОР-отделение",
+    photo: doctor2
+  },
+  {
+    id: 25,
+    name: "Егоров Денис Андреевич",
+    position: "Инфекционист",
+    experience: "Опыт: 6 лет",
+    services: ["Инфектология", "Вакцинация", "Профилактика инфекций"],
+    department: "Инфекционное отделение",
+    photo: doctor3
+  },
+  {
+    // Добавили ещё одного врача для "Хирургического отделения" (по просьбе) — в конце массива.
+    id: 26,
+    name: "Кузнецов Артём Павлович",
+    position: "Хирург",
+    experience: "Опыт: 7 лет",
+    services: ["Абдоминальная хирургия", "Операции мягких тканей", "Послеоперационное наблюдение"],
+    department: "Хирургическое отделение",
+    photo: doctor2
+  },
+  {
+    // Добавили ещё одного врача для "Хирургического отделения" (по просьбе) — в конце массива.
+    id: 27,
+    name: "Кузнецов Артём Павлович",
+    position: "Хирург",
+    experience: "Опыт: 7 лет",
+    services: ["Абдоминальная хирургия", "Операции мягких тканей", "Послеоперационное наблюдение"],
+    department: "Хирургическое отделение",
+    photo: doctor2
+  }
+];
+
+// Данные страницы "Врачи"
+export interface DoctorsPageData {
+  heading: {
+    subtitle: string;
+    title: string;
+  };
+  doctors: Doctor[];
+  // Здесь могут быть другие блоки страницы:
+  // textBlock1: { title: string; content: string };
+  // textBlock2: { title: string; content: string };
+}
+
+export const DOCTORS_PAGE_DATA: DoctorsPageData = {
+  heading: {
+    subtitle: 'Врачи',
+    title: 'Наши специалисты'
+  },
+  doctors: DOCTORS
+};
+
+// -----------------------------
+// Услуги (единый список)
+// -----------------------------
+
+export interface ServiceItem {
+  id: string;
+  title: string;
+  description: string;
+  /**
+   * До 3-х тегов под карточку.
+   * (Ограничение лучше валидировать на бэкенде/в CMS, а здесь держать простым.)
+   */
+  tags: string[];
+  /**
+   * Пока простой флаг.
+   * Если дальше понадобятся скидки/периоды/условия — лучше заменить на объект `promo?: { ... }`.
+   */
+  isPromo: boolean;
+  /**
+   * Опционально: если у карточки есть изображение.
+   * Если нет — можно показывать просто цвет/градиент.
+   */
+  image?: StaticImageData;
+  /**
+   * Цвет фона для карточки (используется, если `image` не задана).
+   * BACKEND: можно отдавать с бэка как "theme"/"color", либо генерировать на фронте.
+   */
+  bgColor?: '#E3E993' | '#F2C1D5' | '#ACD9CF';
+}
+
+export const SERVICES: ServiceItem[] = [
+  {
+    id: 'therapy-consultation',
+    title: 'Приём терапевта',
+    description: 'Осмотр, сбор анамнеза и план лечения для питомца.',
+    tags: ['Терапия', 'Диагностика'],
+    isPromo: false,
+    bgColor: '#E3E993',
+    image: serviceImage1,
+  },
+  {
+    id: 'vaccination',
+    title: 'Вакцинация',
+    description: 'Плановая вакцинация с подбором схемы и отметкой в паспорте.',
+    tags: ['Профилактика'],
+    isPromo: true,
+    bgColor: '#F2C1D5',
+  },
+  {
+    id: 'ultrasound',
+    title: 'УЗИ',
+    description: 'Ультразвуковая диагностика органов брюшной полости.',
+    tags: ['Диагностика', 'УЗИ'],
+    isPromo: false,
+    bgColor: '#ACD9CF',
+    image: serviceImage1,
+  },
+  {
+    id: 'surgery',
+    title: 'Хирургия',
+    description: 'Плановые и экстренные вмешательства, послеоперационное ведение.',
+    tags: ['Хирургия'],
+    isPromo: false,
+    bgColor: '#F2C1D5',
+  },
+  {
+    id: 'dentistry',
+    title: 'Стоматология',
+    description: 'Профессиональная чистка, лечение и удаление зубов.',
+    tags: ['Стоматология'],
+    isPromo: true,
+    bgColor: '#E3E993',
+    image: serviceImage1,
+  },
+  {
+    id: 'lab-tests',
+    title: 'Анализы',
+    description: 'Базовые лабораторные исследования для точной диагностики.',
+    tags: ['Лаборатория', 'Диагностика'],
+    isPromo: false,
+    bgColor: '#ACD9CF',
+  },
+  {
+    id: '2',
+    title: 'Анализы',
+    description: 'Базовые лабораторные исследования для точной диагностики.',
+    tags: ['Лаборатория', 'Диагностика'],
+    isPromo: false,
+    bgColor: '#ACD9CF',
+  },
+  {
+    id: '3',
+    title: 'Анализы',
+    description: 'Базовые лабораторные исследования для точной диагностики.',
+    tags: ['Лаборатория', 'Диагностика'],
+    isPromo: false,
+    bgColor: '#ACD9CF',
+  },
+  {
+    id: '4',
+    title: 'Анализы',
+    description: 'Базовые лабораторные исследования для точной диагностики.',
+    tags: ['Лаборатория', 'Диагностика'],
+    isPromo: false,
+    bgColor: '#ACD9CF',
+  },
+  {
+    id: '5',
+    title: 'Анализы',
+    description: 'Базовые лабораторные исследования для точной диагностики.',
+    tags: ['Лаборатория', 'Диагностика'],
+    isPromo: false,
+    bgColor: '#ACD9CF',
+  },
+  {
+    id: '6',
+    title: 'Анализы',
+    description: 'Базовые лабораторные исследования для точной диагностики.',
+    tags: ['Лаборатория', 'Диагностика'],
+    isPromo: false,
+    bgColor: '#ACD9CF',
+  },
+];
+
+export interface CardsSectionData<TItem> {
+  heading: {
+    title: string;
+    subtitle: string;
+  };
+  items: TItem[];
+}
+
+// -----------------------------
+// Новости
+// -----------------------------
+
+export interface NewsItem {
+  id: string;
+  /**
+   * Для будущей страницы новости: `/news/[slug]`
+   */
+  slug: string;
+  title: string;
+  excerpt: string;
+  /**
+   * ISO строка, чтобы удобно сортировать/фильтровать.
+   * UI форматируем на фронте.
+   */
+  publishedAt: string;
+  tag: string;
+  image: StaticImageData;
+  /**
+   * Задел под будущую страницу новости (потом можно расширять: блоки, seo, галерея и т.д.).
+   */
+  content?: {
+    subtitle?: string;
+    body?: string[];
+  };
+}
+
+// BACKEND: в будущем заменить на данные из API (например, `/api/news`).
+// Варианты интеграции:
+// - общий список новостей для всего сайта
+// - либо endpoint вида `/api/departments/:slug/news` (тогда новости фильтруются по отделению на бэке)
+// - либо общий список + фильтрация на фронте по `tag`/`departmentId`
+export const NEWS: NewsItem[] = [
+  {
+    id: 'news-1',
+    slug: 'novye-chasy-priyoma',
+    title: 'Новые часы приёма',
+    excerpt: 'Расширили расписание: теперь принимаем пациентов и в вечерние часы.',
+    publishedAt: '2026-01-12',
+    tag: 'Терапия',
+    image: newsImage1,
+    content: {
+      subtitle: 'Обновили график работы',
+      body: ['Мы добавили вечерние окна записи для вашего удобства.', 'Записаться можно по телефону или через форму на сайте.'],
+    },
+  },
+  {
+    id: 'news-2',
+    slug: 'profilaktika-posle-operatsii',
+    title: 'Памятка после операции твоего пса для операции',
+    excerpt: 'Собрали короткие правила ухода, чтобы восстановление прошло спокойно.',
+    publishedAt: '2026-01-10',
+    tag: 'Хирургия',
+    image: newsImage1,
+    content: {
+      subtitle: 'Как ухаживать за питомцем',
+      body: ['Следите за швом и ограничьте активность.', 'При любых сомнениях — сразу пишите или звоните в клинику.'],
+    },
+  },
+  {
+    id: 'news-3',
+    slug: 'den-vaktsinatsii',
+    title: 'День вакцинации',
+    excerpt: 'Проводим профилактический день с консультацией и подбором схемы.',
+    publishedAt: '2026-01-08',
+    tag: 'Профилактика',
+    image: newsImage1,
+  },
+  {
+    id: 'news-4',
+    slug: 'urologiya-kogda-nuzhno',
+    title: 'Когда нужна урология',
+    excerpt: 'На что обратить внимание: симптомы, которые нельзя игнорировать.',
+    publishedAt: '2026-01-06',
+    tag: 'Урология',
+    image: newsImage1,
+  },
+  {
+    id: 'news-5',
+    slug: 'kak-podgotovit-k-uzi',
+    title: 'Подготовка к УЗИ',
+    excerpt: 'Несколько простых шагов, чтобы обследование было точным.',
+    publishedAt: '2026-01-04',
+    tag: 'Диагностика',
+    image: newsImage1,
+  },
+  {
+    id: 'news-6',
+    slug: 'stomatologiya-profilaktika',
+    title: 'Профилактика зубов',
+    excerpt: 'Почему чистка важна и как понять, что пора на осмотр.',
+    publishedAt: '2026-01-03',
+    tag: 'Стоматология',
+    image: newsImage1,
+  },
+  {
+    id: 'news-7',
+    slug: 'mini-chek-list-dlya-doma',
+    title: 'Мини-чек-лист для дома',
+    excerpt: 'Что держать в аптечке и как быстро оценить состояние питомца.',
+    publishedAt: '2026-01-01',
+    tag: 'Полезное',
+    image: newsImage1,
+  },
+];
+
+// -----------------------------
+// Данные страниц "Отделения"
+// -----------------------------
+
+export interface DepartmentHeroData {
+  heading: {
+    title: string;
+    brandTitle: string;
+  };
+  /**
+   * Первые 2 фото — статичные декоративные (как в макете).
+   * Третье фото — фото профильного врача (заполняется данными).
+   */
+  staticDoctorPhotos: [StaticImageData, StaticImageData];
+  featuredDoctor: {
+    name: string;
+    role: string;
+    photo: StaticImageData;
+  };
+  heroImage: StaticImageData;
+}
+
+export interface DepartmentAboutData {
+  heading: {
+    title: string;
+    subtitle: string;
+  };
+  description: string[];
+  cards: {
+    title: string;
+    description: string;
+  }[];
+  image: StaticImageData;
+  // Здесь можно добавить дополнительные поля:
+  // description?: string;
+  // image?: StaticImageData;
+  // features?: string[];
+  // etc.
+}
+
+export interface DepartmentPageData {
+  slug: string;
+  /**
+   * BACKEND:
+   * Короткое название для UI-навигации (исторические "крошки"/ссылка-возврат).
+   * Пример: "Хирургия" вместо "Отделение хирургии".
+   *
+   * Важно: это не обязательно канонические крошки (иерархия сайта),
+   * а именно короткий label, который фронт может передавать как `fromLabel`.
+   *
+   * Если не задано — используем fallback на `hero.heading.title`.
+   */
+  breadcrumbTitle?: string;
+  hero: DepartmentHeroData;
+  about?: DepartmentAboutData;
+  /**
+   * Секция "врачи" (переиспользуем блок `Doctors`).
+   * BACKEND: позже заменить на данные из API (например, /departments/:slug/doctors).
+   */
+  doctors?: DoctorsPageData;
+  /**
+   * Временная фронтовая структура для "сетки карточек" на странице отделения.
+   * BACKEND: позже заменить на данные из API (например, /departments/:slug/services).
+   *
+   * Важно: это не обязательно "услуги" — здесь может быть любой список (услуги/акции/документы),
+   * главное, чтобы фронт получил `heading` и массив `items`.
+   */
+  services?: CardsSectionData<ServiceItem>;
+  // Здесь позже можно добавить остальные блоки страницы отделения:
+  // services?: ...
+  // doctors?: ...
+  // faq?: ...
+}
+
+export const DEPARTMENTS: Record<string, DepartmentPageData> = {
+  hirurgiya: {
+    slug: 'hirurgiya',
+    breadcrumbTitle: 'Хирургия',
+    hero: {
+      heading: {
+        title: 'Отделение хирургии',
+        brandTitle: 'Urbanvet',
+      },
+      staticDoctorPhotos: [doctor1, doctor2],
+      featuredDoctor: {
+        name: 'Новиков Илья Владимирович',
+        role: 'профильный специалист',
+        photo: doctor3,
+      },
+      heroImage: departmentHero,
+    },
+    doctors: {
+      heading: {
+        title: 'Врачи отделения',
+        subtitle: 'врачи',
+      },
+      // BACKEND: позже это будет список врачей, привязанных к отделению в CMS/БД.
+      doctors: DOCTORS.filter(d => d.department === 'Хирургическое отделение'),
+    },
+    about: {
+      heading: {
+        title: 'Плановая и экстренная хирургия ',
+        subtitle: 'о нас',
+      },
+      description: [
+        'Плановая и экстренная хирургия — это комплексная медицинская помощь, которая включает в себя диагностику, лечение и реабилитацию заболеваний, связанных с нарушениями в работе различных систем организма. Наша команда специалистов готова предоставить вам высококвалифицированную помощь в кратчайшие сроки и обеспечить максимальный комфорт на протяжении всего лечения.',
+        'Наша команда специалистов готова предоставить вам высококвалифицированную помощь в кратчайшие сроки и обеспечить максимальный комфорт на протяжении всего лечения.',
+      ],
+      cards: [
+        {
+          title: '124+',
+          description: 'консультаций в год',
+        },
+        {
+          title: '25+',
+          description: 'лет опыта в хирургии',
+        },
+        {
+          title: '10+',
+          description: 'лет практики в хирургии',
+        },
+      ],
+      image: departmentHero,
+    },
+    services: {
+      heading: {
+        title: 'Хирургические услуги',
+        subtitle: 'услуги',
+      },
+      // BACKEND: тут сейчас используем общий список SERVICES.
+      // Позже это будет "услуги конкретного отделения" (в идеале по связям в БД/CMS).
+      items: SERVICES,
+    },
+  },
+};
+
+// ---------------------------
+// Страница врача (мок-данные)
+// ---------------------------
+
+export interface DoctorHeroContent {
+  /**
+   * BACKEND:
+   * Контент hero-блока на странице врача.
+   * Имя и фото врача НЕ дублируем здесь — берём из `DOCTORS`.
+   */
+  description: string[];
+  cta: {
+    label: string;
+    href: string;
+  };
+}
+
+export interface DoctorPageData {
+  /**
+   * BACKEND:
+   * Уникальный ключ страницы врача. Рекомендуем использовать `doctor.slug`.
+   * На период миграции допускается хранить по `id` (строкой).
+   */
+  slug: string;
+  hero: DoctorHeroContent;
+}
+
+/**
+ * Страница врача:
+ * - общие данные секций (одинаковые для всех врачей)
+ * - и персональные данные (например, тексты hero) по ключу врача.
+ */
+export interface DoctorPagesData {
+  hero: {
+    cta: {
+      label: string;
+      href: string;
+    };
+  };
+  services: {
+    heading: {
+      subtitle: string;
+      title: string;
+    };
+  };
+  otherDoctors: {
+    heading: {
+      subtitle: string;
+      title: string;
+    };
+  };
+  pages: Record<
+    string,
+    {
+      hero: {
+        description: string[];
+      };
+    }
+  >;
+}
+
+// BACKEND:
+// В будущем это будет приходить с API, например `/api/doctors/:slug`,
+// где в одном ответе будет и профиль врача, и контент блоков страницы.
+export const DOCTOR_PAGES: DoctorPagesData = {
+  hero: {
+    // UI: CTA одинаковый для всех страниц врача (не дублируем в каждом ключе).
+    cta: {
+      label: 'Записаться на приём',
+      href: '#',
+    },
+  },
+  services: {
+    // UI: секция "Услуги врача" одинаковая для всех страниц врача.
+    heading: {
+      subtitle: 'услуги',
+      title: 'услуги врача',
+    },
+  },
+  otherDoctors: {
+    // UI: секция "Другие врачи" одинаковая для всех страниц врача.
+    heading: {
+      subtitle: 'врачи',
+      title: 'другие врачи',
+    },
+  },
+  pages: {
+    // Ключ должен совпадать с `doctor.slug` (или `id` как fallback).
+    'visheva-anastasiya-yurevna-1': {
+      hero: {
+        description: [
+          'Мы используем современное оборудование и работаем с командой опытных ветеринарных специалистов. Перед каждым приёмом оцениваем состояние питомца и составляем план обследования.',
+          'На консультации вы получите понятные рекомендации, варианты лечения и ответы на вопросы по уходу, профилактике и питанию.',
+        ],
+      },
+    },
+    'vlasov-aleksey-maksimovich-2': {
+      hero: {
+        description: [
+          'Хирурги проводят все виды операций, от плановой кастрации до сложных вмешательств. Перед операцией оцениваем риски и подбираем анестезиологическое сопровождение.',
+          'После операции даём подробный план восстановления и сопровождаем пациента до полного выздоровления.',
+        ],
+      },
+    },
+  },
+};

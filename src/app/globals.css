@@ -5,21 +5,41 @@
   --dark: #1D1D1D;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
   background: var(--background);
-  color: var(--dark);
-  font-family: Inter, sans-serif;
-}
+    color: var(--dark);
+    font-family: var(--font-inter), sans-serif;
+    /* Tailwind утилита .font-sans использует var(--font-sans) — направляем её на Inter */
+    --font-sans: var(--font-inter), sans-serif;
+    line-height: 100%;
+  }
 
-.container {
-  max-width: 1820px;
-  margin: 0 auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+
+  button {
+    cursor: pointer;
+  }
+
+  .sort-btn {
+    padding: 1rem 2.5rem;
+    border: 1px solid var(--dark);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 100%;
+    background: #acd9cf00;
+    transition: all 0.2s ease-in-out;
+    border-radius: 100px;
+    cursor: pointer;
+  }
+
+  .sort-btn:hover {
+    background: #acd9cf;
+    border: 1px solid #acd9cf
+  }
 }

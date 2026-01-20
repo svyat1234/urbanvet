@@ -1,8 +1,20 @@
+import Header from '@/layouts/Header';
+import Footer from '@/layouts/Footer';
+import Doctors from '@/blocks/Doctors';
+import { DOCTORS_PAGE_DATA } from '@/lib/constants';
+
 export default function DoctorsPage() {
+  // В будущем здесь будет:
+  // const pageData = await fetchPageData('doctors');
+  
+  const pageData = DOCTORS_PAGE_DATA;
+
   return (
-    <div className="min-h-screen">
-      <h1>Наши врачи</h1>
-    </div>
+    <>
+      <Header />
+      <Doctors data={pageData} />
+      <Footer/>
+    </>
   );
 }
 

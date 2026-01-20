@@ -1,0 +1,75 @@
+.doctors :global(.section-sub) {
+  padding-left: 3.25rem !important;
+  position: relative;
+}
+.doctors :global(.section-sub)::after {
+  content: '';
+  display: block;
+  width: 23px;
+  height: 23px;
+  background: url('/images/lightning.png') no-repeat center center;
+  position: absolute;
+  left: 19px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.btn {
+  cursor: pointer;
+  width: 53px;
+  height: 53px;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btnNext {
+  transform: scaleX(-1);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btnNumber {
+  cursor: pointer;
+  font-size: 1.25rem;
+  color: #DBDBDB;
+  font-weight: 700;
+  transition: color 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 1.5625rem;
+}
+
+.btnNumber:hover {
+  color: var(--dark)
+}
+
+.btnNumber.active {
+  color: var(--dark)
+}
+
+
+.btnNumber.active::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: var(--dark);
+}
+
+.doctorsGrid {
+  transition: opacity var(--fade-duration, 300ms) ease;
+}
+
+.fadeOut {
+  opacity: 0;
+}
+
+.fadeIn {
+  opacity: 1;
+}

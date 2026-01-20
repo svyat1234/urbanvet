@@ -1,0 +1,16 @@
+.phone {
+    padding: 6px 26px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 80%;
+    color: #fff;
+    background-color: var(--dark);
+    transition: all 0.2s ease;
+    border: 1px solid #ffffff00;
+
+    &:hover {
+        border-color: var(--dark);
+        background-color: #fff;
+        color: var(--dark);
+    }
+}
