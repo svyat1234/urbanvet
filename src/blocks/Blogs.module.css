@@ -1,17 +1,9 @@
-.doctors :global(.section-sub) {
-  padding-left: 3.25rem !important;
-  position: relative;
-}
-.doctors :global(.section-sub)::after {
-  content: '';
-  display: block;
-  width: 23px;
-  height: 23px;
-  background: url('/images/lightning.png') no-repeat center center;
-  position: absolute;
-  left: 19px;
-  top: 50%;
-  transform: translateY(-50%);
+.search {
+  width: 200px;
+  padding: 8px 12px;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+  font-size: 0.875rem;
 }
 
 .btn {
@@ -53,7 +45,6 @@
   color: var(--dark)
 }
 
-
 .btnNumber.active::after {
   content: '';
   display: block;
@@ -62,14 +53,14 @@
   background: var(--dark);
 }
 
-.doctorsGrid {
-  transition: opacity var(--fade-duration, 300ms) ease;
-}
-
 .fadeOut {
   opacity: 0;
 }
 
 .fadeIn {
   opacity: 1;
+}
+
+.blogsGrid {
+  transition: opacity var(--fade-duration, 300ms) ease;
 }

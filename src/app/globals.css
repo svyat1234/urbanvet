@@ -42,4 +42,36 @@ body {
     background: #acd9cf;
     border: 1px solid #acd9cf
   }
+
+  .slider-button {
+    width: 53px;
+    height: 53px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F9F9F9;
+    border-radius: 50%;
+    transition: all 0.1s ease-in;
+  }
+  
+  .slider-button svg {
+    width: 27px;
+    height: 24px;
+  }
+  
+  .slider-button svg path {
+    transition: all 0.1s ease-in;
+  }
+  
+  .slider-button-next {
+    transform: scaleX(-1) !important;
+  }
+  
+  .slider-button:hover {
+    background: black !important;
+  }
+  
+  .slider-button:hover svg path {
+    fill: white;
+  }
 }

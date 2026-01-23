@@ -10,6 +10,7 @@ import doctor9 from '@/assets/images/doctors/doctor-9.jpg';
 import departmentHero from '@/assets/images/department-hero.png';
 import serviceImage1 from '@/assets/images/services-1.png';
 import newsImage1 from '@/assets/images/news/news-1.png';
+import blogImage1 from '@/assets/images/blogs/image-1.png';
 import type { StaticImageData } from 'next/image';
 
 export interface Doctor {
@@ -541,6 +542,158 @@ export const NEWS: NewsItem[] = [
 ];
 
 // -----------------------------
+// Блог
+// -----------------------------
+
+export interface BlogPost {
+  id: string;
+  /**
+   * Для страницы статьи: `/blog/[slug]`
+   */
+  slug: string;
+  title: string;
+  excerpt: string;
+  /**
+   * ISO строка (YYYY-MM-DD)
+   */
+  publishedAt: string;
+  /**
+   * Тэги (может быть несколько)
+   */
+  tags: string[];
+  image: StaticImageData;
+  /**
+   * Контент статьи (будет много со временем)
+   */
+  content?: {
+    body?: string[];
+  };
+}
+
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    id: 'blog-1',
+    slug: 'kak-ponyat-chto-pet-boleet',
+    title: 'Как понять, что ваш питомец приболел?',
+    excerpt: 'Основные признаки недомогания, на которые стоит обратить внимание каждому владельцу.',
+    publishedAt: '2026-01-15',
+    tags: ['Здоровье', 'Советы'],
+    image: blogImage1,
+    content: {
+      body: ['Первый признак — изменение аппетита...', 'Второй признак — вялость...'],
+    },
+  },
+  {
+    id: 'blog-2',
+    slug: 'pravilnoe-pitanie-koshek',
+    title: 'Правильное питание кошек: мифы и реальность',
+    excerpt: 'Разбираемся, чем лучше кормить домашних кошек и каких продуктов стоит избегать.',
+    publishedAt: '2026-01-10',
+    tags: ['Питание', 'Кошки'],
+    image: blogImage1,
+    content: {
+      body: ['Сухой корм или натуралка?', 'Вредные продукты для кошек...'],
+    },
+  },
+  {
+    id: 'blog-3',
+    slug: 'stress-u-sobak-v-gorode',
+    title: 'Стресс у собак в городской среде',
+    excerpt: 'Как помочь собаке адаптироваться к шуму машин и большому количеству людей.',
+    publishedAt: '2026-01-05',
+    tags: ['Психология', 'Собаки'],
+    image: blogImage1,
+    content: {
+      body: ['Признаки стресса у собак...', 'Упражнения для расслабления...'],
+    },
+  },
+  {
+    id: 'blog-4',
+    slug: 'podgotovka-k-pervomu-vizitu',
+    title: 'Подготовка к первому визиту в клинику',
+    excerpt: 'Что нужно взять с собой и как подготовить питомца к осмотру ветеринара.',
+    publishedAt: '2026-01-01',
+    tags: ['Клиника', 'Полезное'],
+    image: blogImage1,
+    content: {
+      body: ['Документы, которые могут понадобиться...', 'Как перевозить питомца...'],
+    },
+  },
+  {
+    id: 'blog-5',
+    slug: 'podgotovka-k-pervomu-vizituddd',
+    title: 'Подготовка к первому визиту в клинику',
+    excerpt: 'Что нужно взять с собой и как подготовить питомца к осмотру ветеринара.',
+    publishedAt: '2026-01-01',
+    tags: ['Клиника', 'Полезное'],
+    image: blogImage1,
+    content: {
+      body: ['Документы, которые могут понадобиться...', 'Как перевозить питомца...'],
+    },
+  },
+  {
+    id: 'blog-6',
+    slug: 'podgotovka-k-pervomu-vizituda',
+    title: 'Подготовка к первому визиту в клинику',
+    excerpt: 'Что нужно взять с собой и как подготовить питомца к осмотру ветеринара.',
+    publishedAt: '2026-01-01',
+    tags: ['Клиника', 'Полезное'],
+    image: blogImage1,
+    content: {
+      body: ['Документы, которые могут понадобиться...', 'Как перевозить питомца...'],
+    },
+  },
+  {
+    id: 'blog-7',
+    slug: 'podgotovka-k-pervomu-vizitudasd',
+    title: 'Подготовка к первому визиту в клинику',
+    excerpt: 'Что нужно взять с собой и как подготовить питомца к осмотру ветеринара.',
+    publishedAt: '2026-01-01',
+    tags: ['Клиника', 'Полезное'],
+    image: blogImage1,
+    content: {
+      body: ['Документы, которые могут понадобиться...', 'Как перевозить питомца...'],
+    },
+  },
+  {
+    id: 'blog-8',
+    slug: 'podgotovka-k-pervomu-vizituvcx',
+    title: 'Подготовка к первому визиту в клинику',
+    excerpt: 'Что нужно взять с собой и как подготовить питомца к осмотру ветеринара.',
+    publishedAt: '2026-01-01',
+    tags: ['Клиника', 'Полезное'],
+    image: blogImage1,
+    content: {
+      body: ['Документы, которые могут понадобиться...', 'Как перевозить питомца...'],
+    },
+  },
+  {
+    id: 'blog-9',
+    slug: 'podgotovka-k-pervomu-vizituwer',
+    title: 'Подготовка к первому визиту в клинику',
+    excerpt: 'Что нужно взять с собой и как подготовить питомца к осмотру ветеринара.',
+    publishedAt: '2026-01-01',
+    tags: ['Клиника', 'Полезное'],
+    image: blogImage1,
+    content: {
+      body: ['Документы, которые могут понадобиться...', 'Как перевозить питомца...'],
+    },
+  },
+  {
+    id: 'blog-10',
+    slug: 'podgotovka-k-pervomu-vizituhfg',
+    title: 'Подготовка к первому визиту в клинику',
+    excerpt: 'Что нужно взять с собой и как подготовить питомца к осмотру ветеринара.',
+    publishedAt: '2026-01-01',
+    tags: ['Клиника', 'Полезное'],
+    image: blogImage1,
+    content: {
+      body: ['Документы, которые могут понадобиться...', 'Как перевозить питомца...'],
+    },
+  },
+];
+
+// -----------------------------
 // Данные страниц "Отделения"
 // -----------------------------
 
@@ -735,6 +888,12 @@ export interface DoctorPagesData {
       };
     }
   >;
+  blogs: {
+    heading: {
+      subtitle: string;
+      title: string;
+    }
+  }
 }
 
 // BACKEND:
@@ -762,6 +921,12 @@ export const DOCTOR_PAGES: DoctorPagesData = {
       title: 'другие врачи',
     },
   },
+  blogs: {
+    heading: {
+      subtitle: 'блог',
+      title: 'актуальное',
+    },
+  },
   pages: {
     // Ключ должен совпадать с `doctor.slug` (или `id` как fallback).
     'visheva-anastasiya-yurevna-1': {
@@ -782,3 +947,12 @@ export const DOCTOR_PAGES: DoctorPagesData = {
     },
   },
 };
+
+export interface BlogsPageData {
+  services: {
+    hero: {
+      subtitle: string;
+      title: string;
+    };
+  };
+}

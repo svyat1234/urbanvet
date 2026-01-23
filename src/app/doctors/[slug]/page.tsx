@@ -3,6 +3,7 @@ import Footer from '@/layouts/Footer';
 import DoctorHero from '@/blocks/DoctorHero';
 import OtherDoctors from '@/blocks/OtherDoctors';
 import CardsSection from '@/blocks/CardsSection';
+import BlogsCompact from '@/blocks/BlogsCompact';
 import Card from '@/components/Card';
 import { DOCTORS, DOCTOR_PAGES, SERVICES } from '@/lib/constants';
 import { notFound } from 'next/navigation';
@@ -73,6 +74,9 @@ export default async function DoctorPage({ params }: DoctorPageProps) {
           renderItem={(item) => <Card data={item} />}
         />
       )}
+      {/* BACKEND: Секция блога (актуальное). 
+          Пока без данных, в будущем данные будут приходить из DOCTOR_PAGES или отдельного API. */}
+      <BlogsCompact />
       <Footer />
     </>
   );

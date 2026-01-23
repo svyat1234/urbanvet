@@ -46,7 +46,7 @@ export default function NewsCard({ data }: NewsCardProps) {
       </span>
 
       <span className={`flex flex-col flex-1 justify-between px-7.5 gap-7.5 pb-7.5`}>
-        <h3 className={`font-[Circe] font-bold leading-[100%] text-[2.5rem] min-h-[62px]`}>{titleLabel}</h3>
+        <h3 className={`font-[Circe] font-bold leading-[80%] text-[2.5rem] min-h-[62px]`}>{titleLabel}</h3>
 
         <span className={`flex items-center justify-between`}>
           <span className={`text-[0.875rem] font-normal bg-[#1D1D1D] text-white py-[16px] px-[30px] rounded-[100px] leading-[70%]`}>
