@@ -14,10 +14,30 @@ import type { Swiper as SwiperClass } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-export default function BlogsCompact() {
+interface BlogsCompactProps {
+  /**
+   * Slug текущего поста, который нужно исключить из отображения
+   */
+  excludeSlug?: string;
+  /**
+   * Кастомный заголовок секции (если не указан, используется из констант)
+   */
+  customTitle?: string;
+  /**
+   * Кастомный подзаголовок секции (если не указан, используется из констант)
+   */
+  customSubtitle?: string;
+}
+
+export default function BlogsCompact({ excludeSlug, customTitle, customSubtitle }: BlogsCompactProps = {}) {
   const prevRef = useRef<HTMLButtonElement | null>(null);
   const nextRef = useRef<HTMLButtonElement | null>(null);
   const swiperRef = useRef<SwiperClass | null>(null);
+
+  // Фильтруем посты, исключая текущий, если передан excludeSlug
+  const filteredPosts = excludeSlug
+    ? BLOG_POSTS.filter(post => post.slug !== excludeSlug)
+    : BLOG_POSTS;
 
   useEffect(() => {
     const swiper = swiperRef.current;
@@ -38,7 +58,10 @@ export default function BlogsCompact() {
     <section className={`py-[3.13rem] bg-[#F9F9F9]`}>
       <Container className={`flex flex-col gap-10`}>
         <div className={`flex items-end justify-between`}>
-          <Heading subtitle={DOCTOR_PAGES.blogs.heading.subtitle} title={DOCTOR_PAGES.blogs.heading.title} />
+          <Heading
+            subtitle={customSubtitle ?? DOCTOR_PAGES.blogs.heading.subtitle}
+            title={customTitle ?? DOCTOR_PAGES.blogs.heading.title}
+          />
 
           <div className={`flex gap-[19px]`}>
             <button
@@ -81,7 +104,7 @@ export default function BlogsCompact() {
           spaceBetween={20}
           className="w-full"
         >
-          {BLOG_POSTS.map((post) => (
+          {filteredPosts.map((post) => (
             <SwiperSlide key={post.id}>
               <BlogsCard data={post} />
             </SwiperSlide>

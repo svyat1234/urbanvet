@@ -140,7 +140,7 @@ export default function Blogs() {
 
           {/* Фильтры */}
           <div className={`flex gap-5`}>
-            <button className={`sort-btn`} onClick={handleSortByDate}>
+            <button className={`sort-menu sort-btn`} onClick={handleSortByDate}>
               Сортировка
             </button>
 
@@ -150,7 +150,7 @@ export default function Blogs() {
               <button className={`sort-btn`} onClick={handleSortMore}>Ещё...</button>
             </div>
 
-            <input type="text" className={`${styles.search}`} placeholder='' />
+            <input type="text" className={`sort-search`} placeholder='Введите запрос' />
 
           </div>
           <Heading subtitle="блог" title="актуальное" />
@@ -166,7 +166,12 @@ export default function Blogs() {
           }
         >
           {currentPosts.map(post => (
-            <BlogsCard key={post.id} data={post} />
+            <BlogsCard
+              key={post.id}
+              data={post}
+              from="/blogs"
+              fromLabel="Блог"
+            />
           ))}
         </div>
 

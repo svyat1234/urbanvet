@@ -27,7 +27,8 @@ body {
   }
 
   .sort-btn {
-    padding: 1rem 2.5rem;
+    padding: 0.1rem 2.5rem;
+    height: 42px;
     border: 1px solid var(--dark);
     font-size: 0.875rem;
     font-weight: 500;
@@ -41,6 +42,42 @@ body {
   .sort-btn:hover {
     background: #acd9cf;
     border: 1px solid #acd9cf
+  }
+
+  
+  .sort-menu {
+    position: relative;
+    padding-left: 3.375rem;
+    background-size: 20px 20px;
+  }
+
+  .sort-menu::before {
+    position: absolute;
+    content: '';
+    display: block;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 11px;
+    background: url('/images/sort.svg') no-repeat center;
+  }
+
+  .sort-search {
+    width: 225px;
+    height: 42px;
+    background: #ffffff;
+    font-size: 1rem;
+    border-radius: 100px;
+    outline: none;
+    color: var(--dark);
+    padding-inline: 10px;
+    text-align: center;
+  }
+
+  .sort-search::placeholder {
+    display: flex;
+    color: #D1D1D1;
   }
 
   .slider-button {

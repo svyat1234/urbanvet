@@ -12,9 +12,16 @@ import { truncateText } from '@/lib/textUtils';
 interface BlogsCardProps {
   // BACKEND: сюда должен приходить объект статьи (обычно из API).
   data: BlogPost;
+  /**
+   * UI:
+   * Контекст "откуда пришли", чтобы на странице блога можно было показать ссылку-крошку.
+   * Пример: с главной блогов -> { from: '/blogs', fromLabel: 'Блог' }
+   */
+  from?: string;
+  fromLabel?: string;
 }
 
-export default function BlogsCard({ data }: BlogsCardProps) {
+export default function BlogsCard({ data, from, fromLabel }: BlogsCardProps) {
   // BACKEND: `publishedAt` ожидаем в формате date-only `YYYY-MM-DD` (или ISO).
   const publishedLabel = formatRuDateLong(data.publishedAt);
   const titleLabel = truncateText(data.title, 55);
@@ -28,10 +35,22 @@ export default function BlogsCard({ data }: BlogsCardProps) {
     setBgColor('');
   };
 
+  // Создаем ссылку с query параметрами для breadcrumbs
+  const href = (() => {
+    const base = `/blogs/${data.slug}`;
+    if (!from) return base;
+
+    const params = new URLSearchParams();
+    params.set('from', from);
+    if (fromLabel) params.set('fromLabel', fromLabel);
+
+    return `${base}?${params.toString()}`;
+  })();
+
   return (
-    // BACKEND: ссылка на страницу статьи. Когда появится роут `/blog/[slug]` — будет вести туда.
+    // BACKEND: ссылка на страницу статьи.
     <a
-      href={`/blog/${data.slug}`}
+      href={href}
       className={`${styles.card} flex justify-between bg-white transition-colors duration-300 h-full flex-col gap-7.5 min-h-140`}
       style={bgColor ? { backgroundColor: bgColor } : undefined}
       onMouseEnter={handleActivate}

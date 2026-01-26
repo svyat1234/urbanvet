@@ -15,7 +15,7 @@ export default function Header() {
         <div className={`${styles.info} flex items-center justify-between h-full max-w-full w-full border-l border-r border-solid border-[#1D1D1D] px-5`}>
           <p className='text-[0.8125rem] font-medium leading-[100%] max-w-58.75'>Ветеринарная клиника <br />
           Фонда защиты городских животных</p>
-          <p className={`max-w-[12.5rem] text-[0.8125rem] font-medium leading-[100%] text-right`}>м. Сокол и Панфиловская, Улица Врубеля, 8 (10:00—22:00)</p>
+          <p className={`max-w-[13.2rem] text-[0.8125rem] font-medium leading-[100%] text-right`}>м. Сокол и Панфиловская, Улица Врубеля, 8 (10:00—22:00)</p>
         </div>
         <div className={`flex items-center max-w-[25.375rem] gap-[3.75rem] w-full h-full border-r border-solid border-[#1D1D1D] px-5`}>
           <div className={`flex gap-4`}>
