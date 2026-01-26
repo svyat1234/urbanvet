@@ -55,7 +55,7 @@ export default function BlogsCompact({ excludeSlug, customTitle, customSubtitle 
   }, []);
 
   return (
-    <section className={`py-[3.13rem] bg-[#F9F9F9]`}>
+    <section className={`py-[3.13rem] mt-[6.25rem] bg-[#F9F9F9]`}>
       <Container className={`flex flex-col gap-10`}>
         <div className={`flex items-end justify-between`}>
           <Heading

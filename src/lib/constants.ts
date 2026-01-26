@@ -426,6 +426,100 @@ export const SERVICES: ServiceItem[] = [
   },
 ];
 
+// -----------------------------
+// Акции
+// -----------------------------
+
+export interface PromotionItem {
+  id: string;
+  title: string;
+  description: string;
+  /**
+   * До 3-х тегов под карточку.
+   */
+  tags: string[];
+  /**
+   * Опционально: изображение акции.
+   */
+  image?: StaticImageData;
+  /**
+   * Цвет фона для карточки (используется, если `image` не задана).
+   */
+  bgColor?: '#E3E993' | '#F2C1D5' | '#ACD9CF';
+  /**
+   * Дата начала акции
+   */
+  startsAt?: string;
+  /**
+   * Дата окончания акции
+   */
+  expiresAt?: string;
+  /**
+   * Условия акции
+   */
+  conditions?: string[];
+}
+
+export const PROMOTIONS: PromotionItem[] = [
+  {
+    id: 'vaccination-discount',
+    title: 'Скидка 20% на вакцинацию',
+    description: 'Плановая вакцинация со скидкой 20% для новых клиентов.',
+    tags: ['Вакцинация', 'Скидка'],
+    bgColor: '#E3E993',
+    startsAt: '12.01.25',
+    expiresAt: '25.01.25',
+    conditions: ['Для студентов ВУЗов'],
+  },
+  {
+    id: 'sterilization-promo',
+    title: 'Акция на стерилизацию',
+    description: 'Стерилизация котов и собак со скидкой до 30%.',
+    tags: ['Хирургия', 'Стерилизация'],
+    bgColor: '#F2C1D5',
+    startsAt: '15.01.25',
+    expiresAt: '28.01.25',
+  },
+  {
+    id: 'complex-exam',
+    title: 'Комплексный осмотр',
+    description: 'Полный осмотр питомца с консультацией и рекомендациями.',
+    tags: ['Диагностика', 'Осмотр'],
+    bgColor: '#ACD9CF',
+    startsAt: '10.01.25',
+    expiresAt: '20.01.25',
+    conditions: ['Для пенсионеров'],
+  },
+  {
+    id: 'lab-tests-discount',
+    title: 'Скидка на анализы',
+    description: 'Лабораторные исследования со скидкой 15%.',
+    tags: ['Лаборатория', 'Анализы'],
+    bgColor: '#E3E993',
+    startsAt: '18.01.25',
+    expiresAt: '30.01.25',
+  },
+  {
+    id: 'first-visit-free',
+    title: 'Первичный приём бесплатно',
+    description: 'Бесплатная консультация для новых клиентов.',
+    tags: ['Консультация', 'Бесплатно'],
+    bgColor: '#F2C1D5',
+    startsAt: '01.01.25',
+    expiresAt: '15.01.25',
+    conditions: ['Только для новых клиентов'],
+  },
+  {
+    id: 'dental-care',
+    title: 'Уход за зубами',
+    description: 'Профессиональная чистка зубов со скидкой 25%.',
+    tags: ['Стоматология', 'Уход'],
+    bgColor: '#ACD9CF',
+    startsAt: '20.01.25',
+    expiresAt: '05.02.25',
+  },
+];
+
 export interface CardsSectionData<TItem> {
   heading: {
     title: string;
@@ -1029,6 +1123,121 @@ export const BLOG_PAGES: BlogPagesData = {
         description: [
           'Первый визит к ветеринару — важное событие. Подготовьтесь заранее, чтобы всё прошло гладко.',
           'Собрали список всего необходимого и рекомендации по подготовке питомца к осмотру.',
+        ],
+      },
+    },
+  },
+};
+
+// -----------------------------
+// Данные страниц "Акции"
+// -----------------------------
+
+export interface PromotionHeroContent {
+  description: string[];
+  cta: {
+    label: string;
+    href: string;
+  };
+}
+
+export interface PromotionPagesData {
+  hero: {
+    // UI: CTA одинаковый для всех страниц акций (не дублируем в каждом ключе).
+    cta: {
+      label: string;
+      href: string;
+    };
+  };
+  promotions: {
+    heading: {
+      subtitle: string;
+      title: string;
+    };
+  };
+  blogs: {
+    heading: {
+      subtitle: string;
+      title: string;
+    };
+  };
+  pages: Record<
+    string,
+    {
+      hero: {
+        description: string[];
+      };
+    }
+  >;
+}
+
+export const PROMOTION_PAGES: PromotionPagesData = {
+  hero: {
+    // UI: CTA одинаковый для всех страниц акций (не дублируем в каждом ключе).
+    cta: {
+      label: 'Узнать подробнее',
+      href: '#',
+    },
+  },
+  promotions: {
+    heading: {
+      subtitle: 'АКЦИИ',
+      title: 'подборка АКЦИЙ',
+    },
+  },
+  blogs: {
+    heading: {
+      subtitle: 'блог',
+      title: 'актуальное',
+    },
+  },
+  pages: {
+    // Ключ должен совпадать с `promotion.id`.
+    'vaccination-discount': {
+      hero: {
+        description: [
+          'Специальное предложение на вакцинацию для новых клиентов нашей клиники.',
+          'Качественная вакцинация с использованием проверенных препаратов по доступным ценам.',
+        ],
+      },
+    },
+    'sterilization-promo': {
+      hero: {
+        description: [
+          'Акционная цена на стерилизацию котов и собак с полным послеоперационным уходом.',
+          'Современное оборудование и опытные хирурги гарантируют безопасность процедуры.',
+        ],
+      },
+    },
+    'complex-exam': {
+      hero: {
+        description: [
+          'Комплексное обследование питомца включает осмотр, анализы и консультацию специалиста.',
+          'Полная диагностика состояния здоровья вашего питомца для своевременного лечения.',
+        ],
+      },
+    },
+    'lab-tests-discount': {
+      hero: {
+        description: [
+          'Лабораторные исследования по сниженным ценам для точной диагностики заболеваний.',
+          'Современное оборудование и квалифицированные лаборанты обеспечивают точные результаты.',
+        ],
+      },
+    },
+    'first-visit-free': {
+      hero: {
+        description: [
+          'Бесплатная первичная консультация для новых клиентов клиники.',
+          'Возможность познакомиться с врачом и получить ответы на все вопросы по уходу за питомцем.',
+        ],
+      },
+    },
+    'dental-care': {
+      hero: {
+        description: [
+          'Профессиональная чистка зубов и лечение стоматологических заболеваний.',
+          'Предотвращение и лечение проблем с зубами и деснами у домашних животных.',
         ],
       },
     },

@@ -4,9 +4,10 @@ import type { ServiceItem } from '@/lib/constants';
 
 interface CardProps {
   data: ServiceItem;
+  href?: string;
 }
 
-export default function Card({ data }: CardProps) {
+export default function Card({ data, href }: CardProps) {
   const hasImage = Boolean(data.image);
   const hasBgColor = Boolean(data.bgColor);
   const hasHoverBackground = hasImage || hasBgColor;
@@ -14,7 +15,7 @@ export default function Card({ data }: CardProps) {
   return (
     // Карточка услуги / документа и т.д.
     <a
-      href="#"
+      href={href ?? "#"}
       className={`${styles.card} ${hasImage ? styles.cardWithImage : ''} relative flex flex-col justify-between p-[3.125rem] h-[374px] bg-white overflow-hidden`}
     >
       {/* Фон-слой (появляется ТОЛЬКО при наведении/фокусе)

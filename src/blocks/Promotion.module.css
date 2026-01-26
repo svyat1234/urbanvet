@@ -1,0 +1,12 @@
+.info {
+    font-size: 1.225rem;
+    font-weight: 500;
+}
+
+.dateIcon {
+    background: #ACD9CF url('/images/date.svg') no-repeat center;
+}
+
+.conditionsIcon {
+    background: #ACD9CF url('/images/quotes.svg') no-repeat center;
+}
