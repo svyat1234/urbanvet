@@ -1,0 +1,33 @@
+.text:first-child{
+    text-indent: 23.125rem;
+}
+
+.textReveal {
+    position: relative;
+    color: #E6E6E6; /* базовый серый */
+    --reveal: 0%;
+}
+
+/* Чёрный текст поверх, проявляется через маску */
+.textReveal::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    color: #1D1D1D;
+    pointer-events: none;
+
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      #000 0%,
+      #000 var(--reveal),
+      transparent calc(var(--reveal) + 20%),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      #000 0%,
+      #000 var(--reveal),
+      transparent calc(var(--reveal) + 20%),
+      transparent 100%
+    );
+}

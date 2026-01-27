@@ -3,6 +3,7 @@ import Footer from '@/layouts/Footer';
 import AboutHero from '@/blocks/AboutHero';
 import AboutStat from '@/blocks/AboutStat';
 import AboutInfo from '@/blocks/AboutInfo';
+import AboutHistory from '@/blocks/AboutHistory';
 export default function AboutePage() {
   return (
     <>
@@ -10,6 +11,7 @@ export default function AboutePage() {
       <AboutHero/>
       <AboutStat/>
       <AboutInfo/>
+      <AboutHistory/>
       <Footer />
     </>
   );
