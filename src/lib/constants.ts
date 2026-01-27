@@ -1069,9 +1069,9 @@ export interface ContentBlock {
    * Содержимое блока
    * - для paragraph, heading: string
    * - для list, bullet-list: string[] | ListItem[]
-   * - для image: string (URL изображения)
+   * - для image: string (URL) | StaticImageData (next/image)
    */
-  content: string | string[] | ListItem[];
+  content: string | string[] | ListItem[] | StaticImageData;
   /**
    * Дополнительные CSS классы
    */
