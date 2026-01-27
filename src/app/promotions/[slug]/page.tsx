@@ -6,6 +6,7 @@ import BlogsCompact from '@/blocks/BlogsCompact';
 import Card from '@/components/Card';
 import { PROMOTIONS, PROMOTION_PAGES } from '@/lib/constants';
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 
 interface PromotionPageProps {
   params: Promise<{ slug: string }>;
@@ -49,15 +50,17 @@ export default async function PromotionPage({ params }: PromotionPageProps) {
   return (
     <>
       <Header />
-      <PromotionHero
-        promotion={promotion}
-        content={heroContent}
-        // Передаем breadcrumbs для навигации: Акции / Название акции
-        breadcrumbs={[
-          { label: 'Акции', href: '/promotions' },
-          { label: promotion.title, href: '#' }
-        ]}
-      />
+      <Suspense fallback={<div className="h-[713px]" />}>
+        <PromotionHero
+          promotion={promotion}
+          content={heroContent}
+          // Передаем breadcrumbs для навигации: Акции / Название акции
+          breadcrumbs={[
+            { label: 'Акции', href: '/promotions' },
+            { label: promotion.title, href: '#' }
+          ]}
+        />
+      </Suspense>
 
       {/* Другие акции (исключая текущую) */}
       <CardsSection
