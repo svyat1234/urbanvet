@@ -18,9 +18,12 @@ export default function Heading({
   return (
     <div className={`${styles.heading} ${className || ''} flex flex-col gap-10 max-w-200 items-start`}>
       {subtitle && (
-        <span className={`section-sub text-center py-[0.71rem] px-6.75 border border-[#8E8E8E] rounded-4xl font-[0.875rem] leading-[90%] text-[#8E8E8E] uppercase`}>{subtitle}</span>
+        <span className={`section-sub text-center py-[0.71rem] px-6.75 border border-[#8E8E8E] rounded-4xl font-[0.875rem] leading-[70%] text-[#8E8E8E] uppercase`}>{subtitle}</span>
       )}
-      <Tag className={`font-["Circe"] font-normal text-[3.75rem] uppercase leading-[100%]`}>{title}</Tag>
+      <Tag
+        className={`font-["Circe"] font-normal text-[3.75rem] uppercase leading-[100%]`}
+        dangerouslySetInnerHTML={{ __html: title }}
+      />
     </div>
   );
 }

@@ -11,6 +11,8 @@ import departmentHero from '@/assets/images/department-hero.png';
 import serviceImage1 from '@/assets/images/services-1.png';
 import newsImage1 from '@/assets/images/news/news-1.png';
 import blogImage1 from '@/assets/images/blogs/image-1.png';
+import aboutHeroImage from '@/assets/images/about-hero.png';
+import aboutInfoImage from '@/assets/images/about-info.png';
 import type { StaticImageData } from 'next/image';
 
 export interface Doctor {
@@ -1141,6 +1143,38 @@ export interface PromotionHeroContent {
   };
 }
 
+export interface AboutHeroData {
+  title: string;
+  description: string;
+  cta: {
+    label: string;
+    href: string;
+  };
+  image: StaticImageData;
+  imageAlt: string;
+}
+
+export interface AboutStatData {
+  number: string;
+  label: string;
+}
+
+export interface AboutInfoData {
+  heading: {
+    subtitle: string;
+    title: string;
+  };
+  description: string[];
+  image: StaticImageData;
+  imageAlt: string;
+}
+
+export interface AboutPageData {
+  hero: AboutHeroData;
+  stats: AboutStatData[];
+  info: AboutInfoData;
+}
+
 export interface PromotionPagesData {
   hero: {
     // UI: CTA одинаковый для всех страниц акций (не дублируем в каждом ключе).
@@ -1241,6 +1275,53 @@ export const PROMOTION_PAGES: PromotionPagesData = {
         ],
       },
     },
+  },
+};
+
+// -----------------------------
+// Данные страницы "О нас"
+// -----------------------------
+
+export const ABOUT_PAGE: AboutPageData = {
+  hero: {
+    title: 'здоровье питомца — спокойствие хозяина',
+    description: 'Мы используем современное оборудование и работаем с командой опытных ветеринарных хирургов. Наше отделение включает операционную с анестезиологическим и реанимационным оснащением.',
+    cta: {
+      label: 'Записаться на приём',
+      href: '#',
+    },
+    image: aboutHeroImage,
+    imageAlt: 'Ветеринарная клиника Фонда защиты городских животных',
+  },
+  stats: [
+    {
+      number: '60000+',
+      label: 'пациентов в год',
+    },
+    {
+      number: '150',
+      label: 'врачей',
+    },
+    {
+      number: '17',
+      label: 'отделений',
+    },
+    {
+      number: '440+',
+      label: 'персонала',
+    },
+  ],
+  info: {
+    heading: {
+      subtitle: 'О нас',
+      title: 'Наша <br> миссия',
+    },
+    description: [
+      'Мы используем современное оборудование и работаем с командой опытных ветеринарных хирургов. Наше отделение включает операционную с анестезиологическим и реанимационным оснащением.',
+      'Хирурги проводят все виды операций, от плановой кастрации до остеосинтеза. Перед каждой операцией наши специалисты – хирург и анестезиолог – оценивают сложность вмешательства и степень риска.',
+    ],
+    image: aboutInfoImage,
+    imageAlt: 'Ветеринарная клиника - наша миссия',
   },
 };
 

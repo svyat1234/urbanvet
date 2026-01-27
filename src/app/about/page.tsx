@@ -1,8 +1,16 @@
-export default function AboutPage() {
+import Header from '@/layouts/Header';
+import Footer from '@/layouts/Footer';
+import AboutHero from '@/blocks/AboutHero';
+import AboutStat from '@/blocks/AboutStat';
+import AboutInfo from '@/blocks/AboutInfo';
+export default function AboutePage() {
   return (
-    <div className="min-h-screen">
-      <h1>О нас</h1>
-    </div>
+    <>
+      <Header />
+      <AboutHero/>
+      <AboutStat/>
+      <AboutInfo/>
+      <Footer />
+    </>
   );
 }
-
