@@ -4,6 +4,7 @@ import AboutHero from '@/blocks/AboutHero';
 import AboutStat from '@/blocks/AboutStat';
 import AboutInfo from '@/blocks/AboutInfo';
 import AboutHistory from '@/blocks/AboutHistory';
+import Gallery from '@/blocks/Gallery';
 export default function AboutePage() {
   return (
     <>
@@ -12,6 +13,7 @@ export default function AboutePage() {
       <AboutStat/>
       <AboutInfo/>
       <AboutHistory/>
+      <Gallery/>
       <Footer />
     </>
   );

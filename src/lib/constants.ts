@@ -13,6 +13,7 @@ import newsImage1 from '@/assets/images/news/news-1.png';
 import blogImage1 from '@/assets/images/blogs/image-1.png';
 import aboutHeroImage from '@/assets/images/about-hero.png';
 import aboutInfoImage from '@/assets/images/about-info.png';
+import galleryDog from '@/assets/images/gallery/dog.png';
 import type { StaticImageData } from 'next/image';
 
 export interface Doctor {
@@ -425,6 +426,51 @@ export const SERVICES: ServiceItem[] = [
     tags: ['Лаборатория', 'Диагностика'],
     isPromo: false,
     bgColor: '#ACD9CF',
+  },
+];
+
+// -----------------------------
+// Галерея
+// -----------------------------
+
+export interface GalleryItem {
+  id: string;
+  /**
+   * Дата публикации в формате YYYY-MM-DD.
+   * UI форматируем через `formatRuDateLong`.
+   */
+  date: string;
+  /**
+   * До 3-х тегов под карточку (тематика снимка).
+   */
+  tags: string[];
+  image: StaticImageData;
+}
+
+export const GALLERY_ITEMS: GalleryItem[] = [
+  {
+    id: 'gallery-1',
+    date: '2026-01-15',
+    tags: ['Хирургия', 'Операционная'],
+    image: galleryDog,
+  },
+  {
+    id: 'gallery-2',
+    date: '2025-12-03',
+    tags: ['Диагностика', 'УЗИ'],
+    image: galleryDog,
+  },
+  {
+    id: 'gallery-3',
+    date: '2025-11-20',
+    tags: ['Терапия', 'Кошки'],
+    image: galleryDog,
+  },
+  {
+    id: 'gallery-4',
+    date: '2025-10-05',
+    tags: ['Профилактика', 'Вакцинация', 'Собаки'],
+    image: galleryDog,
   },
 ];
 
@@ -1169,10 +1215,19 @@ export interface AboutInfoData {
   imageAlt: string;
 }
 
+export interface AboutHistoryData {
+  heading: {
+    subtitle: string;
+    title?: string;
+  };
+  description: string[];
+}
+
 export interface AboutPageData {
   hero: AboutHeroData;
   stats: AboutStatData[];
   info: AboutInfoData;
+  history: AboutHistoryData;
 }
 
 export interface PromotionPagesData {
@@ -1322,6 +1377,15 @@ export const ABOUT_PAGE: AboutPageData = {
     ],
     image: aboutInfoImage,
     imageAlt: 'Ветеринарная клиника - наша миссия',
+  },
+  history: {
+    heading: {
+      subtitle: 'История основания',
+    },
+    description: [
+      'Мы используем современное оборудование и работаем с командой 120 опытных ветеринарных хирургов.',
+      'Наше отделение включает операционную что то сюдас анестезиологическим и реанимационным ля ля ля оснащением возможно дописать интереснее.',
+    ],
   },
 };
 
