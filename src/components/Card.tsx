@@ -1,5 +1,6 @@
 import styles from './Card.module.css';
 import Image from 'next/image';
+import Link from 'next/link';
 import type { ServiceItem } from '@/lib/constants';
 
 interface CardProps {
@@ -11,13 +12,13 @@ export default function Card({ data, href }: CardProps) {
   const hasImage = Boolean(data.image);
   const hasBgColor = Boolean(data.bgColor);
   const hasHoverBackground = hasImage || hasBgColor;
+  const isInternal = href != null && href !== '#' && href.startsWith('/');
+  const linkHref = href ?? '#';
 
-  return (
-    // Карточка услуги / документа и т.д.
-    <a
-      href={href ?? "#"}
-      className={`${styles.card} ${hasImage ? styles.cardWithImage : ''} relative flex flex-col justify-between p-[3.125rem] h-[374px] bg-white overflow-hidden`}
-    >
+  const className = `${styles.card} ${hasImage ? styles.cardWithImage : ''} relative flex flex-col justify-between p-[3.125rem] h-[374px] bg-white overflow-hidden`;
+
+  const content = (
+    <>
       {/* Фон-слой (появляется ТОЛЬКО при наведении/фокусе)
           Если не задан ни цвет, ни картинка — карточка остаётся белой */}
       {hasHoverBackground && (
@@ -55,6 +56,16 @@ export default function Card({ data, href }: CardProps) {
           </span>
         </span>
       </span>
+    </>
+  );
+
+  return isInternal ? (
+    <Link href={linkHref} className={className}>
+      {content}
+    </Link>
+  ) : (
+    <a href={linkHref} className={className}>
+      {content}
     </a>
   );
 }

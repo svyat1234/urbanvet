@@ -1,6 +1,7 @@
 import styles from './Header.module.css';
 import Container from '@/components/Container';
 import Image from 'next/image';
+import Link from 'next/link';
 import { BASE_PATH } from '@/lib/basePath';
 
 export default function Header() {
@@ -8,9 +9,9 @@ export default function Header() {
     <header className={`${styles.header} mt-6.75 mb-[3.125rem] h-19.25`}>
       <Container className="flex items-center justify-between h-full border border-solid border-[#1D1D1D]">
         <div className={` min-w-46 flex items-center h-full justify-center`}>
-          <a href="/" className="block w-[7.987rem]">
+          <Link href="/" className="block w-[7.987rem]">
             <Image src={`${BASE_PATH}/images/logo.svg`} alt="Logo" width={100} height={100} className='w-full h-auto object-contain'/>
-          </a>
+          </Link>
         </div>
         <div className={`${styles.info} flex items-center justify-between h-full max-w-full w-full border-l border-r border-solid border-[#1D1D1D] px-5`}>
           <p className='text-[0.8125rem] font-medium leading-[100%] max-w-58.75'>Ветеринарная клиника <br />

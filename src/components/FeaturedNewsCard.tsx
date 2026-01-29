@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import type { NewsItem } from '@/lib/constants';
 import { formatRuDateLong } from '@/lib/dateUtils';
 import { getNextColor } from '@/lib/colorUtils';
@@ -27,8 +28,8 @@ export default function FeaturedNewsCard({ data }: FeaturedNewsCardProps) {
   };
 
   return (
-    // BACKEND: ссылка на страницу новости. Когда появится роут `/news/[slug]` — будет вести туда.
-    <a
+    // BACKEND: ссылка на страницу новости. Link нужен для basePath (GitHub Pages: /urbanvet/).
+    <Link
       href={`/news/${data.slug}`}
       className={`flex justify-between h-[507px] bg-white transition-colors duration-300`}
       style={bgColor ? { backgroundColor: bgColor } : undefined}
@@ -58,7 +59,7 @@ export default function FeaturedNewsCard({ data }: FeaturedNewsCardProps) {
             Сейчас используем статический импорт (StaticImageData) как мок. */}
         <Image src={data.image} alt={data.title} className={`object-cover`} fill />
       </span>
-    </a>
+    </Link>
   );
 }
 

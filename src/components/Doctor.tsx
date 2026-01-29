@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import type { CSSProperties } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './Doctor.module.css';
 import type { Doctor as DoctorType } from '@/lib/constants';
 import { getNextColor } from '@/lib/colorUtils';
@@ -37,12 +38,11 @@ export default function Doctor({
     setGradientColor(color);
   };
 
-  // Карточка врача
+  // Карточка врача. Link нужен для basePath (GitHub Pages: /urbanvet/).
+  const href = getDoctorHref(doctor, { from, fromLabel });
   return (
-    <a 
-      // BACKEND: ссылка на страницу врача.
-      // Когда API начнёт отдавать `doctor.slug`, URL останется тем же.
-      href={getDoctorHref(doctor, { from, fromLabel })}
+    <Link
+      href={href}
       className={`${styles.card} ${className || ''} relative flex flex-col justify-between p-[3.25rem]`}
       onMouseEnter={handleMouseEnter}
       onFocus={handleMouseEnter}
@@ -74,6 +74,6 @@ export default function Doctor({
 
       {/* Имя врача */}
       <h3 className={`font-["Circe"] font-bold text-[2.5rem] leading-[90%] text-[#ffffff]`}>{name}</h3>
-    </a>
+    </Link>
   );
 }

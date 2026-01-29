@@ -3,6 +3,7 @@
 import styles from './BlogsCard.module.css';
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import type { BlogPost } from '@/lib/constants';
 import { formatRuDateLong } from '@/lib/dateUtils';
 import { getNextColor } from '@/lib/colorUtils';
@@ -48,8 +49,8 @@ export default function BlogsCard({ data, from, fromLabel }: BlogsCardProps) {
   })();
 
   return (
-    // BACKEND: ссылка на страницу статьи.
-    <a
+    // BACKEND: ссылка на страницу статьи. Link нужен для basePath (GitHub Pages: /urbanvet/).
+    <Link
       href={href}
       className={`${styles.card} flex justify-between bg-white transition-colors duration-300 h-full flex-col gap-7.5 min-h-140`}
       style={bgColor ? { backgroundColor: bgColor } : undefined}
@@ -96,6 +97,6 @@ export default function BlogsCard({ data, from, fromLabel }: BlogsCardProps) {
           </span>
         </span>
       </span>
-    </a>
+    </Link>
   );
 }

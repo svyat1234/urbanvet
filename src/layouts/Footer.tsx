@@ -1,5 +1,6 @@
 import styles from './Footer.module.css';
 import Container from '@/components/Container';
+import Link from 'next/link';
 
 export default function Footer() {
   const navLinks = [
@@ -38,9 +39,9 @@ export default function Footer() {
                 </a>
                 <div className={`flex gap-[2.5rem]`}>
                     {navLinks.map((link) => (
-                      <a key={link.label} href={link.href} className={`${styles.link}`}>
+                      <Link key={link.label} href={link.href} className={`${styles.link}`}>
                         {link.label}
-                      </a>
+                      </Link>
                     ))}
                 </div>    
 

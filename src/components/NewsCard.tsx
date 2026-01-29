@@ -1,8 +1,9 @@
- 'use client';
+'use client';
 
 import styles from './NewsCard.module.css';
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import type { NewsItem } from '@/lib/constants';
 import { formatRuDateLong } from '@/lib/dateUtils';
 import { truncateText } from '@/lib/textUtils';
@@ -30,8 +31,8 @@ export default function NewsCard({ data }: NewsCardProps) {
   };
 
   return (
-    // BACKEND: ссылка на страницу новости. Когда появится роут `/news/[slug]` — будет вести туда.
-    <a
+    // BACKEND: ссылка на страницу новости. Link нужен для basePath (GitHub Pages: /urbanvet/).
+    <Link
       href={`/news/${data.slug}`}
       className={`${styles.card} flex justify-between bg-white transition-colors duration-300 h-110 flex-col gap-7.5`}
       style={bgColor ? { backgroundColor: bgColor } : undefined}
@@ -60,6 +61,6 @@ export default function NewsCard({ data }: NewsCardProps) {
 
         </span>
       </span>
-    </a>
+    </Link>
   );
 }

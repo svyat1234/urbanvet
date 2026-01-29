@@ -4,6 +4,7 @@ import styles from './OtherDoctors.module.css';
 import Container from '@/components/Container';
 import Heading from '@/components/Heading';
 import Image from 'next/image';
+import Link from 'next/link';
 import { DOCTORS } from '@/lib/constants';
 import { getDoctorHref } from '@/lib/routes';
 
@@ -102,7 +103,7 @@ export default function OtherDoctors({ currentDoctorKey, heading }: OtherDoctors
             {/* Слайды */}
             {otherDoctors.map((doctor) => (
               <SwiperSlide key={doctor.id} className={`${styles.slide}`}>
-                <a href={getDoctorHref(doctor)} className={`${styles.link} block h-full`}>
+                <Link href={getDoctorHref(doctor)} className={`${styles.link} block h-full`}>
                   <div className={`h-[350px] relative`}>
                     <Image
                       src={doctor.photo}
@@ -111,7 +112,7 @@ export default function OtherDoctors({ currentDoctorKey, heading }: OtherDoctors
                       className="w-full h-full object-cover"
                     />
                   </div>
-                </a>
+                </Link>
               </SwiperSlide>
             ))}
           </Swiper>
