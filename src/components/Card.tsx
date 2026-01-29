@@ -1,6 +1,8 @@
 import styles from './Card.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useContext } from 'react';
+import { CardsSectionThemeContext } from '@/blocks/CardsSection';
 import type { ServiceItem } from '@/lib/constants';
 
 interface CardProps {
@@ -9,13 +11,16 @@ interface CardProps {
 }
 
 export default function Card({ data, href }: CardProps) {
+  const theme = useContext(CardsSectionThemeContext);
+  const cardBg = theme === 'light' ? 'bg-[#F9F9F9]' : 'bg-white';
+
   const hasImage = Boolean(data.image);
   const hasBgColor = Boolean(data.bgColor);
   const hasHoverBackground = hasImage || hasBgColor;
   const isInternal = href != null && href !== '#' && href.startsWith('/');
   const linkHref = href ?? '#';
 
-  const className = `${styles.card} ${hasImage ? styles.cardWithImage : ''} relative flex flex-col justify-between p-[3.125rem] h-[374px] bg-white overflow-hidden`;
+  const className = `${styles.card} ${hasImage ? styles.cardWithImage : ''} relative flex flex-col justify-between p-[3.125rem] h-[374px] ${cardBg} overflow-hidden`;
 
   const content = (
     <>

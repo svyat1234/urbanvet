@@ -13,7 +13,7 @@ export default function Vacancies() {
   const vacancy = vacancies[selectedIndex];
 
   return (
-    <section className="py-25">
+    <section className="py-12.5">
       <Container>
         <div className="flex justify-between items-end gap-5">
           {/* Кнопки вакансий — заголовок вакансии, привязаны к своей вакансии */}
@@ -40,7 +40,7 @@ export default function Vacancies() {
         <div className="flex mt-[5.1875rem] p-[4.375rem] bg-[#F9F9F9] gap-5">
           {/* Заголовок и картинка */}
           <div className="flex flex-col self-stretch justify-between gap-[5.125rem] max-w-[931px] w-full">
-            <h3 className="text-[3.75rem] font-normal leading-[110%] uppercase max-w-[842px]">
+            <h3 className="text-[3.75rem] font-[Circe] font-normal leading-[110%] uppercase max-w-[842px]">
               {vacancy.title}
             </h3>
 

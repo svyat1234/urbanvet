@@ -34,9 +34,7 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
       <DepartmentHero data={departmentPage.hero} />
       {departmentPage.about && <DepartmentAbout data={departmentPage.about} />}
       {departmentPage.services && (
-        // BACKEND: `departmentPage.services` — это "данные секции карточек".
-        // `renderItem` — выбор конкретного UI под item (услуга/документ/акция).
-        <CardsSection data={departmentPage.services} renderItem={(item) => <Card data={item} />} />
+        <ServicesCardsSection data={departmentPage.services} />
       )}
       {departmentPage.doctors && (
         // BACKEND: секция врачей отделения — список должен приходить с сервера (по slug).

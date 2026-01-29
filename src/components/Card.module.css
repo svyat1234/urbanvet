@@ -37,23 +37,26 @@
 }
 
 .icon {
-  /* Иконка по умолчанию белая (как в макете) */
-  color: #ffffff;
-  transition: color 300ms ease;
+  color: #1D1D1D;
+  opacity: 0;
+  transition: opacity 300ms ease;
 }
 
 .cardWithImage:hover,
 .cardWithImage:focus-visible {
+  opacity: 1;
   color: #ffffff;
   transition: color 300ms ease;
 }
 
 .cardWithImage:hover .icon,
 .cardWithImage:focus-visible .icon {
+  opacity: 1;
   color: #ffffff;
 }
 
 .card:not(.cardWithImage):hover .icon,
 .card:not(.cardWithImage):focus-visible .icon {
+  opacity: 1;
   color: #1D1D1D;
 }

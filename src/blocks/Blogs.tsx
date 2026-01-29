@@ -153,7 +153,10 @@ export default function Blogs() {
             <input type="text" className={`sort-search`} placeholder='Введите запрос' />
 
           </div>
-          <Heading subtitle="блог" title="актуальное" />
+
+          <div className="flex justify-between max-w-[788px] w-full">
+            <Heading subtitle="блог" title="актуальное" />
+          </div>
         </div>
 
         {/* Карточки блог-постов */}

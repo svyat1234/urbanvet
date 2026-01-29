@@ -632,6 +632,66 @@ export const DOCUMENTS: DocumentItem[] = [
   },
 ];
 
+/** Секция «Документы»: оглавление и подпись одинаковы при переиспользовании. */
+export const DOCUMENTS_SECTION = {
+  heading: {
+    subtitle: 'Документы',
+    title: 'подборка документов',
+  },
+} as const;
+
+// -----------------------------
+// Цены
+// -----------------------------
+
+export interface PriceItem {
+  id: string;
+  title: string;
+  description: string;
+  /** Старая цена (отображается зачёркнутой). */
+  oldPrice: number;
+  /** Текущая / новая цена. */
+  newPrice: number;
+  /** Ссылка на запись (опционально). */
+  href?: string;
+}
+
+export const PRICES_SECTION = {
+  heading: {
+    subtitle: 'Цены',
+    title: 'наши услуги',
+  },
+  /** Текст кнопки/ссылки на запись (например, «Записаться на приём»). */
+  linkText: 'Записаться на приём',
+} as const;
+
+export const PRICES: PriceItem[] = [
+  {
+    id: 'ultrasound',
+    title: 'Ультра-звуковая диагностика',
+    description:
+      'Задача организации, в особенности же реализация намеченных плановых заданий способствует подготовке и реализации вывода текущих активов.',
+    oldPrice: 4500,
+    newPrice: 3500,
+  },
+  {
+    id: 'vaccination',
+    title: 'Вакцинация',
+    description:
+      'Плановая вакцинация с подбором схемы и отметкой в паспорте животного.',
+    oldPrice: 2500,
+    newPrice: 2000,
+  },
+  {
+    id: 'consultation',
+    title: 'Первичный приём',
+    description:
+      'Осмотр животного, сбор анамнеза и назначение дополнительных исследований при необходимости.',
+    oldPrice: 1500,
+    newPrice: 1200,
+  },
+];
+
 export interface CardsSectionData<TItem> {
   heading: {
     title: string;
@@ -1317,10 +1377,6 @@ export interface AboutPageData {
   info: AboutInfoData;
   history: AboutHistoryData;
   vacancies: VacanciesPageData;
-  /** Секция «Документы»: заголовок для CardsSection. */
-  documents: {
-    heading: { subtitle: string; title: string };
-  };
 }
 
 export interface PromotionPagesData {
@@ -1536,12 +1592,6 @@ export const ABOUT_PAGE: AboutPageData = {
         applyCta: { label: 'Откликнуться', href: 'mailto:vet@urbananimal.ru' },
       },
     ],
-  },
-  documents: {
-    heading: {
-      subtitle: 'Документы',
-      title: 'подборка документов',
-    },
   },
 };
 
