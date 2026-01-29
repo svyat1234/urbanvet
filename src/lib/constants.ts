@@ -14,6 +14,7 @@ import blogImage1 from '@/assets/images/blogs/image-1.png';
 import aboutHeroImage from '@/assets/images/about-hero.png';
 import aboutInfoImage from '@/assets/images/about-info.png';
 import galleryDog from '@/assets/images/gallery/dog.png';
+import vacancyImage from '@/assets/images/vacancies/vacancy.png';
 import type { StaticImageData } from 'next/image';
 
 export interface Doctor {
@@ -565,6 +566,69 @@ export const PROMOTIONS: PromotionItem[] = [
     bgColor: '#ACD9CF',
     startsAt: '20.01.25',
     expiresAt: '05.02.25',
+  },
+];
+
+// -----------------------------
+// Документы
+// -----------------------------
+
+export interface DocumentItem {
+  id: string;
+  /**
+   * Slug для ссылки на страницу документа (например, /documents/[slug]).
+   */
+  slug: string;
+  title: string;
+  description: string;
+  /**
+   * От 1 до 5 тегов под карточку.
+   */
+  tags: string[];
+}
+
+export const DOCUMENTS: DocumentItem[] = [
+  {
+    id: 'abdominal-surgery',
+    slug: 'abdominal-surgery',
+    title: 'Абдоминальная хирургия',
+    description: 'Возможно процедуры или пояснительный текст.',
+    tags: ['Хирургия', 'Оборудование'],
+  },
+  {
+    id: 'ultrasound-diagnostics',
+    slug: 'ultrasound-diagnostics',
+    title: 'УЗИ-диагностика',
+    description: 'Протоколы и требования к ультразвуковому обследованию животных.',
+    tags: ['Диагностика', 'УЗИ', 'Протоколы'],
+  },
+  {
+    id: 'anesthesia-protocols',
+    slug: 'anesthesia-protocols',
+    title: 'Протоколы анестезии',
+    description: 'Стандарты и рекомендации по анестезиологическому обеспечению операций.',
+    tags: ['Анестезия', 'Безопасность', 'Протоколы'],
+  },
+  {
+    id: 'laboratory-standards',
+    slug: 'laboratory-standards',
+    title: 'Стандарты лабораторных исследований',
+    description: 'Нормы и правила проведения анализов в ветеринарной лаборатории.',
+    tags: ['Лаборатория', 'Анализы', 'Нормы'],
+  },
+  {
+    id: 'rehabilitation-equipment',
+    slug: 'rehabilitation-equipment',
+    title: 'Оборудование для реабилитации',
+    description: 'Описание оборудования и методик восстановления пациентов после операций.',
+    tags: ['Реабилитация', 'Оборудование', 'Физиотерапия'],
+  },
+  {
+    id: 'infection-control',
+    slug: 'infection-control',
+    title: 'Контроль инфекций и дезинфекция',
+    description: 'Требования к дезинфекции помещений, инструментария и обработке ран.',
+    tags: ['Дезинфекция', 'Безопасность', 'СанПиН', 'Инфекции'],
   },
 ];
 
@@ -1223,11 +1287,40 @@ export interface AboutHistoryData {
   description: string[];
 }
 
+// -----------------------------
+// Вакансии (секция на странице «О нас»)
+// -----------------------------
+
+export interface VacancyItem {
+  id: string;
+  /** Заголовок вакансии (для кнопки и блока контента) */
+  title: string;
+  image: StaticImageData;
+  /** Email для откликов, например vet@urbananimal.ru */
+  email?: string;
+  responsibilities: string[];
+  requirements: string[];
+  conditions: string[];
+  /** Текст внизу, например «Доступно соискателям с инвалидностью» */
+  disabilityNote?: string;
+  applyCta: { label: string; href: string };
+}
+
+export interface VacanciesPageData {
+  heading: { subtitle: string; title: string };
+  vacancies: VacancyItem[];
+}
+
 export interface AboutPageData {
   hero: AboutHeroData;
   stats: AboutStatData[];
   info: AboutInfoData;
   history: AboutHistoryData;
+  vacancies: VacanciesPageData;
+  /** Секция «Документы»: заголовок для CardsSection. */
+  documents: {
+    heading: { subtitle: string; title: string };
+  };
 }
 
 export interface PromotionPagesData {
@@ -1386,6 +1479,69 @@ export const ABOUT_PAGE: AboutPageData = {
       'Мы используем современное оборудование и работаем с командой 120 опытных ветеринарных хирургов.',
       'Наше отделение включает операционную что то сюдас анестезиологическим и реанимационным ля ля ля оснащением возможно дописать интереснее.',
     ],
+  },
+  vacancies: {
+    heading: { subtitle: 'Ищем', title: 'Наши вакансии' },
+    vacancies: [
+      {
+        id: 'public-inspector',
+        title: 'Общественный инспектор',
+        image: vacancyImage,
+        email: 'vet@urbananimal.ru',
+        responsibilities: ['Контроль соблюдения правил содержания животных.', 'Взаимодействие с гражданами и органами власти.'],
+        requirements: ['Гражданская активность.', 'Опыт в сфере защиты животных приветствуется.'],
+        conditions: ['График по согласованию.', 'Обучение за счёт организации.'],
+        disabilityNote: 'Доступно соискателям с инвалидностью',
+        applyCta: { label: 'Откликнуться', href: 'mailto:vet@urbananimal.ru' },
+      },
+      {
+        id: 'veterinarian',
+        title: 'Ветеринарный врач',
+        image: vacancyImage,
+        email: 'vet@urbananimal.ru',
+        responsibilities: ['Приём и лечение животных.', 'Назначение диагностики и терапии.', 'Ведение медицинской документации.'],
+        requirements: ['Высшее ветеринарное образование.', 'Опыт работы от 1 года.'],
+        conditions: ['Сменный график.', 'Зарплата по результатам собеседования.'],
+        disabilityNote: 'Доступно соискателям с инвалидностью',
+        applyCta: { label: 'Откликнуться', href: 'mailto:vet@urbananimal.ru' },
+      },
+      {
+        id: 'veterinary-assistant',
+        title: 'Ассистент ветеринарного врача',
+        image: vacancyImage,
+        email: 'vet@urbananimal.ru',
+        responsibilities: [
+          'Выполнение назначений ветеринарного врача',
+          'Работа преимущественно с бездомными животными',
+          'Ассистирование при операциях',
+          'Мониторинг пациентов',
+          'Ведение электронных историй болезни',
+          'Передача смены, дезинфекция помещений',
+        ],
+        requirements: [
+          'Добросовестность и исполнительность',
+          'Практические навыки работы с животными',
+          'Любовь к животным',
+          'Дополнительное образование приветствуется!',
+          'Опыт работы ассистентом ветеринарного врача стационара от 1 года',
+          'Навыки реабилитации животных',
+        ],
+        conditions: [
+          'Сменный график работы (с 10:00 до 22:00)',
+          'В клинике есть рекреация с обеденной зоной',
+          'Работа в шаговой доступности от м. Сокол и МЦК Панфиловская',
+          'Зарплата до 50 000 руб. до вычета налогов',
+        ],
+        disabilityNote: 'Доступно соискателям с инвалидностью',
+        applyCta: { label: 'Откликнуться', href: 'mailto:vet@urbananimal.ru' },
+      },
+    ],
+  },
+  documents: {
+    heading: {
+      subtitle: 'Документы',
+      title: 'подборка документов',
+    },
   },
 };
 

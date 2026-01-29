@@ -16,6 +16,10 @@ interface CardsSectionProps<TItem> {
    */
   renderItem: (item: TItem, idx: number) => ReactNode;
   /**
+   * Опциональный текст под заголовком. Если не передан — блок с текстом не выводится.
+   */
+  description?: string;
+  /**
    * Уровень заголовка секции (SEO/семантика).
    *
    * Важно: это НЕ контент и обычно НЕ должно приходить из CMS/БД.
@@ -27,6 +31,7 @@ interface CardsSectionProps<TItem> {
 export default function CardsSection<TItem>({
   data,
   renderItem,
+  description,
   headingLevel = 2,
 }: CardsSectionProps<TItem>) {
   return (
@@ -34,7 +39,12 @@ export default function CardsSection<TItem>({
       <Container className={`flex flex-col gap-[1.25rem]`}>
 
         <div className={`grid grid-cols-3 gap-[1.25rem]`}>
-         <Heading level={headingLevel} title={data.heading.title} subtitle={data.heading.subtitle} />
+         <div className='flex flex-col'>
+          <Heading level={headingLevel} title={data.heading.title} subtitle={data.heading.subtitle} />
+          {description != null && description !== '' && (
+            <p className='text-[0.975rem] mt-[3.125rem] max-w-[369px]'>{description}</p>
+          )}
+         </div>
           {data.items.map((item, idx) => (
             // BACKEND: ключ лучше брать из стабильного id, который придёт из API.
             // Сейчас это generic и может не иметь `id`, поэтому используем idx.

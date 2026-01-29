@@ -1,0 +1,21 @@
+.sortBtnActive {
+  background: #acd9cf;
+  border-color: #acd9cf;
+}
+
+
+.heading span {
+    position: relative;
+    padding-left: 54px;
+}
+.heading span::before {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 23px;
+    height: 21px;
+    left: 21px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: url('/images/human.png') no-repeat center / contain;
+}

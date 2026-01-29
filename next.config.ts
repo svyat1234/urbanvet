@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
   
   // Статический экспорт для GitHub Pages
   output: 'export',
+
+  // Обязательно для GitHub Pages: маршруты вида /promotions/id/ с index.html внутри,
+  // иначе статический хостинг отдаёт 404 при прямом заходе на страницу акции/блога
+  trailingSlash: true,
   
   // Отключаем оптимизацию изображений (GitHub Pages не поддерживает)
   images: {
