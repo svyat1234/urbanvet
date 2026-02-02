@@ -6,7 +6,7 @@ import { BASE_PATH } from '@/lib/basePath';
 
 export default function Header() {
   return (
-    <header className={`${styles.header} mt-6.75 mb-[3.125rem] h-19.25`}>
+    <header className={`${styles.header} mt-6.75 mb-[3.125rem] h-19.25 relative`}>
       <Container className="flex items-center justify-between h-full border border-solid border-[#1D1D1D]">
         <div className={` min-w-46 flex items-center h-full justify-center`}>
           <Link href="/" className="block w-[7.987rem]">

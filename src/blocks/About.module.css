@@ -1,0 +1,17 @@
+.card {
+    position: relative;
+    padding-left: 40px;
+    max-width: 340px;
+    width: 100%;
+}
+
+.card::before {
+    position: absolute;
+    content: ''; 
+    display: block;
+    width: 14px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #F9F9F9;
+}

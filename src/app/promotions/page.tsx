@@ -1,3 +1,5 @@
+'use client';
+
 import Header from '@/layouts/Header';
 import Footer from '@/layouts/Footer';
 import CardsSection from '@/blocks/CardsSection';

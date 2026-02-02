@@ -1,0 +1,173 @@
+:root {
+    --doctorImageWrapWidth: 114px;
+  }
+  
+  .doctorImageCards {
+    position: relative;
+    width: calc(var(--doctorImageWrapWidth) * 2);
+    height: var(--doctorImageWrapWidth);
+  }
+  
+  .doctorImageWrap {
+    position: absolute;
+    width: var(--doctorImageWrapWidth);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    outline: 5px solid #fff;
+    overflow: hidden;
+  }
+  
+  .doctorImageWrap:nth-child(1) {
+    right: 0;
+    z-index: 3;
+  }
+  .doctorImageWrap:nth-child(2) {
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  .doctorImageWrap:nth-child(3) {
+    left: 0;
+    z-index: 1;
+  }
+  
+  .doctorImageWrap:nth-child(n+2)::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 101%;
+    height: 101%;
+    background: #fff;
+    opacity: 0.7;
+  }
+
+  .doctorImageWrap {
+    transition: outline 0.75s ease-in 0.2s; /* уход: длительность и задержка 0.2s */
+  }
+
+  .doctorsBlock:hover .doctorImageWrap {
+    outline: 5px solid #ACD9CF;
+    transition: outline 0.2s ease-in 0s; /* при наведении: без задержки */
+  }
+
+  /* Снизу розовый слой с opacity, сверху маска-градиент; при наведении маска уезжает, opacity → 100% */
+  .heading {
+    position: relative;
+    --reveal: 5;
+    --fill-opacity: 0.3;
+  }
+
+  .heading::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #F2C1D5;
+    opacity: var(--fill-opacity);
+    z-index: 0;
+  }
+
+  .heading::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent calc(var(--reveal) * 1% - 8%),
+      rgba(255, 255, 255, 0.2) calc(var(--reveal) * 1%),
+      rgba(255, 255, 255, 0.5) calc(var(--reveal) * 1% + 2%),
+      rgba(255, 255, 255, 0.85) calc(var(--reveal) * 1% + 5%),
+      white calc(var(--reveal) * 1% + 28%),
+      white 100%
+    );
+  }
+
+  .heading > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Блок врачей: та же анимация, цвет #ACD9CF */
+  .doctorsBlock {
+    position: relative;
+    --reveal: 5;
+    --fill-opacity: 0.2;
+  }
+
+  .doctorsBlock::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #ACD9CF;
+    opacity: var(--fill-opacity);
+    z-index: 0;
+  }
+
+  .doctorsBlock::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent calc(var(--reveal) * 1% - 8%),
+      rgba(255, 255, 255, 0.2) calc(var(--reveal) * 1%),
+      rgba(255, 255, 255, 0.5) calc(var(--reveal) * 1% + 2%),
+      rgba(255, 255, 255, 0.85) calc(var(--reveal) * 1% + 5%),
+      white calc(var(--reveal) * 1% + 7%),
+      white 100%
+    );
+  }
+
+  .doctorsBlock > * {
+    position: relative;
+    z-index: 2;
+  }
+
+
+.laps {
+  position: absolute;
+  content: '';
+  display: block;
+  right: 10.4%;
+  bottom: 11.6%;
+  background: #F9F9F9;
+  mask: url("/images/hero-laps.svg") no-repeat center;
+  mask-size: contain;
+  width: 198px;
+  height: 150px;
+  transition: all 0.2s ease-in;
+}
+
+.laps::after {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #F3AECA 1%, #F3AECA 10%, #F4B0CC 89%);
+  mask-size: contain;
+  transition: all 0.4s ease-in 0.3s;
+  opacity: 0;
+}
+
+.heading:hover .laps::after {
+  opacity: 1;
+  transition: all 0.2s ease-in 0s;
+}
+
+.bird {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 107px;
+  height: 60px;
+  right: 3.6%;
+  bottom: 4.7%;
+  background: url("/images/hero-bird.svg") no-repeat center center;
+}

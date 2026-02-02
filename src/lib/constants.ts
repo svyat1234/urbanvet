@@ -13,8 +13,10 @@ import newsImage1 from '@/assets/images/news/news-1.png';
 import blogImage1 from '@/assets/images/blogs/image-1.png';
 import aboutHeroImage from '@/assets/images/about-hero.png';
 import aboutInfoImage from '@/assets/images/about-info.png';
+import aboutStatsImage from '@/assets/images/about-stats.png';
 import galleryDog from '@/assets/images/gallery/dog.png';
 import vacancyImage from '@/assets/images/vacancies/vacancy.png';
+import heroImageAsset from '@/assets/images/hero.png';
 import type { StaticImageData } from 'next/image';
 
 export interface Doctor {
@@ -304,6 +306,56 @@ export const DOCTORS_PAGE_DATA: DoctorsPageData = {
     title: 'Наши специалисты'
   },
   doctors: DOCTORS
+};
+
+// -----------------------------
+// Главная страница
+// -----------------------------
+
+/** Hero-секция главной страницы. Врачи для блока «врачи» берутся из DOCTORS (сортировка: от новых к старым по id). */
+export interface HomeHeroData {
+  title: string;
+  /** Вторая строка заголовка (например, перенос «Urbanvet»). */
+  titleLine2?: string;
+  description: string;
+  cta: { href: string; label: string };
+  /** Опционально: большое изображение слева. */
+  heroImage?: StaticImageData;
+}
+
+export const HOME_PAGE: { hero: HomeHeroData; about: AboutBlockData } = {
+  hero: {
+    title: 'Клиника',
+    titleLine2: 'Urbanvet',
+    description:
+      'Мы используем современное оборудование и работаем с командой опытных ветеринарных хирургов.',
+    cta: {
+      href: '#',
+      label: 'Записаться на приём',
+    },
+    heroImage: heroImageAsset,
+  },
+  about: {
+    image: aboutStatsImage,
+    imageAlt: 'Ветеринарная клиника Urbanvet',
+    heading: {
+      subtitle: 'О нас',
+      title: 'Наша миссия',
+    },
+    description: [],
+    cards: [
+      {
+        title: 'Адрес',
+        text: 'м. Сокол и Панфиловская, Улица Врубеля, 8 (10:00—22:00)',
+        phone: '8 (926) 711 18 44',
+      },
+      {
+        title: 'Адрес',
+        text: 'Для онлайн записи выберите специалиста и нужное время',
+        cta: { href: '#', label: 'Записаться на приём' },
+      },
+    ],
+  },
 };
 
 // -----------------------------
@@ -1371,6 +1423,25 @@ export interface VacanciesPageData {
   vacancies: VacancyItem[];
 }
 
+/** Карточка блока About (адрес / запись) */
+export interface AboutBlockCardData {
+  title: string;
+  text: string;
+  /** Телефон, если есть — показывается кнопкой с tel: */
+  phone?: string;
+  /** CTA вместо телефона */
+  cta?: { href: string; label: string };
+}
+
+/** Блок About: картинка, заголовок, описание, карточки (адрес, запись) */
+export interface AboutBlockData {
+  image: StaticImageData;
+  imageAlt: string;
+  heading: { subtitle: string; title: string };
+  description?: string[];
+  cards: AboutBlockCardData[];
+}
+
 export interface AboutPageData {
   hero: AboutHeroData;
   stats: AboutStatData[];
@@ -1483,6 +1554,17 @@ export const PROMOTION_PAGES: PromotionPagesData = {
 };
 
 // -----------------------------
+// Статистика (блок Stats — about и другие страницы)
+// -----------------------------
+
+export const STATS: AboutStatData[] = [
+  { number: '60000+', label: 'пациентов в год' },
+  { number: '150', label: 'врачей' },
+  { number: '17', label: 'отделений' },
+  { number: '440+', label: 'персонала' },
+];
+
+// -----------------------------
 // Данные страницы "О нас"
 // -----------------------------
 
@@ -1497,24 +1579,7 @@ export const ABOUT_PAGE: AboutPageData = {
     image: aboutHeroImage,
     imageAlt: 'Ветеринарная клиника Фонда защиты городских животных',
   },
-  stats: [
-    {
-      number: '60000+',
-      label: 'пациентов в год',
-    },
-    {
-      number: '150',
-      label: 'врачей',
-    },
-    {
-      number: '17',
-      label: 'отделений',
-    },
-    {
-      number: '440+',
-      label: 'персонала',
-    },
-  ],
+  stats: STATS,
   info: {
     heading: {
       subtitle: 'О нас',
