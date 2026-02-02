@@ -44,7 +44,7 @@ export default function About() {
 
       {/* Контент */}
       <div className="flex flex-col gap-[3.125rem] py-[4.375rem] pr-[4.375rem] max-w-[866px] w-full">
-        <Heading subtitle={heading.subtitle} title={heading.title} />
+        <Heading className={`${styles.heading}`} subtitle={heading.subtitle} title={heading.title} />
         {description && description.length > 0 && (
           <div className="flex gap-[3.75rem]">
             {description.map((paragraph, index) => (

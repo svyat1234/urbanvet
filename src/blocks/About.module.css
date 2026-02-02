@@ -15,3 +15,20 @@
     top: 0;
     background: #F9F9F9;
 }
+
+.heading span{
+    position: relative;
+    padding-left: 43px;
+}
+
+.heading span::before {
+    position: absolute;
+    content: '';
+    display: block;
+    left: 19px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    background: url("/images/about-stars.png") no-repeat center center;
+}

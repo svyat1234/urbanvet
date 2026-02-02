@@ -8,7 +8,7 @@ import type { DepartmentAboutData } from '@/lib/constants';
 import Image from 'next/image';
 
 interface DepartmentAboutProps {
-  data: DepartmentAboutData;
+  data?: DepartmentAboutData | null;
   /**
    * Уровень заголовка секции (SEO/семантика).
    *
@@ -19,6 +19,8 @@ interface DepartmentAboutProps {
 }
 
 export default function DepartmentAbout({ data, headingLevel = 2 }: DepartmentAboutProps) {
+  if (!data) return null;
+
   const hoverColors = ['#E3E993', '#F2C1D5', '#ACD9CF'];
   const [savedBgByIndex, setSavedBgByIndex] = useState<Record<number, string>>({});
 

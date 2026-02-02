@@ -1493,7 +1493,7 @@ export const PROMOTION_PAGES: PromotionPagesData = {
   promotions: {
     heading: {
       subtitle: 'АКЦИИ',
-      title: 'подборка АКЦИЙ',
+      title: 'подборка <br> АКЦИЙ',
     },
   },
   blogs: {

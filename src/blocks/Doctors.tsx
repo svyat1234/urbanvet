@@ -8,7 +8,7 @@ import type { DoctorsPageData } from '@/lib/constants';
 import styles from './DoctorsHero.module.css';
 
 export interface DoctorsProps {
-  data: DoctorsPageData;
+  data?: DoctorsPageData | null;
   /**
    * UI:
    * Контекст "откуда пришли" для формирования ссылок на врачей.
@@ -56,13 +56,15 @@ export default function Doctors({
   const scrollRafRef = useRef<number | null>(null);
   const timersRef = useRef<number[]>([]);
 
+  const doctors = data?.doctors ?? [];
+
   // Вычисляем количество страниц
-  const totalPages = Math.ceil(data.doctors.length / itemsPerPage);
+  const totalPages = Math.ceil(doctors.length / itemsPerPage);
 
   // Получаем врачей для текущей страницы
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentDoctors = data.doctors.slice(startIndex, endIndex);
+  const currentDoctors = doctors.slice(startIndex, endIndex);
 
   // Генерируем массив номеров страниц
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
@@ -173,8 +175,10 @@ export default function Doctors({
     // TODO: дополнительные опции сортировки
   };
 
+  if (!data || doctors.length === 0) return null;
+
   return (
-    <section ref={sectionRef} className={`${styles.doctors} pt-25 py-24`}>
+    <section ref={sectionRef} className={`${styles.doctors} pt-25 pb-[3.125rem]`}>
       <Container>
         <div className={`flex items-start justify-between`}>
           {/* Кнопки сортировки */}

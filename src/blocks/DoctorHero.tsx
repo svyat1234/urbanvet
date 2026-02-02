@@ -26,17 +26,12 @@ export default function DoctorHero({ doctor, content }: DoctorHeroProps) {
 
             <div className={`flex flex-col gap-[2.5rem]`}>
 
-                {/* Навигация (универсальная).
-                    UI: кнопка "назад" работает от history (откуда пришли).
-                    Fallback: если страница открыта в новом табе — можно передать `?from=/...&fromLabel=...`
-                    BACKEND: для канонических "крошек" лучше отдавать массив ссылок с CMS/API и передавать в `PageNav items=[...]`. */}
+                {/* Навигация: как на страницах акций и статей — в крошке всегда "Врачи" и ссылка на /doctors.
+                    Кнопка "назад" по-прежнему ведёт туда, откуда пришли (history или ?from=). */}
                 <Suspense fallback={<div className="h-[2.375rem]" />}>
                   <PageNav
                     className={styles.nav}
-                    // UI: если страница врача открыта напрямую (без history/from),
-                    // показываем дефолтную крошку "Врачи".
-                    // BACKEND: позже заменить на реальные крошки из CMS/API через `items`.
-                    defaultItems={[{ label: 'Врачи', href: '/doctors' }]}
+                    items={[{ label: 'Врачи', href: '/doctors' }]}
                   />
                 </Suspense>
 
