@@ -343,18 +343,17 @@ export const HOME_PAGE: { hero: HomeHeroData; about: AboutBlockData } = {
       title: 'Наша миссия',
     },
     description: [],
-    cards: [
-      {
-        title: 'Адрес',
-        text: 'м. Сокол и Панфиловская, Улица Врубеля, 8 (10:00—22:00)',
-        phone: '8 (926) 711 18 44',
-      },
-      {
-        title: 'Адрес',
-        text: 'Для онлайн записи выберите специалиста и нужное время',
-        cta: { href: '#', label: 'Записаться на приём' },
-      },
-    ],
+    addressCard: {
+      title: 'Адрес',
+      text: 'м. Сокол и Панфиловская, Улица Врубеля, 8 (10:00—22:00)',
+      href: '/',
+      phone: '8 (926) 711 18 44',
+    },
+    recordCard: {
+      title: 'Запись',
+      text: 'Для онлайн записи выберите специалиста и нужное время',
+      cta: { href: '#', label: 'Записаться на приём' },
+    },
   },
 };
 
@@ -1427,6 +1426,8 @@ export interface VacanciesPageData {
 export interface AboutBlockCardData {
   title: string;
   text: string;
+  /** Ссылка для текста (например, адрес на карту) — только для первой карточки. */
+  href?: string;
   /** Телефон, если есть — показывается кнопкой с tel: */
   phone?: string;
   /** CTA вместо телефона */
@@ -1439,7 +1440,8 @@ export interface AboutBlockData {
   imageAlt: string;
   heading: { subtitle: string; title: string };
   description?: string[];
-  cards: AboutBlockCardData[];
+  addressCard: AboutBlockCardData;
+  recordCard: AboutBlockCardData;
 }
 
 export interface AboutPageData {
