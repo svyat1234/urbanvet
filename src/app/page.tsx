@@ -12,6 +12,7 @@ import BlogsCompact from '@/blocks/BlogsCompact';
 import AboutHistory from '@/blocks/AboutHistory';
 import Gallery from '@/blocks/Gallery';
 import NewsSection from '@/blocks/NewsSection';
+import Contacts from '@/blocks/Contacts';
 import { PROMOTIONS, PROMOTION_PAGES, DOCTORS_PAGE_DATA } from '@/lib/constants';
 
 export default function Home() {
@@ -40,6 +41,7 @@ export default function Home() {
         <AboutHistory />
         <Gallery />
         <NewsSection />
+        <Contacts/>
       </main>
       <Footer />
     </>

@@ -1,6 +1,8 @@
+import Image from 'next/image';
 import styles from './Footer.module.css';
 import Container from '@/components/Container';
 import Link from 'next/link';
+import telegramIcon from '@/assets/images/telegram.svg';
 
 export default function Footer() {
   const navLinks = [
@@ -60,8 +62,10 @@ export default function Footer() {
                             key={link.label}
                             href={link.href}
                             aria-label={link.label}
-                            className={`${styles.socialLink}`}
-                          ></a>
+                            className={styles.socialLink}
+                          >
+                            <Image src={telegramIcon} alt="" fill />
+                          </a>
                         ))}
                     </div>
                     <div className="flex gap-[10px]">
@@ -70,8 +74,10 @@ export default function Footer() {
                             key={link.label}
                             href={link.href}
                             aria-label={link.label}
-                            className={`${styles.socialLink}`}
-                          ></a>
+                            className={styles.socialLink}
+                          >
+                            <Image src={telegramIcon} alt="" fill />
+                          </a>
                         ))}
                     </div>
                 </div>

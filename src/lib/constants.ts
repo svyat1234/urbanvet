@@ -1567,6 +1567,59 @@ export const STATS: AboutStatData[] = [
 ];
 
 // -----------------------------
+// Блок контактов (страница контактов)
+// -----------------------------
+
+export interface ContactsBlockData {
+  heading: string;
+  address: string;
+  addressHref?: string;
+  email: string;
+  phone: string;
+  socialPrompt: string;
+  socialLinks: { href: string; label: string }[];
+  cta: { href: string; label: string };
+  map: {
+    iframeSrc: string;
+    link1: { href: string; text: string };
+    link2: { href: string; text: string };
+    title: string;
+  };
+  image: StaticImageData;
+  imageAlt: string;
+}
+
+export const CONTACTS_BLOCK: ContactsBlockData = {
+  heading: 'Контакты',
+  address: 'Москва, м. Сокол и Панфиловская, ул. Панфилова, 6Б (10:00–22:00)',
+  addressHref: '',
+  email: 'info@urbanvet.ru',
+  phone: '+7 (926) 711-18-44',
+  socialPrompt: 'Пишите или звоните',
+  socialLinks: [
+    { href: '', label: 'Telegram' },
+    { href: '', label: 'WhatsApp' },
+    { href: '', label: 'Uzbeki' },
+    { href: '', label: 'Taksisti' },
+  ],
+  cta: { href: '', label: 'Записаться на приём' },
+  map: {
+    iframeSrc: 'https://yandex.ru/map-widget/v1/?ll=37.497504%2C55.802068&mode=search&oid=27155976882&ol=biz&z=17.02',
+    link1: {
+      href: 'https://yandex.ru/maps/org/urbanvet/27155976882/?utm_medium=mapframe&utm_source=maps',
+      text: 'УрбанВет',
+    },
+    link2: {
+      href: 'https://yandex.ru/maps/213/moscow/category/veterinary_clinic/184107216/?utm_medium=mapframe&utm_source=maps',
+      text: 'Ветеринарная клиника в Москве',
+    },
+    title: 'Яндекс.Карты — УрбанВет',
+  },
+  image: aboutHeroImage,
+  imageAlt: 'Ветеринарная клиника Urbanvet',
+};
+
+// -----------------------------
 // Данные страницы "О нас"
 // -----------------------------
 

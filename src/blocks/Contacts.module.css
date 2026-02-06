@@ -1,15 +1,3 @@
-.link {
-    font-size: 0.8125rem;
-    font-weight: 500;
-    line-height: 100%;
-    transition: opacity 0.2s ease-in-out;
-    height: fit-content;
-}
-
-.link:hover {
-    opacity: 0.7;
-}
-
 .contactLink {
     padding: 0rem 1.8751rem;
     font-size: 0.875rem;
@@ -18,6 +6,7 @@
     border-radius: 100px;
     transition: all 0.2s ease;
     height: 42px;
+    line-height: 100%;
     display: flex;
     align-items: center;
 }
@@ -30,11 +19,8 @@
 
 .socialLink {
     position: relative;
-    width: 41.76px;
-    height: 41.76px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 42px;
+    height: 42px;
     transition: opacity 0.2s ease-in-out;
 }
 
@@ -48,13 +34,11 @@
     opacity: 0.5;
 }
 
-.documentLink {
-    font-size: 0.8125rem;
-    font-weight: 500;
-    color: #8E8E8E;
-    transition: color 0.2s ease-in-out;
+.map {
+    width: 100%;
 }
 
-.documentLink:hover {
-    color: var(--dark);
+.map iframe {
+    margin-top: 30px;
+    width: 100%;
 }

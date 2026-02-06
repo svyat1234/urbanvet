@@ -1,6 +1,7 @@
 import Header from '@/layouts/Header';
 import Footer from '@/layouts/Footer';
 import Doctors from '@/blocks/Doctors';
+import Appointmemt from '@/blocks/Appointment';
 import { DOCTORS_PAGE_DATA } from '@/lib/constants';
 
 export default function DoctorsPage() {
@@ -13,6 +14,7 @@ export default function DoctorsPage() {
     <>
       <Header />
       <Doctors data={pageData} />
+      <Appointmemt/>
       <Footer/>
     </>
   );

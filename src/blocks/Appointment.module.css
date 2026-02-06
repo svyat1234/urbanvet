@@ -1,0 +1,28 @@
+.card {
+  transition: all 0.1s ease-in-out;
+}
+.card:hover {
+  background: #acd9cf;
+}
+
+.sortBtnActive {
+  background: #acd9cf;
+  border-color: #acd9cf;
+}
+
+.cardNotActive {
+  background: #F4F4F4;
+  cursor: not-allowed;
+}
+.cardNotActive span{
+  color: #A8A8A8;
+}
+
+.cardNotActive:hover {
+  background: #F4F4F4;
+  cursor: not-allowed;
+}
+
+.cardNotActive:hover span {
+  color: #A8A8A8;
+}

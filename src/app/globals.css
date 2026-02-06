@@ -37,6 +37,8 @@ body {
     transition: all 0.2s ease-in-out;
     border-radius: 100px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
   }
 
   .sort-btn:hover {
