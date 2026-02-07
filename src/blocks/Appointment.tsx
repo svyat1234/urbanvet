@@ -5,6 +5,7 @@ import styles from '@/blocks/Appointment.module.css';
 import Container from '@/components/Container';
 import Image from 'next/image';
 import Heading from '@/components/Heading';
+import Link from 'next/link';
 import doctor1 from '@/assets/images/doctors/doctor-1.jpg';
 import doctor2 from '@/assets/images/doctors/doctor-2.jpg';
 import doctor3 from '@/assets/images/doctors/doctor-3.jpg';
@@ -61,6 +62,16 @@ const DEMO_TIMES = [
   { id: '5', label: '14:00', available: false },
 ];
 
+/** Варианты «Вид питомца» для кастомного выпадающего списка в форме записи. BACKEND: заменить на список с API. */
+const DEMO_PET_TYPES = [
+  { id: '1', name: 'Собака' },
+  { id: '2', name: 'Кошка' },
+  { id: '3', name: 'Грызун' },
+  { id: '4', name: 'Птица' },
+  { id: '5', name: 'Рептилия' },
+  { id: '6', name: 'Другое' },
+];
+
 /** Текущий шаг сценария записи: выбор типа → дата → время → форма. */
 type Step = 'choose_type' | 'choose_date' | 'choose_time' | 'form';
 /** Режим выбора на первом шаге: по врачу, по специализации или по услуге. */
@@ -74,6 +85,41 @@ export default function Appointment() {
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [selectedPetTypeId, setSelectedPetTypeId] = useState<string | null>(null);
+  const [isPetDropdownOpen, setIsPetDropdownOpen] = useState(false);
+
+  const [formPhone, setFormPhone] = useState('');
+  const [formFirstName, setFormFirstName] = useState('');
+  const [formLastName, setFormLastName] = useState('');
+  const [formPetName, setFormPetName] = useState('');
+  const [consentChecked, setConsentChecked] = useState(false);
+  const [showFormErrors, setShowFormErrors] = useState(false);
+
+  const isPhoneInvalid = showFormErrors && formPhone.trim() === '';
+  const isFirstNameInvalid = showFormErrors && formFirstName.trim() === '';
+  const isLastNameInvalid = showFormErrors && formLastName.trim() === '';
+  const isPetNameInvalid = showFormErrors && formPetName.trim() === '';
+  const isPetTypeInvalid = showFormErrors && !selectedPetTypeId;
+  const isConsentInvalid = showFormErrors && !consentChecked;
+
+  /** Отправка формы записи: блокирует submit и включает показ ошибок валидации у пустых полей и чекбокса. */
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setShowFormErrors(true);
+  };
+
+  // -----------------------------------------------------------------------------
+  // Маску для номера телеофна не добавил, так как решил что здест она может быть
+  // неуместна, однако валидация на символы присутствует
+  // -----------------------------------------------------------------------------
+
+
+  /** Разрешает ввод только цифр и символа + (остальное отбрасывается). */
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/[^\d+]/g, '');
+    const withOnePlus = value.startsWith('+') ? '+' + value.slice(1).replace(/\+/g, '') : value.replace(/\+/g, '');
+    setFormPhone(withOnePlus);
+  };
 
   /** Текст для пилюли в навигации: имя врача, название специализации или услуги. BACKEND: можно заменить на поле из ответа API. */
   const getSelectionLabel = (): string => {
@@ -265,48 +311,139 @@ export default function Appointment() {
 
     // step === 'form'
     return (
-      <div className="flex gap-[20px]">
-        <div className="w-[400px] shrink-0 h-[400px] relative rounded-[8px] overflow-hidden bg-[#eee]">
+      <div className="flex h-full flex-1 gap-[20px]">
+        <div className="max-w-[400px] w-full h-full relative rounded-[8px] overflow-hidden bg-[#eee]">
           <Image
             src={formPetImage}
             alt=""
             fill
             className="object-cover"
-            sizes="400px"
           />
         </div>
-        <form className="flex flex-col gap-4 flex-1" onSubmit={(e) => e.preventDefault()}>
+        <form className="flex flex-1 flex-col gap-y-[10px]" onSubmit={handleFormSubmit}>
+
           <input
             type="tel"
-            placeholder="Введите телефонный номер"
-            className="w-full max-w-[400px] h-12 px-4 border border-[#8E8E8E] rounded-[8px] text-[1rem]"
+            placeholder="Введите номер телефона"
+            className={`${styles.input} flex-1 ${isPhoneInvalid ? styles.inputError : ''}`}
+            value={formPhone}
+            onChange={handlePhoneChange}
+            inputMode="tel"
+            autoComplete="tel"
           />
-          <input
-            type="text"
-            placeholder="Имя"
-            className="w-full max-w-[400px] h-12 px-4 border border-[#8E8E8E] rounded-[8px] text-[1rem]"
-          />
-          <input
-            type="text"
-            placeholder="Фамилия"
-            className="w-full max-w-[400px] h-12 px-4 border border-[#8E8E8E] rounded-[8px] text-[1rem]"
-          />
-          <input
-            type="text"
-            placeholder="Имя питомца"
-            className="w-full max-w-[400px] h-12 px-4 border border-[#8E8E8E] rounded-[8px] text-[1rem]"
-          />
-          <input
-            type="text"
-            placeholder="Вид питомца"
-            className="w-full max-w-[400px] h-12 px-4 border border-[#8E8E8E] rounded-[8px] text-[1rem]"
-          />
-          <button
-            type="submit"
-            className="mt-2 w-full max-w-[400px] h-12 bg-[#1D1D1D] text-white rounded-[8px] font-medium"
-          >
-            Записаться
-          </button>
+
+          <div className="flex flex-1 max-w-full w-full">
+            <div className="grid w-full grid-cols-2 gap-x-[16px] gap-y-[10px]">
+              <input
+                type="text"
+                placeholder="Имя"
+                className={`${styles.input} ${isFirstNameInvalid ? styles.inputError : ''}`}
+                value={formFirstName}
+                onChange={(e) => setFormFirstName(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Фамилия"
+                className={`${styles.input} ${isLastNameInvalid ? styles.inputError : ''}`}
+                value={formLastName}
+                onChange={(e) => setFormLastName(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-1 max-w-full w-full">
+            <div className="grid w-full grid-cols-2 gap-x-[16px] gap-y-[10px]">
+              <input
+                type="text"
+                placeholder="Имя питомца"
+                className={`${styles.input} ${isPetNameInvalid ? styles.inputError : ''}`}
+                value={formPetName}
+                onChange={(e) => setFormPetName(e.target.value)}
+              />
+              <div className="relative">
+                <button
+                  type="button"
+                  className={`${styles.input} ${styles.selectTrigger} ${!selectedPetTypeId ? styles.selectTriggerPlaceholder : ''} ${isPetTypeInvalid ? styles.inputError : ''}`}
+                  onClick={() => setIsPetDropdownOpen(true)}
+                  aria-expanded={isPetDropdownOpen}
+                  aria-haspopup="dialog"
+                  aria-label="Вид питомца"
+                >
+                  {selectedPetTypeId
+                    ? DEMO_PET_TYPES.find((p) => p.id === selectedPetTypeId)?.name
+                    : 'Вид питомца'}
+                </button>
+                {isPetDropdownOpen && (
+                  <div
+                    className={styles.selectOverlay}
+                    onClick={() => setIsPetDropdownOpen(false)}
+                  >
+                    <div
+                      className={styles.selectModal}
+                      onClick={(e) => e.stopPropagation()}
+                      role="dialog"
+                      aria-modal="true"
+                      aria-label="Выберите вид питомца"
+                    >
+                      <button
+                        type="button"
+                        className={styles.selectModalClose}
+                        aria-label="Закрыть"
+                        onClick={() => setIsPetDropdownOpen(false)}
+                      >
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </button>
+                      <ul
+                        className={styles.selectDropdown}
+                        role="listbox"
+                        aria-label="Выберите вид питомца"
+                      >
+                        {DEMO_PET_TYPES.map((pet) => (
+                          <li
+                            key={pet.id}
+                            role="option"
+                            aria-selected={selectedPetTypeId === pet.id}
+                            className={styles.selectOption}
+                            onClick={() => {
+                              setSelectedPetTypeId(pet.id);
+                              setIsPetDropdownOpen(false);
+                            }}
+                          >
+                            {pet.name}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-1 max-w-full w-full">
+            <div className="grid w-full grid-cols-2 gap-x-[16px] gap-y-[10px]">
+              <button type="submit" className={`${styles.button}`}>
+                <span>Записаться</span>
+              </button>
+
+              <div className="flex flex-1 items-center gap-[3.5625rem]">
+                <div className={`${styles.buttonIcon}`}></div>
+                <label className={`${styles.checkboxWrap} ${isConsentInvalid ? styles.checkboxWrapError : ''} flex flex-col`}>
+                  <input
+                    type="checkbox"
+                    className={styles.checkboxInput}
+                    checked={consentChecked}
+                    onChange={(e) => setConsentChecked(e.target.checked)}
+                  />
+                  <span className={styles.checkboxBox} aria-hidden="true" />
+                  <span className='max-w-[326px] text-[1.3125rem] leading-[110%]'>Я принимаю <Link href={''} className={`text-[#ACD9CF]`}>условия передачи информации</Link></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
         </form>
       </div>
     );
@@ -337,7 +474,7 @@ export default function Appointment() {
           <Heading subtitle="Запись" title="Запись на приём" />
         </div>
 
-        <div className="p-[5rem] bg-[#F9F9F9] min-h-[654px] overflow-y-auto mt-[5rem]">
+        <div className="p-[5rem] bg-[#F9F9F9] h-[654px] overflow-y-auto mt-[5rem]">
           {renderContent()}
         </div>
       </Container>

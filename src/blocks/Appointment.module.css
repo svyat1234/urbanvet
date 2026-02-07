@@ -26,3 +26,166 @@
 .cardNotActive:hover span {
   color: #A8A8A8;
 }
+
+.input {
+  height: max-content;
+  display: flex;
+  max-height: 100%;
+  height: 100%;
+  padding-left: 3.125rem;
+  font-size: 1.875rem;
+  background: white;
+  font-family: 'Circe';
+  font-weight: normal;
+  outline: none;
+  border-radius: 8px;
+}
+
+.input::placeholder {
+  font-size: 1.875rem;
+  font-family: 'Circe';
+  font-weight: normal;
+  color: #A8A8A8;
+  opacity: 0.5;
+}
+
+.inputError {
+  border: 1px solid #ff7979;
+  outline: 1px solid #ff7979;
+}
+
+.button {
+  background: var(--dark);
+  color: white;
+  text-align-last: left;
+  padding-left: 3.125rem;
+  border-radius: 8px;
+  font-size: 1.875rem;
+  font-family: 'Circe';
+  font-weight: normal;
+}
+
+.buttonIcon {
+  height: 100%;
+  aspect-ratio: 1/1;;
+  border-radius: 50%;
+  background: var(--dark) url("/images/form-icon.svg") no-repeat center center;
+}
+
+/* Кастомный чекбокс: обёртка и визуальный квадрат 25×25, при отмеченном — фон #ACD9CF */
+.checkboxWrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.checkboxInput {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkboxBox {
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  transition: background 0.2s ease;
+}
+
+.checkboxWrap input:checked + .checkboxBox {
+  background: #ACD9CF;
+  border-color: #ACD9CF;
+}
+
+.checkboxWrapError .checkboxBox {
+  border: 1px solid #FF6868;
+  outline: 1px solid #FF6868;
+}
+
+/* Кастомный выбор «Вид питомца» — открывается модальным окном */
+.selectTrigger {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.selectTriggerPlaceholder {
+  color: rgba(168, 168, 168, 0.5);
+}
+
+/* Тёмный фон модалки: по центру экрана, клик закрывает */
+.selectOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+}
+
+/* Белое окно по центру */
+.selectModal {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  max-height: 80vh;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  padding-top: 1.5rem;
+  overflow: hidden;
+}
+
+/* Кнопка закрыть справа сверху */
+.selectModalClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #1D1D1D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease;
+}
+
+.selectModalClose:hover {
+  color: #666;
+}
+
+.selectDropdown {
+  padding: 1.5rem 1.5rem;
+  margin: 0;
+  list-style: none;;
+}
+
+.selectOption {
+  padding: 2rem 2rem;
+  font-size: 1.875rem;
+  font-family: 'Circe', sans-serif;
+  font-weight: normal;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  border-radius: 8px;
+}
+
+.selectOption:hover {
+  background: #ACD9CF;
+}
