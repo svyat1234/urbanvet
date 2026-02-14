@@ -31,3 +31,16 @@
       transparent 100%
     );
 }
+
+
+@media screen and (max-width: 1024px) {
+  .text:first-child{
+    text-indent: 13.125rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .text:first-child{
+    text-indent: 7.125rem;
+  }
+}

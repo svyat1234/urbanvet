@@ -3,3 +3,11 @@
   width: calc(1820 / 1920 * 100vw);
   margin: auto;
 }
+
+
+@media screen and (max-width: 640px) {
+ .container {
+  max-width: 90vw;
+  width: 100%;
+ } 
+}

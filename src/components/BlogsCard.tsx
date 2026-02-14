@@ -52,7 +52,7 @@ export default function BlogsCard({ data, from, fromLabel }: BlogsCardProps) {
     // BACKEND: ссылка на страницу статьи. Link нужен для basePath (GitHub Pages: /urbanvet/).
     <Link
       href={href}
-      className={`${styles.card} flex justify-between bg-white transition-colors duration-300 h-full flex-col gap-7.5 min-h-140`}
+      className={`${styles.card} flex justify-between bg-white transition-colors duration-300 flex-col gap-7.5 min-h-140 self-stretch`}
       style={bgColor ? { backgroundColor: bgColor } : undefined}
       onMouseEnter={handleActivate}
       onMouseLeave={handleDeactivate}
@@ -76,18 +76,16 @@ export default function BlogsCard({ data, from, fromLabel }: BlogsCardProps) {
         </span>
 
         <span className={`flex items-center justify-between mt-auto`}>
-        <span className={`flex gap-1`}>
-            <span className={`text-[0.875rem] font-normal bg-[#1D1D1D] text-white py-[16px] px-[30px] rounded-[100px] leading-[70%]`}>
+        <span className={`flex gap-1 flex-wrap`}>
+            <span className={`flex items-center h-[42px] text-[0.875rem] font-normal bg-[#1D1D1D] text-white  px-[30px] rounded-[100px] leading-[70%]`}>
               {publishedLabel}
             </span>
-            {/* Тэги */}
-            <span className="flex gap-1 flex-wrap">
-              {data.tags.map((tag) => (
-                <span key={tag} className="flex items-center text-[0.88rem] font-medium px-[1.875rem] border border-[#1D1D1D] rounded-full">
+            {/* Теги */}
+            {data.tags.map((tag) => (
+                <span key={tag} className="flex items-center h-[42px] text-[0.88rem] font-medium  px-[1.875rem] border border-[#1D1D1D] rounded-full">
                   {tag}
                 </span>
               ))}
-            </span>
         </span>
 
           <span className={`${styles.arrow} max-w-[38px] max-h-[38px] w-[38px] h-[38px]`}>

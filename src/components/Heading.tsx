@@ -16,12 +16,17 @@ export default function Heading({
   const Tag = `h${level}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   
   return (
-    <div className={`${styles.heading} ${className || ''} flex flex-col gap-10 max-w-200 items-start`}>
+    <div className={`${styles.heading} ${className || ''} flex flex-col gap-10 max-w-200 items-start
+    max-xl:gap-6
+    `}>
       {subtitle && (
         <span className={`section-sub text-center py-[0.71rem] px-6.75 border border-[#8E8E8E] rounded-4xl text-[0.875rem] leading-[70%] text-[#8E8E8E] uppercase`}>{subtitle}</span>
       )}
       <Tag
-        className={`font-["Circe"] font-normal text-[3.75rem] uppercase leading-[100%]`}
+        className={`font-["Circe"] font-normal text-[3.75rem] uppercase leading-[100%]
+          max-2xl:text-[clamp(1.5rem,3.5vw,3.75rem)]
+          max-lg:text-[clamp(2rem,4vw,3.75rem)]
+          `}
         dangerouslySetInnerHTML={{ __html: title }}
       />
     </div>

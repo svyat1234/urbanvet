@@ -9,16 +9,9 @@ import Image from 'next/image';
 
 interface DepartmentAboutProps {
   data?: DepartmentAboutData | null;
-  /**
-   * Уровень заголовка секции (SEO/семантика).
-   *
-   * Важно: это НЕ контент и обычно НЕ должно приходить из CMS/БД.
-   * Это presentation-level решение: страница (layout) решает, где h1, где h2 и т.д.
-   */
-  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
-export default function DepartmentAbout({ data, headingLevel = 2 }: DepartmentAboutProps) {
+export default function DepartmentAbout({ data }: DepartmentAboutProps) {
   if (!data) return null;
 
   const hoverColors = ['#E3E993', '#F2C1D5', '#ACD9CF'];
@@ -31,33 +24,56 @@ export default function DepartmentAbout({ data, headingLevel = 2 }: DepartmentAb
 
   return (
     <section className={`${styles.about} mt-[6.25rem] pt-[3.125rem]`}>
-      <Container className={`flex justify-between pb-[2.5rem]`}>
-        <div className={`flex gap-[52px] mt-[5rem]`}>
-          <p className={`${styles.aboutText}`}>{data.description[0]}</p>
-          <p className={`${styles.aboutText}`}>{data.description[1]}</p>
+      {/* Первый блок */}
+      <Container className={`flex justify-between pb-[2.5rem] gap-[20px]
+        max-lg:flex-col max-lg:justify-start
+        `}>
+        {/* Текста */}
+        <div className={`flex gap-[52px] mt-[5rem]
+          max-xl:flex-col max-xl:gap-6 max-xl:max-w-[50%] max-xl:w-full
+          max-lg:order-2 max-lg:max-w-full max-lg:mt-[1rem] max-lg:gap-4
+          `}>
+          {data.description.map((text, idx) => (
+            <p key={idx} className={styles.aboutText}>{text}</p>
+          ))}
         </div>
 
-        <Heading level={headingLevel} title={data.heading.title} subtitle={data.heading.subtitle} />
+        {/* Оглавление */}
+        <Heading title={data.heading.title} subtitle={data.heading.subtitle} />
       </Container>
 
+      {/* Второй блок со статистикой */}
       <div className={`bg-[#F9F9F9] w-full pt-[3.125rem] pb-[5.75rem]`}>
-        <Container className={`flex gap-[1.25rem]`}>
-          <div className={`flex flex-1 gap-[1.25rem]`}>
+        <Container className={`flex gap-[1.25rem]
+          max-lg:flex-col
+          `}>
+          <div className={`flex flex-1 gap-[1.25rem]
+            max-sm:flex-wrap
+            `}>
             {data.cards.map((card, idx) => (
               <div
                 key={`${card.title}-${idx}`}
-                className={`flex flex-1 flex-col bg-white h-[319px] py-[3.25rem] px-[2.25rem] transition-colors duration-300`}
+                className={`flex flex-1 flex-col bg-white h-[319px] py-[3.25rem] px-[2.25rem] transition-colors duration-300
+                  max-2xl:h-[250px]
+                  max-lg:px-[2rem]
+                  max-sm:w-full max-sm:flex-none max-sm:h-[200px]
+                  `}
                 style={{ backgroundColor: savedBgByIndex[idx] || '#fff' }}
                 onMouseEnter={() => handleCardHover(idx)}
                 onFocus={() => handleCardHover(idx)}
                 tabIndex={0}
               >
-                <h3 className={`font-[Circe] font-normal text-[6.25rem] leading-[90%]`}>{card.title}</h3>
+                <h3 className={`font-[Circe] font-normal text-[6.25rem] leading-[90%]
+                  max-2xl:text-[5rem]
+                  max-lg:text-[4rem]
+                  `}>{card.title}</h3>
                 <p className={`text-[0.938rem] leading-[100%]`}>{card.description}</p>
               </div>
             ))}
           </div>
-          <div className={`max-w-200 w-full h-[319px]`}>
+          <div className={`max-w-200 w-full self-stretch
+            max-sm:h-[200px]
+            `}>
             <Image src={data.image} alt={data.heading.title} className={`w-full h-full object-cover`} />
           </div>
         </Container>

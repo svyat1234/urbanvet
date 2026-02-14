@@ -89,8 +89,8 @@ export default function PageNav({ items, defaultItems, className }: PageNavProps
   }, [router, from]);
 
   return (
-    <div className={`flex items-center h-[2.375rem] gap-[10px] ${className || ''}`}>
-      <button type="button" onClick={handleBack} aria-label="Назад" className="h-full">
+    <div className={`flex items-center gap-[10px] flex-wrap ${className || ''}`}>
+      <button type="button" onClick={handleBack} aria-label="Назад" className="h-[2.375rem]">
         <svg
           width="60"
           height="38"
@@ -110,7 +110,7 @@ export default function PageNav({ items, defaultItems, className }: PageNavProps
         <a
           key={item.href}
           href={item.href}
-          className="h-full flex items-center px-[1.875rem] border border-[#1D1D1D] rounded-[100px]"
+          className="h-[2.375rem] flex items-center px-[1.875rem] border border-[#1D1D1D] rounded-[100px]"
         >
           {item.label}
         </a>

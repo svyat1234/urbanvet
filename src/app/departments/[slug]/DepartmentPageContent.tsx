@@ -19,6 +19,7 @@ import CardsSection from '@/blocks/CardsSection';
 import Card from '@/components/Card';
 import Doctors from '@/blocks/Doctors';
 import NewsSection from '@/blocks/NewsSection';
+import Appointment from '@/blocks/Appointment';
 import type { DepartmentPageData } from '@/lib/constants';
 
 interface DepartmentPageContentProps {
@@ -56,6 +57,7 @@ export default function DepartmentPageContent({ slug, departmentPage }: Departme
         headingLevel={2}
       />
       <NewsSection />
+      <Appointment />
       <Footer />
     </>
   );

@@ -72,7 +72,7 @@ export default function PromotionHero({ promotion, content, breadcrumbs }: Promo
             <div className={`flex gap-[20px] h-[60px]`}>
                 <div className={`flex gap-[4.4px] h-full`}>
                     <div className={`w-[60px] h-[60px] bg-[#ACD9CF] rounded-[15.27px] ${styles.dateIcon}`}></div>
-                    <div className={`px-[1.875rem] h-full rounded-[15.27px] flex items-center gap-1`}>
+                    <div className={`px-[1.875rem] h-full bg-[#F9F9F9] rounded-[15.27px] flex items-center gap-1`}>
                         <span className={`${styles.info}`}>{promotion.startsAt}</span>
                         <span className={`${styles.info}`}> - </span>
                         <span className={`${styles.info}`}>{promotion.expiresAt}</span>

@@ -117,6 +117,7 @@
   color: inherit;
   display: flex;
   align-items: center;
+  background: #ffffff url("/images/arrow-down.svg") no-repeat right 8.2% center;
 }
 
 .selectTriggerPlaceholder {
@@ -188,4 +189,76 @@
 
 .selectOption:hover {
   background: #ACD9CF;
+}
+
+.heading span{
+  padding-left: 51px;
+  position: relative;
+}
+
+.heading span::before {
+  position: absolute;
+  content: '';
+  display: block;
+  top: 50%;
+  left: 21px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 21px;
+  background: url("/images/time.png") no-repeat center / cover;
+}
+
+@media screen and (max-width: 1279px) {
+  .input, .button {
+    height: 80px;
+    padding-left: 2rem;
+    font-size: 1.5rem;
+  }
+  .input::placeholder {
+    font-size: 1.5rem;
+  }
+  .button {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .input, .button {
+    height: 70px;
+    padding-left: 1.5rem;
+    font-size: 1.5rem;
+  }
+  .input::placeholder {
+    font-size: 1.5rem;
+  }
+  .button {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .checkboxWrap {
+    align-items: center;
+  }
+
+  .input, .button {
+    height: 60px;
+    padding-left: 1rem;
+    font-size: 1.3rem;
+  }
+  .input::placeholder {
+    font-size: 1.3rem;
+  }
+  .button {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .input, .button, .input::placeholder, .button {
+    font-size: 1.1rem;
+  }
+  .selectTrigger {
+    background-size: 15px;
+  }
 }

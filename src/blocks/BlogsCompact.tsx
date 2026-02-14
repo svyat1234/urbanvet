@@ -100,12 +100,20 @@ export default function BlogsCompact({ excludeSlug, customTitle, customSubtitle 
           modules={[Navigation]}
           direction="horizontal"
           loop={true}
-          slidesPerView={3}
+          slidesPerView={1}
           spaceBetween={20}
           className="w-full"
+          breakpoints={{
+            768: {
+              slidesPerView: 2,
+            },
+            1280: {
+              slidesPerView: 3,
+            },
+          }}
         >
           {filteredPosts.map((post) => (
-            <SwiperSlide key={post.id}>
+            <SwiperSlide key={post.id} className='self-stretch'>
               <BlogsCard data={post} />
             </SwiperSlide>
           ))}

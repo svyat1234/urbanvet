@@ -1,0 +1,21 @@
+.imageWrap::after {
+    position: absolute;
+    display: block;
+    content: '';
+    right: 11.83%;
+    top: 24.48%;
+    width: 150px;
+    height: 168px;
+    background: url("/images/about-big-lap.svg") no-repeat center / cover;
+}
+.imageWrap::before {
+    position: absolute;
+    display: block;
+    content: '';
+    left: 11%;
+    bottom: 12.3%;
+    width: 89px;
+    height: 96px;
+    background: url("/images/about-small-lap.svg") no-repeat center / cover;
+    z-index: 4;
+}

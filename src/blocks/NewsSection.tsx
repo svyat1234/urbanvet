@@ -1,3 +1,4 @@
+import styles from './NewsSection.module.css';
 import Container from '@/components/Container';
 import NewsCard from '@/components/NewsCard';
 import FeaturedNewsCard from '@/components/FeaturedNewsCard';
@@ -20,15 +21,21 @@ export default function NewsSection() {
     return (
         <section className={`py-13 bg-[#F9F9F9]`}>
             <Container>
-                <div className={`grid grid-cols-3 gap-5`}>
+                <div className={`grid grid-cols-3 gap-5
+                  max-md:grid-cols-2
+                  max-sm:grid-cols-1
+                  `}>
                     {featured && (
-                      <div className={`col-span-3`}>
+                      <div className={`col-span-3
+                      max-md:col-span-2
+                      max-sm:col-span-1
+                      `}>
                         <FeaturedNewsCard data={featured} />
                       </div>
                     )}
 
                     {rest.map((item) => (
-                      <NewsCard key={item.id} data={item} />
+                      <NewsCard key={item.id} data={item} className={`${styles.cardSmall}`}/>
                     ))}
                 </div>
             </Container>

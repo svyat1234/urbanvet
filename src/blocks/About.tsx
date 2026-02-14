@@ -36,19 +36,34 @@ export default function About() {
 
   return (
     <section className='py-[3.125rem] bg-[#F9F9F9]'>
-      <Container className='flex gap-[4.375rem] bg-white'>
+      <Container className='flex gap-[4.375rem] bg-white
+      max-2xl:gap-[3rem]
+      max-lg:flex-col
+      '>
       {/* Картинка */}
-      <div className="max-w-full w-full self-stretch relative min-h-[200px]">
+      <div className="max-w-full w-full self-stretch relative min-h-[200px]
+      max-lg:min-h-[300px]
+      ">
         <Image src={image} alt={imageAlt} fill className="w-full h-full object-cover" />
       </div>
 
       {/* Контент */}
-      <div className="flex flex-col gap-[3.125rem] py-[4.375rem] pr-[4.375rem] max-w-[866px] w-full">
+      <div className="flex flex-col gap-[3.125rem] py-[4.375rem] pr-[4.375rem] max-w-[866px] w-full
+      max-2xl:py-[2rem] max-2xl:pr-[2rem]
+      max-lg:pl-[2rem]
+      max-sm:gap-[2rem]
+      ">
         <Heading className={`${styles.heading}`} subtitle={heading.subtitle} title={heading.title} />
         {description && description.length > 0 && (
-          <div className="flex gap-[3.75rem]">
+          <div className="flex gap-[3.75rem]
+          max-xl:flex-col max-xl:gap-[1rem]
+          max-lg:flex-row
+          max-sm:flex-col
+          ">
             {description.map((paragraph, index) => (
-              <p key={index} className="text-[0.9375rem] leading-[120%] max-w-[369px] opacity-50">
+              <p key={index} className="text-[0.9375rem] leading-[120%] max-w-[369px] opacity-50
+              max-xl:max-w-[100%]
+              ">
                 {paragraph}
               </p>
             ))}
@@ -56,7 +71,12 @@ export default function About() {
         )}
 
 
-        <div className="flex gap-[3.125rem] mt-[5.25rem]">
+        <div className="flex gap-[3.125rem] mt-[2.125rem]
+        max-2xl:gap-[2rem]
+        max-xl:mt-[1.5rem] max-xl:flex-col
+        max-lg:flex-row
+        max-sm:flex-col
+        ">
 
         {/* Тут врядли будет больше 2х карточек и они немного разные, поэтому данные идут по индексам */}
 
@@ -72,7 +92,9 @@ export default function About() {
               style={{ backgroundColor: cardColors[0] }}
             />
             <h3 className="text-[2.5rem] font-bold font-[Circe] leading-[100%]">{addressCard.title}</h3>
-            <a href={addressCard.href ?? '#'} className="text-[0.9375rem] mt-[1.75rem] max-w-[240px] leading-[115%]">
+            <a href={addressCard.href ?? '#'} className="text-[0.9375rem] mt-[1.75rem] max-w-[240px] leading-[115%]
+            max-xl:max-w-full
+            ">
               {addressCard.text}
             </a>
             <a
@@ -95,7 +117,9 @@ export default function About() {
               style={{ backgroundColor: cardColors[1] }}
             />
             <h3 className="text-[2.5rem] font-bold font-[Circe] leading-[100%]">{recordCard.title}</h3>
-            <span className="text-[0.9375rem] mt-[1.75rem] max-w-[240px] leading-[115%]">
+            <span className="text-[0.9375rem] mt-[1.75rem] max-w-[240px] leading-[115%]
+            max-xl:max-w-full
+            ">
               {recordCard.text}
             </span>
             <CtaButton href={recordCard.cta!.href} label={recordCard.cta!.label} className="mt-[2.3125rem]" />

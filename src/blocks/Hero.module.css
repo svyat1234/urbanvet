@@ -140,6 +140,7 @@
   width: 198px;
   height: 150px;
   transition: all 0.2s ease-in;
+  z-index: 1;
 }
 
 .laps::after {
@@ -170,4 +171,30 @@
   right: 3.6%;
   bottom: 4.7%;
   background: url("/images/hero-bird.svg") no-repeat center center;
+}
+
+@media screen and (max-width: 1536px) {
+  :root {
+    --doctorImageWrapWidth: 90px;
+  }
+}
+
+
+@media screen  and (max-width: 1024px){
+
+  :root {
+    --doctorImageWrapWidth: 70px;
+  }
+
+  .laps {
+    transform: scale(0.5);
+    right: 0;
+    bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  :root {
+    --doctorImageWrapWidth: 50px;
+  }
 }

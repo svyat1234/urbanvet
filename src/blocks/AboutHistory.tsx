@@ -17,11 +17,17 @@ export default function AboutHistory() {
   const boneRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const paragraphs = paragraphsRef.current;
+    const paragraphs = paragraphsRef.current.filter(Boolean);
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+    if (isMobile) {
+      paragraphs.forEach((el) => el.style.setProperty('--reveal', '120%'));
+      return () => {
+        paragraphs.forEach((el) => el.style.removeProperty('--reveal'));
+      };
+    }
 
     paragraphs.forEach((paragraph) => {
-      if (!paragraph) return;
-
       gsap.fromTo(
         paragraph,
         { '--reveal': '0%' } as gsap.TweenVars,
@@ -44,17 +50,30 @@ export default function AboutHistory() {
   }, []);
 
   return (
-    <section className='py-[9.375rem]'>
-      <Container className='flex justify-between gap-[20px]'>
-        <span className='section-sub text-center py-[0.71rem] px-6.75 border border-[#8E8E8E] rounded-4xl font-[0.875rem] leading-[70%] text-[#8E8E8E] uppercase h-fit'>
+    <section className='py-[9.375rem]
+    max-sm:py-[3.125rem]
+    '>
+      <Container className='flex justify-between gap-[20px]
+      max-md:flex-col max-md:gap-[40px]
+      '>
+        <span className='section-sub text-center py-[0.71rem] px-6.75 border border-[#8E8E8E] rounded-4xl font-[0.875rem] leading-[70%] text-[#8E8E8E] uppercase h-fit w-fit'>
           {ABOUT_PAGE.history.heading.subtitle}
         </span>
 
-        <div className='max-w-[1161px] w-full relative'>
+        <div className='max-w-[1161px] w-full relative
+        max-2xl:max-w-[900px]
+        max-xl:max-w-[700px]
+        max-lg:max-w-[450px]
+        max-md:max-w-full
+        '>
           {/* Картинка кости */}
           <div
             ref={boneRef}
-            className="w-[107px] h-[39px] absolute left-[15.1875rem] top-[2px] z-10"
+            className="w-[107px] h-auto absolute left-[15.1875rem] top-[2px] z-10
+            max-xl:w-[80px] max-xl:top-0
+            max-lg:left-[7rem] max-lg:-top-[2px]
+            max-md:left-0
+            "
             onMouseEnter={() => {
               setBoneColorIndex((prev) => (prev + 1) % BONE_COLORS.length);
               if (boneRef.current) {
@@ -86,14 +105,20 @@ export default function AboutHistory() {
               />
             </svg>
           </div>
-          <div className='flex flex-col gap-[3.6875rem] relative'>
+          <div className='flex flex-col gap-[3.6875rem] relative
+          max-md:gap-[2rem]
+          '>
             {ABOUT_PAGE.history.description.map((text, index) => (
               <p
                 key={index}
                 ref={(el) => {
                   if (el) paragraphsRef.current[index] = el;
                 }}
-                className={`${styles.text} ${styles.textReveal} text-[3.125rem] font-[Circe] font-normal leading-[100%]`}
+                className={`${styles.text} ${styles.textReveal} text-[3.125rem] font-[Circe] font-normal leading-[100%]
+                max-2xl:text-[2.9rem]
+                max-xl:text-[2rem]
+                max-lg:text-[1.7rem]
+                `}
                 data-text={text}
               >
                 {text}

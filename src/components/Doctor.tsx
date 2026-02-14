@@ -43,7 +43,12 @@ export default function Doctor({
   return (
     <Link
       href={href}
-      className={`${styles.card} ${className || ''} relative flex flex-col justify-between p-[3.25rem]`}
+      className={`${styles.card} ${className || ''} relative flex flex-col justify-between p-[3.25rem]
+      max-2xl:p-[3rem]
+      max-xl:p-[1.5rem]
+      max-lg:p-[1rem]
+      max-sm:justify-end
+      `}
       onMouseEnter={handleMouseEnter}
       onFocus={handleMouseEnter}
       style={
@@ -67,13 +72,21 @@ export default function Doctor({
       <span className={styles.gradient}></span>
 
       {/* Информация о враче */}
-      <span className={`flex flex-col gap-[0.3125rem]`}>
-        <span className={`py-[0.875rem] px-[1.875rem] text-[0.875rem] leading-[90%] text-[#1D1D1D] font-medium bg-[#ffffff] rounded-4xl w-fit`}>{experience}</span>
-        <span className={`py-[0.875rem] px-[1.875rem] border border-[#ffffff] rounded-4xl font-[0.875rem] leading-[90%] text-[#ffffff] w-fit backdrop-blur-[34px]`}>{position}</span>
+      <span className={`flex flex-col gap-[0.3125rem] max-sm:hidden`}>
+        <span className={`py-[0.875rem] px-[1.875rem] text-[0.875rem] leading-[90%] text-[#1D1D1D] font-medium bg-[#ffffff] rounded-4xl w-fit
+          max-lg:py-[0.6rem] max-lg:px-[1.3rem] max-lg:text-[0.6rem]
+          `}>{experience}</span>
+        <span className={`py-[0.875rem] px-[1.875rem] border border-[#ffffff] rounded-4xl font-[0.875rem] leading-[90%] text-[#ffffff] w-fit backdrop-blur-[34px]
+          max-lg:py-[0.6rem] max-lg:px-[1.3rem] max-lg:text-[0.6rem]
+          `}>{position}</span>
       </span>
 
       {/* Имя врача */}
-      <h3 className={`font-["Circe"] font-bold text-[2.5rem] leading-[90%] text-[#ffffff]`}>{name}</h3>
+      <h3 className={`font-["Circe"] font-bold text-[2.5rem] leading-[90%] text-[#ffffff]
+        max-2xl:text-[2rem]
+        max-lg:text-[1.5rem]
+        max-sm:text-[1rem]
+        `}>{name}</h3>
     </Link>
   );
 }

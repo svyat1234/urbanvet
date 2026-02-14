@@ -1,3 +1,51 @@
 .nav {
   height: 100%;
 }
+
+.heroIcon {
+  position: absolute;
+  bottom: 4.375rem;
+  right: 4.375rem;
+  width: 170px;
+  height: 129px;
+  background: url("/images/all-hero-laps.svg") no-repeat center / cover;
+}
+
+.imageWrap {
+  position: relative;
+}
+
+.imageWrap::after {
+  position: absolute;
+  content: '';
+  display: block;
+  right: 30px;
+  bottom  : 30px;
+  width: 35px;
+  height: 35px;
+  background: url("/images/doctor-plus.svg") no-repeat center / cover;
+  z-index: 2;
+}
+
+.imageWrap::before {
+  position: absolute;
+  content: '';
+  display: block;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 260px;
+  background-image: linear-gradient(to top, #ACD9CF 0%, transparent 100%);
+  opacity: 0.8;
+  z-index: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .imageWrap::before {
+    height: 40%;
+  }
+  .imageWrap::after {
+    width: 20px;
+    height: 20px;
+  }
+}

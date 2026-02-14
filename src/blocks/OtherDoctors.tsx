@@ -70,11 +70,13 @@ export default function OtherDoctors({ currentDoctorKey, heading }: OtherDoctors
   return (
     <section className={`${styles.section} pt-12.5 pb-25`}>
       <Container>
-        <div className={`${styles.slider} flex gap-[20px]`}>
+        <div className={`${styles.slider} flex gap-[20px]
+        max-md:flex-col
+        `}>
 
           {/* Слайдер */}
           <Swiper
-            className={`${styles.swiper} w-full`}
+            className={`${styles.swiper} w-full max-md:order-2`}
             modules={[Navigation]}
             direction="horizontal"
             loop={true}
@@ -104,7 +106,13 @@ export default function OtherDoctors({ currentDoctorKey, heading }: OtherDoctors
             {otherDoctors.map((doctor) => (
               <SwiperSlide key={doctor.id} className={`${styles.slide}`}>
                 <Link href={getDoctorHref(doctor)} className={`${styles.link} block h-full`}>
-                  <div className={`h-[350px] relative`}>
+                  <div className={`${styles.slideContent} h-[350px] relative
+                    max-2xl:h-[300px]
+                    max-xl:h-[250px]
+                    max-lg:h-[170px]
+                    max-md:h-[250px]
+                    max-sm:h-[200px]
+                    `}>
                     <Image
                       src={doctor.photo}
                       alt={doctor.name}
@@ -118,7 +126,9 @@ export default function OtherDoctors({ currentDoctorKey, heading }: OtherDoctors
           </Swiper>
 
           {/* Заголовок, к нопки */}
-          <div className={`flex flex-col justify-between max-w-199.5 w-full`}>
+          <div className={`flex flex-col justify-between max-w-199.5 w-full
+            max-md:flex-row max-md:justify-between max-md:items-end
+            `}>
             <Heading subtitle={heading.subtitle} title={heading.title}></Heading>
 
             <div className={`flex items-center gap-[19px]`}>
@@ -126,7 +136,7 @@ export default function OtherDoctors({ currentDoctorKey, heading }: OtherDoctors
                 ref={prevRef}
                 type="button"
                 aria-label="Предыдущий слайд"
-                className={`slider-button slider-button-prev`}
+                className={`${styles.button} slider-button slider-button-prev`}
               >
                 <svg width="100%" height="100%" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M25.0002 10.286C25.8839 10.286 26.6002 11.0023 26.6002 11.886C26.6002 12.7696 25.8839 13.486 25.0002 13.486L25.0002 11.886L25.0002 10.286ZM1.24144 13.0173C0.616605 12.3925 0.616605 11.3794 1.24144 10.7546L11.4238 0.572265C12.0486 -0.0525734 13.0617 -0.0525734 13.6865 0.572265C14.3114 1.1971 14.3114 2.21017 13.6865 2.83501L4.63556 11.886L13.6865 20.9369C14.3114 21.5618 14.3114 22.5748 13.6865 23.1997C13.0617 23.8245 12.0486 23.8245 11.4238 23.1997L1.24144 13.0173ZM25.0002 11.886L25.0002 13.486H2.37282L2.37282 11.886L2.37281 10.286H25.0002L25.0002 11.886Z" fill="#1D1D1D"/>
@@ -137,7 +147,7 @@ export default function OtherDoctors({ currentDoctorKey, heading }: OtherDoctors
                 ref={nextRef}
                 type="button"
                 aria-label="Следующий слайд"
-                className={`slider-button slider-button-next`}
+                className={`${styles.button} slider-button slider-button-next`}
               >
                 <svg width="100%" height="100%" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M25.0002 10.286C25.8839 10.286 26.6002 11.0023 26.6002 11.886C26.6002 12.7696 25.8839 13.486 25.0002 13.486L25.0002 11.886L25.0002 10.286ZM1.24144 13.0173C0.616605 12.3925 0.616605 11.3794 1.24144 10.7546L11.4238 0.572265C12.0486 -0.0525734 13.0617 -0.0525734 13.6865 0.572265C14.3114 1.1971 14.3114 2.21017 13.6865 2.83501L4.63556 11.886L13.6865 20.9369C14.3114 21.5618 14.3114 22.5748 13.6865 23.1997C13.0617 23.8245 12.0486 23.8245 11.4238 23.1997L1.24144 13.0173ZM25.0002 11.886L25.0002 13.486H2.37282L2.37282 11.886L2.37281 10.286H25.0002L25.0002 11.886Z" fill="#1D1D1D"/>

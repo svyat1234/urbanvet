@@ -42,3 +42,9 @@
   background: #fff;
   opacity: 0.7;
 }
+
+@media screen and (max-width: 1023px) {
+  :root {
+    --doctorImageWrapWidth: 90px;
+  }
+}

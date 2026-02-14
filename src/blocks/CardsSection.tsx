@@ -29,7 +29,10 @@ export default function CardsSection<TItem>({
     <section className={`py-[3.125rem] ${sectionBg}`}>
       <Container className={`flex flex-col gap-[1.25rem]`}>
 
-        <div className={`grid grid-cols-3 gap-[1.25rem]`}>
+        <div className={`grid grid-cols-3 gap-[1.25rem]
+          max-lg:grid-cols-2
+          max-sm:grid-cols-1
+          `}>
          <div className='flex flex-col'>
           <Heading level={headingLevel} title={data.heading.title} subtitle={data.heading.subtitle} />
           {description != null && description !== '' && (

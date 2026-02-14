@@ -7,6 +7,7 @@ import OtherDoctors from '@/blocks/OtherDoctors';
 import CardsSection from '@/blocks/CardsSection';
 import BlogsCompact from '@/blocks/BlogsCompact';
 import Card from '@/components/Card';
+import Appointment from '@/blocks/Appointment';
 import type { Doctor, ServiceItem } from '@/lib/constants';
 
 interface DoctorHeroContent {
@@ -42,6 +43,7 @@ export default function DoctorPageContent({
           renderItem={(item) => <Card data={item} />}
         />
       )}
+      <Appointment/>
       <BlogsCompact />
       <Footer />
     </>

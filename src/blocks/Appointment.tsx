@@ -12,8 +12,8 @@ import doctor3 from '@/assets/images/doctors/doctor-3.jpg';
 import formPetImage from '@/assets/images/gallery/dog.png';
 
 // -----------------------------------------------------------------------------
-// Для этого компоенениа сделан минимальный функционал для примера работы блока
-// Кнопку назад не затронута
+// Для этого компоенента сделан минимальный функционал для примера работы блока
+// Кнопка назад не затронута
 // -----------------------------------------------------------------------------
 
 // ——— Демо-данные для вёрстки и проверки сценария записи. ———
@@ -220,30 +220,47 @@ export default function Appointment() {
   const renderContent = () => {
     if (step === 'choose_type') {
       if (mode === 'doctor') {
+        // Врачи
         return (
-          <div className="grid grid-cols-4 gap-x-[20px] gap-y-[10px]">
+          <div className="grid grid-cols-4 gap-x-[20px] gap-y-[10px]
+          max-2xl:grid-cols-3
+          max-xl:grid-cols-2
+          ">
             {DEMO_DOCTORS.map((doc) => (
               <button
                 key={doc.id}
                 type="button"
-                className={`${styles.card} flex gap-[20px] items-center p-[5px] rounded-[8px] h-[116px] bg-white cursor-pointer text-left border border-transparent`}
+                className={`${styles.card} flex gap-[20px] items-center p-[5px] rounded-[8px] h-[116px] bg-white cursor-pointer text-left border border-transparent
+                max-md:flex-col max-md:h-auto max-md:pb-4 max-md:justify-start
+                `}
                 onClick={() => handleSelectDoctor(doc.id)}
               >
-                <div className="h-full aspect-square relative rounded-[4px] overflow-hidden min-w-[100px]">
+                <span className="h-full aspect-square relative rounded-[4px] overflow-hidden min-w-[100px] block
+                max-md:w-full max-md:h-auto
+                ">
                   <Image src={doc.image} alt="" fill className="object-cover" sizes="100px" />
-                </div>
-                <div className="flex flex-col gap-[17px]">
-                  <h3 className="text-[1.875rem] font-normal font-[Circe] leading-[100%]">{doc.name}</h3>
+                </span>
+                <span className="flex flex-col gap-[17px]
+                max-sm:flex-1 max-sm:justify-between
+                ">
+                  <h3 className="text-[1.875rem] font-normal font-[Circe] leading-[100%]
+                  max-lg:text-[1.5rem]
+                  max-sm:text-[1.3rem]
+                  ">{doc.name}</h3>
                   <span className="text-[0.875rem] font-medium">{doc.specialty}</span>
-                </div>
+                </span>
               </button>
             ))}
           </div>
         );
       }
+      // Специализации
       if (mode === 'specialization') {
         return (
-          <div className="grid grid-cols-4 gap-x-[20px] gap-y-[10px]">
+          <div className="grid grid-cols-4 gap-x-[20px] gap-y-[10px]
+          max-2xl:grid-cols-3
+          max-xl:grid-cols-2
+          ">
             {DEMO_SPECIALIZATIONS.map((spec) => (
               <button
                 key={spec.id}
@@ -251,14 +268,21 @@ export default function Appointment() {
                 className={`${styles.card} flex justify-center items-center p-[5px] rounded-[8px] h-[116px] bg-white cursor-pointer border border-transparent`}
                 onClick={() => handleSelectSpecialization(spec.id)}
               >
-                <h3 className="text-[1.875rem] font-normal font-[Circe] leading-[100%]">{spec.name}</h3>
+                <h3 className="text-[1.875rem] font-normal font-[Circe] leading-[100%]
+                max-md:text-[1.5rem]
+                max-sm:text-[1.2rem]
+                ">{spec.name}</h3>
               </button>
             ))}
           </div>
         );
       }
       return (
-        <div className="grid grid-cols-4 gap-x-[20px] gap-y-[10px]">
+        // Услуги
+        <div className="grid grid-cols-4 gap-x-[20px] gap-y-[10px]
+        max-2xl:grid-cols-3
+        max-xl:grid-cols-2
+        ">
           {DEMO_SERVICES.map((svc) => (
             <button
               key={svc.id}
@@ -266,43 +290,60 @@ export default function Appointment() {
               className={`${styles.card} flex justify-center items-center p-[5px] rounded-[8px] h-[116px] bg-white cursor-pointer border border-transparent`}
               onClick={() => handleSelectService(svc.id)}
             >
-              <h3 className="text-[1.875rem] font-normal font-[Circe] leading-[100%]">{svc.name}</h3>
+              <h3 className="text-[1.875rem] font-normal font-[Circe] leading-[100%]
+              max-md:text-[1.5rem]
+              max-sm:text-[1.2rem]
+              ">{svc.name}</h3>
             </button>
           ))}
         </div>
       );
     }
 
+    // Дата
     if (step === 'choose_date') {
       return (
-        <div className="grid grid-cols-4 gap-x-[20px] gap-y-[10px]">
+        <div className="grid grid-cols-4 gap-x-[20px] gap-y-[10px]
+        max-lg:grid-cols-3
+        ">
           {DEMO_DATES.map((d) => (
             <button
               key={d.id}
               type="button"
               disabled={!d.available}
-              className={`${styles.card} flex justify-center items-center p-[5px] rounded-[8px] h-[116px] bg-white border border-transparent ${!d.available ? styles.cardNotActive : 'cursor-pointer'}`}
+              className={`${styles.card} flex justify-center items-center p-[5px] rounded-[8px] h-[116px] bg-white border border-transparent ${!d.available ? styles.cardNotActive : 'cursor-pointer'}
+              max-sm:h-[80px]
+              `}
               onClick={() => d.available && handleSelectDate(d.label)}
             >
-              <span className="text-[1.875rem] font-normal font-[Circe] leading-[100%]">{d.label}</span>
+              <span className="text-[1.875rem] font-normal font-[Circe] leading-[100%]
+              max-sm:text-[1.3rem]
+              ">{d.label}</span>
             </button>
           ))}
         </div>
       );
     }
 
+    // Время
     if (step === 'choose_time') {
       return (
-        <div className="grid grid-cols-4 gap-x-[20px] gap-y-[10px]">
+        <div className="grid grid-cols-4 gap-x-[20px] gap-y-[10px]
+        max-lg:grid-cols-3
+        ">
           {DEMO_TIMES.map((t) => (
             <button
               key={t.id}
               type="button"
               disabled={!t.available}
-              className={`${styles.card} flex justify-center items-center p-[5px] rounded-[8px] h-[116px] bg-white border border-transparent ${!t.available ? styles.cardNotActive : 'cursor-pointer'}`}
+              className={`${styles.card} flex justify-center items-center p-[5px] rounded-[8px] h-[116px] bg-white border border-transparent ${!t.available ? styles.cardNotActive : 'cursor-pointer'}
+              max-sm:h-[80px]
+              `}
               onClick={() => t.available && handleSelectTime(t.label)}
             >
-              <span className="text-[1.875rem] font-normal font-[Circe] leading-[100%]">{t.label}</span>
+              <span className="text-[1.875rem] font-normal font-[Circe] leading-[100%]
+              max-sm:text-[1.3rem]
+              ">{t.label}</span>
             </button>
           ))}
         </div>
@@ -310,9 +351,17 @@ export default function Appointment() {
     }
 
     // step === 'form'
+    // Форма записи
     return (
-      <div className="flex h-full flex-1 gap-[20px]">
-        <div className="max-w-[400px] w-full h-full relative rounded-[8px] overflow-hidden bg-[#eee]">
+      <div className="flex h-full flex-1 gap-[20px] 
+      max-xl:items-center
+      max-lg:flex-col
+      ">
+        {/* Картинка */}
+        <div className="max-w-[400px] w-full self-stretch relative rounded-[8px] overflow-hidden bg-[#eee]
+        max-xl:max-w-[300px] max-xl:h-[350px] max-xl:self-center
+        max-lg:max-w-full
+        ">
           <Image
             src={formPetImage}
             alt=""
@@ -320,20 +369,23 @@ export default function Appointment() {
             className="object-cover"
           />
         </div>
-        <form className="flex flex-1 flex-col gap-y-[10px]" onSubmit={handleFormSubmit}>
+        {/* Форма */}
+        <form className="flex flex-1 flex-col gap-y-[10px]
+        max-lg:w-full
+        " onSubmit={handleFormSubmit}>
 
           <input
             type="tel"
             placeholder="Введите номер телефона"
-            className={`${styles.input} flex-1 ${isPhoneInvalid ? styles.inputError : ''}`}
+            className={`${styles.input} flex-1 ${isPhoneInvalid ? styles.inputError : ''} max-xl:flex-none`}
             value={formPhone}
             onChange={handlePhoneChange}
             inputMode="tel"
             autoComplete="tel"
           />
 
-          <div className="flex flex-1 max-w-full w-full">
-            <div className="grid w-full grid-cols-2 gap-x-[16px] gap-y-[10px]">
+          <div className="flex flex-1 max-w-full w-full max-xl:flex-none">
+            <div className="grid w-full grid-cols-2 gap-x-[16px] gap-y-[10px] max-md:grid-cols-1">
               <input
                 type="text"
                 placeholder="Имя"
@@ -351,7 +403,7 @@ export default function Appointment() {
             </div>
           </div>
 
-          <div className="flex flex-1 max-w-full w-full">
+          <div className="flex flex-1 max-w-full w-full max-xl:flex-none">
             <div className="grid w-full grid-cols-2 gap-x-[16px] gap-y-[10px]">
               <input
                 type="text"
@@ -422,15 +474,22 @@ export default function Appointment() {
             </div>
           </div>
 
-          <div className="flex flex-1 max-w-full w-full">
-            <div className="grid w-full grid-cols-2 gap-x-[16px] gap-y-[10px]">
-              <button type="submit" className={`${styles.button}`}>
+          <div className="flex flex-1 max-w-full w-full max-xl:flex-none">
+            <div className="grid w-full grid-cols-2 gap-x-[16px] gap-y-[10px]
+            max-md:grid-cols-1
+            ">
+              <button type="submit" className={`${styles.button} max-md:order-2`}>
                 <span>Записаться</span>
               </button>
 
-              <div className="flex flex-1 items-center gap-[3.5625rem]">
-                <div className={`${styles.buttonIcon}`}></div>
-                <label className={`${styles.checkboxWrap} ${isConsentInvalid ? styles.checkboxWrapError : ''} flex flex-col`}>
+              <div className="flex flex-1 items-center gap-[3.5625rem]
+              max-2xl:gap-[2rem]
+              max-xl:gap-[1rem]
+              ">
+                <div className={`${styles.buttonIcon} max-md:hidden`}></div>
+                <label className={`${styles.checkboxWrap} ${isConsentInvalid ? styles.checkboxWrapError : ''} flex flex-col 
+                max-md:flex-row max-md:items-center
+                `}>
                   <input
                     type="checkbox"
                     className={styles.checkboxInput}
@@ -438,7 +497,10 @@ export default function Appointment() {
                     onChange={(e) => setConsentChecked(e.target.checked)}
                   />
                   <span className={styles.checkboxBox} aria-hidden="true" />
-                  <span className='max-w-[326px] text-[1.3125rem] leading-[110%]'>Я принимаю <Link href={''} className={`text-[#ACD9CF]`}>условия передачи информации</Link></span>
+                  <span className='max-w-[326px] text-[1.3125rem] leading-[110%]
+                  max-2xl:text-[1rem]
+                  max-xl:text-[0.875rem]
+                  '>Я принимаю <Link href={''} className={`text-[#ACD9CF]`}>условия передачи информации</Link></span>
                 </label>
               </div>
             </div>
@@ -450,10 +512,15 @@ export default function Appointment() {
   };
 
   return (
+    // Сама секция
     <section className="pt-[6.25rem]">
       <Container>
-        <div className="flex justify-between items-end">
-          <div className="flex gap-[25px]">
+        <div className="flex justify-between items-end
+        max-md:flex-col max-md:justify-start max-md:items-start max-md:gap-10
+        ">
+          <div className="flex gap-[25px]
+          max-md:order-2 max-md:flex-col
+          ">
             <button type="button" aria-label="Назад" className="h-full">
               <svg
                 width="60"
@@ -471,10 +538,14 @@ export default function Appointment() {
             </button>
             {renderNavPills()}
           </div>
-          <Heading subtitle="Запись" title="Запись на приём" />
+          <Heading subtitle="Запись" title="Запись на приём" className={`${styles.heading}`}/>
         </div>
 
-        <div className="p-[5rem] bg-[#F9F9F9] h-[654px] overflow-y-auto mt-[5rem]">
+        <div className="p-[5rem] bg-[#F9F9F9] h-[654px] overflow-y-auto mt-[5rem]
+        max-xl:p-[3.5rem]
+        max-md:mt-10
+        max-sm:p-[1rem]
+        ">
           {renderContent()}
         </div>
       </Container>

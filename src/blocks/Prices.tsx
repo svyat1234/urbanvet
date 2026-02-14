@@ -1,21 +1,37 @@
 'use client';
 
+import { useState } from 'react';
 import Container from '@/components/Container';
 import Heading from '@/components/Heading';
 import PricesCard from '@/components/PricesCard';
+import styles from '@/blocks/Prices.module.css'
 import { PRICES, PRICES_SECTION } from '@/lib/constants';
 
 export default function Prices() {
+  const [isSortModalOpen, setIsSortModalOpen] = useState(false);
+
   return (
     <section className="py-12.5 bg-[#F9F9F9]">
       <Container>
       <div className={`flex justify-between items-end`}>
 
         {/* Фильтры */}
-        <div className={`flex gap-5`}>
-            <button className={`sort-menu sort-btn`}>
-                Сортировка
+        <div className={`flex gap-5 relative`}>
+        <button
+              className={`sort-menu sort-btn`}
+              onClick={() => setIsSortModalOpen((prev) => !prev)}
+            >
+              Сортировка
             </button>
+
+            {/* Окно с типом сортировки */}
+            {isSortModalOpen && (
+              <div className={`${styles.sortModal} absolute max-w-[246px] w-full bg-white rounded-[35px] p-[20px] z-50 flex flex-col gap-[10px]`}>
+                <button type="button" className={`${styles.modalSortBtn}`}>По дате</button>
+                <button type="button" className={`${styles.modalSortBtn}`}>По имени</button>
+                <button type="button" className={`${styles.modalSortBtn}`}>Старые</button>
+              </div>
+            )}
 
             <div className={`flex gap-1`}>
                 <button className={`sort-btn`}>Раздел</button>

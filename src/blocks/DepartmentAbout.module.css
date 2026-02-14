@@ -11,3 +11,9 @@
   max-width: 423px;
   width: 100%;
 }
+
+@media screen and (max-width: 1279px) {
+  .aboutText {
+    max-width: 100%;
+  }
+}

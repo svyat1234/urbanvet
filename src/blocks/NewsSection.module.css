@@ -1,3 +1,12 @@
-/* NewsSection styles (empty for now) */
+@media screen and (max-width: 768px) {
+  .cardSmall:last-child {
+    grid-column: span 2 / span 2;
+  }
+}
 
+@media screen and (max-width: 640px) {
+  .cardSmall:last-child {
+    grid-column: span 1 / span 1;
+  }
+}
 

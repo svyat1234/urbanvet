@@ -3,6 +3,7 @@ import Footer from '@/layouts/Footer';
 import BlogHero from '@/blocks/BlogHero';
 import BlogSection from '@/blocks/BlogSection';
 import BlogsCompact from '@/blocks/BlogsCompact';
+import Appointment from '@/blocks/Appointment';
 import { BLOG_POSTS, BLOG_PAGES } from '@/lib/constants';
 import { notFound } from 'next/navigation';
 
@@ -49,10 +50,10 @@ export default async function BlogPage({ params }: BlogPageProps) {
       <BlogHero
         blogPost={post}
         content={heroContent}
-        // Передаем breadcrumbs для навигации: Статьи / Название статьи
+        // Передаем breadcrumbs: Статьи / ФИО автора (врача)
         breadcrumbs={[
           { label: 'Статьи', href: '/blogs' },
-          { label: post.title, href: '#' }
+          { label: post.author, href: '#' }
         ]}
       />
 
@@ -61,13 +62,14 @@ export default async function BlogPage({ params }: BlogPageProps) {
         <BlogSection key={section.id} section={section} />
       ))}
 
+      <Appointment/>
+
       {/* Другие статьи блога (исключая текущую) */}
       <BlogsCompact
         excludeSlug={slug}
         customTitle="Другие статьи"
         customSubtitle="Статьи"
       />
-
       <Footer />
     </>
   );

@@ -11,6 +11,7 @@ export default function Blogs() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [fadeMode, setFadeMode] = useState<'in' | 'out'>('in');
+  const [isSortModalOpen, setIsSortModalOpen] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const scrollRafRef = useRef<number | null>(null);
   const timersRef = useRef<number[]>([]);
@@ -139,10 +140,22 @@ export default function Blogs() {
         <div className={`flex justify-between items-end`}>
 
           {/* Фильтры */}
-          <div className={`flex gap-5`}>
-            <button className={`sort-menu sort-btn`} onClick={handleSortByDate}>
+          <div className={`flex gap-5 relative`}>
+            <button
+              className={`sort-menu sort-btn`}
+              onClick={() => setIsSortModalOpen((prev) => !prev)}
+            >
               Сортировка
             </button>
+
+            {/* Окно с типом сортировки */}
+            {isSortModalOpen && (
+              <div className={`${styles.sortModal} absolute max-w-[246px] w-full bg-white rounded-[35px] p-[20px] z-50 flex flex-col gap-[10px]`}>
+                <button type="button" className={`${styles.modalSortBtn}`}>По дате</button>
+                <button type="button" className={`${styles.modalSortBtn}`}>По имени</button>
+                <button type="button" className={`${styles.modalSortBtn}`}>Старые</button>
+              </div>
+            )}
 
             <div className={`flex gap-1`}>
               <button className={`sort-btn`} onClick={handleSortByCategory}>Раздел</button>
@@ -151,6 +164,7 @@ export default function Blogs() {
             </div>
 
             <input type="text" className={`sort-search`} placeholder='Введите запрос' />
+
 
           </div>
 

@@ -20,7 +20,10 @@ export default function Card({ data, href }: CardProps) {
   const isInternal = href != null && href !== '#' && href.startsWith('/');
   const linkHref = href ?? '#';
 
-  const className = `${styles.card} ${hasImage ? styles.cardWithImage : ''} relative flex flex-col justify-between p-[3.125rem] h-[374px] ${cardBg} overflow-hidden`;
+  const className = `${styles.card} ${hasImage ? styles.cardWithImage : ''} relative flex flex-col justify-between p-[3.125rem] h-[374px] ${cardBg} overflow-hidden
+  max-xl:h-[320px] max-xl:p-[1.5rem]
+  max-lg:h-[280px]
+  `;
 
   const content = (
     <>
@@ -49,8 +52,11 @@ export default function Card({ data, href }: CardProps) {
       {/* Текст, заголовок и иконка */}
       <span className={`relative z-10 flex flex-col gap-[1.875rem]`}>
         <p className={`text-[0.9375rem] leading-[100%] max-w-[350px]`}>{data.description}</p>
-        <span className={`flex justify-between`}>
-          <h3 className={`font-[Circe] font-bold text-[2.5rem] leading-[90%] max-w-[350px]`}>{data.title}</h3>
+        <span className={`flex justify-between items-end`}>
+          <h3 className={`font-[Circe] font-bold text-[2.5rem] leading-[90%] max-w-[350px]
+            max-2xl:text-[2rem]
+            max-xl:text-[1.5rem]
+            `}>{data.title}</h3>
           <span className={styles.icon}>
             <svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path

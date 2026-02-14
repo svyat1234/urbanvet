@@ -1,0 +1,12 @@
+.arrow {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+}
+
+@media screen and (max-width: 640px) {
+    .arrow {
+        opacity: 1;
+    }
+}

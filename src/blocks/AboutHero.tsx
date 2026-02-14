@@ -22,8 +22,11 @@ export default function AboutHero() {
           <CtaButton href={ABOUT_PAGE.hero.cta.href} label={ABOUT_PAGE.hero.cta.label} />
         </div>
 
-        {/* Изображение */}
-        <div className={`max-w-full w-full h-full relative`}>
+        {/* Изображение: фон передаём в CSS для псевдоэлемента с размытием по маске лапы */}
+        <div
+          className={`${styles.imageWrap} max-w-full w-full h-full relative`}
+          style={{ '--hero-image': `url(${ABOUT_PAGE.hero.image.src})` } as React.CSSProperties}
+        >
           <Image
             src={ABOUT_PAGE.hero.image}
             alt={ABOUT_PAGE.hero.imageAlt}

@@ -41,6 +41,8 @@ export interface DoctorsProps {
 // Настройки перелистывания страниц со врачами
 const DEFAULT_DOCTORS_PER_PAGE = 9;
 const TRANSITION_DURATION_MS = 500;
+const MOBILE_BREAKPOINT_PX = 768;
+const MOBILE_DOCTORS_PER_PAGE = 6;
 
 export default function Doctors({
   data,
@@ -52,18 +54,36 @@ export default function Doctors({
   const [currentPage, setCurrentPage] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [fadeMode, setFadeMode] = useState<'in' | 'out'>('in');
+  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const scrollRafRef = useRef<number | null>(null);
   const timersRef = useRef<number[]>([]);
 
   const doctors = data?.doctors ?? [];
 
+  // При экране <= 768px показываем по 6 врачей, иначе — переданное itemsPerPage
+  const effectiveItemsPerPage = isMobile ? MOBILE_DOCTORS_PER_PAGE : itemsPerPage;
+
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT_PX}px)`);
+    const handleChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    setIsMobile(mql.matches);
+    mql.addEventListener('change', handleChange);
+    return () => mql.removeEventListener('change', handleChange);
+  }, []);
+
+  // При смене effectiveItemsPerPage подправляем текущую страницу, чтобы не уйти в пустоту
+  useEffect(() => {
+    const maxPage = Math.ceil(doctors.length / effectiveItemsPerPage) || 1;
+    setCurrentPage((prev) => Math.min(prev, maxPage));
+  }, [effectiveItemsPerPage, doctors.length]);
+
   // Вычисляем количество страниц
-  const totalPages = Math.ceil(doctors.length / itemsPerPage);
+  const totalPages = Math.ceil(doctors.length / effectiveItemsPerPage);
 
   // Получаем врачей для текущей страницы
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
+  const startIndex = (currentPage - 1) * effectiveItemsPerPage;
+  const endIndex = startIndex + effectiveItemsPerPage;
   const currentDoctors = doctors.slice(startIndex, endIndex);
 
   // Генерируем массив номеров страниц
@@ -180,9 +200,14 @@ export default function Doctors({
   return (
     <section ref={sectionRef} className={`${styles.doctors} pt-25 pb-[3.125rem]`}>
       <Container>
-        <div className={`flex items-start justify-between`}>
+        <div className={`flex items-end justify-between gap-5
+          max-md:flex-col max-md:items-start max-md:justify-start
+          `}>
           {/* Кнопки сортировки */}
-          <div className={`flex gap-[4px]`}>
+          <div className={`flex gap-[4px] flex-wrap
+            max-md:order-2
+            max-md:mt-5
+            `}>
             <button className={`sort-btn`} onClick={handleSortByName}>
               ФИО
             </button>
@@ -207,7 +232,10 @@ export default function Doctors({
 
         {/* Карточки врачей */}
         <div
-          className={`${styles.doctorsGrid} mt-20 grid grid-cols-3 gap-5 ${fadeMode === 'out' ? styles.fadeOut : styles.fadeIn}`}
+          className={`${styles.doctorsGrid} mt-20 grid grid-cols-3 gap-5 ${fadeMode === 'out' ? styles.fadeOut : styles.fadeIn}
+          max-md:grid-cols-2
+          max-md:mt-10
+          `}
           style={
             {
               '--fade-duration': `${Math.floor(TRANSITION_DURATION_MS / 2)}ms`,
@@ -226,7 +254,9 @@ export default function Doctors({
 
         {/* Пагинация */}
         {totalPages > 1 && (
-          <div className={`flex gap-[1.5625rem] max-w-full w-full justify-center items-center mt-20`}>
+          <div className={`flex gap-[1.5625rem] max-w-full w-full justify-center items-center mt-20
+          max-sm:mt-10
+          `}>
             <button
               className={`${styles.btnPrev} ${styles.btn}`}
               onClick={() => handlePageClick(currentPage - 1)}
