@@ -127,7 +127,7 @@ export default function Hero() {
             ref={doctorsBlockRef}
             className={`${styles.doctorsBlock} flex gap-[19px] items-center w-full py-[2.625rem] px-[3.125rem]
             max-xl:p-[2rem]
-            max-sm:p-[1.5rem]
+            max-sm:p-[1rem]
             `}
             onMouseEnter={handleDoctorsBlockMouseEnter}
             onMouseLeave={handleDoctorsBlockMouseLeave}

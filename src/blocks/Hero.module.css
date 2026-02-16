@@ -198,6 +198,6 @@
     --doctorImageWrapWidth: 90px;
   }
   .doctorImageCards {
-    width: calc(var(--doctorImageWrapWidth) * 1.5);
+    width: calc(var(--doctorImageWrapWidth) * 1.4);
   }
 }
