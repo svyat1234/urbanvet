@@ -135,7 +135,7 @@
   right: 10.4%;
   bottom: 11.6%;
   background: #F9F9F9;
-  mask: url("/images/hero-laps.svg") no-repeat center;
+  mask: var(--url-hero-laps, url("/images/hero-laps.svg")) no-repeat center;
   mask-size: contain;
   width: 198px;
   height: 150px;
@@ -170,7 +170,7 @@
   height: 60px;
   right: 3.6%;
   bottom: 4.7%;
-  background: url("/images/hero-bird.svg") no-repeat center center;
+  background: var(--url-hero-bird, url("/images/hero-bird.svg")) no-repeat center center;
 }
 
 @media screen and (max-width: 1536px) {
@@ -195,6 +195,9 @@
 
 @media screen and (max-width: 640px) {
   :root {
-    --doctorImageWrapWidth: 50px;
+    --doctorImageWrapWidth: 90px;
+  }
+  .doctorImageCards {
+    width: calc(var(--doctorImageWrapWidth) * 1.5);
   }
 }

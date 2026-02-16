@@ -30,7 +30,7 @@
     transform: translateY(-50%);
     width: 14px;
     height: 14px;
-    background: url("/images/about-stars.png") no-repeat center center;
+    background: var(--url-about-stars, url("/images/about-stars.png")) no-repeat center center;
 }
 
 @media screen and (max-width: 1536px) {

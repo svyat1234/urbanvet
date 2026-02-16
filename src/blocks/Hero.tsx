@@ -77,6 +77,7 @@ export default function Hero() {
         {/* Картинка */}
         <div className="self-stretch relative max-w-full w-full min-h-[300px] bg-[#ffffff]
         max-lg:min-h-[400px]
+        max-sm:min-h-[300px]
         ">
           {hero.heroImage ? (
             <Image src={hero.heroImage} alt="" fill className="object-cover" />
