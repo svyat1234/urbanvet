@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import Header from '@/layouts/Header';
 import Footer from '@/layouts/Footer';
 import PromotionHero from '@/blocks/PromotionHero';
@@ -34,14 +35,16 @@ export default function PromotionPageContent({
     <>
       <Header />
       <main>
-        <PromotionHero
-        promotion={promotion}
-        content={heroContent}
-        breadcrumbs={[
-          { label: 'Акции', href: '/promotions' },
-          { label: promotion.title, href: '#' },
-        ]}
-      />
+        <Suspense fallback={<div className="min-h-[713px] bg-[#F9F9F9] mb-[6.25rem]" aria-hidden />}>
+          <PromotionHero
+            promotion={promotion}
+            content={heroContent}
+            breadcrumbs={[
+              { label: 'Акции', href: '/promotions' },
+              { label: promotion.title, href: '#' },
+            ]}
+          />
+        </Suspense>
       <CardsSection
         data={{ heading: promotionsHeading, items: otherPromotions }}
         renderItem={(item) => (
