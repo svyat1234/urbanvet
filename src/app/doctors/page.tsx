@@ -13,8 +13,10 @@ export default function DoctorsPage() {
   return (
     <>
       <Header />
-      <Doctors data={pageData} />
-      <Appointmemt/>
+      <main>
+        <Doctors data={pageData} />
+        <Appointmemt/>
+      </main>
       <Footer/>
     </>
   );

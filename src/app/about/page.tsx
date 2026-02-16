@@ -16,13 +16,14 @@ export default function AboutPage() {
   return (
     <>
       <Header />
-      <AboutHero />
-      <Stats />
-      <AboutInfo />
-      <AboutHistory />
-      <Gallery />
-      <Vacancies />
-      <CardsSection
+      <main>
+        <AboutHero />
+        <Stats />
+        <AboutInfo />
+        <AboutHistory />
+        <Gallery />
+        <Vacancies />
+        <CardsSection
         data={{
           heading: DOCUMENTS_SECTION.heading,
           items: DOCUMENTS,
@@ -35,6 +36,7 @@ export default function AboutPage() {
           />
         )}
       />
+      </main>
       <Footer />
     </>
   );

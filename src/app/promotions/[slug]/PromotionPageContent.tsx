@@ -33,7 +33,8 @@ export default function PromotionPageContent({
   return (
     <>
       <Header />
-      <PromotionHero
+      <main>
+        <PromotionHero
         promotion={promotion}
         content={heroContent}
         breadcrumbs={[
@@ -51,6 +52,7 @@ export default function PromotionPageContent({
         )}
       />
       <BlogsCompact customTitle={blogsHeading.title} customSubtitle={blogsHeading.subtitle} />
+      </main>
       <Footer />
     </>
   );

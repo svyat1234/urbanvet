@@ -4,7 +4,6 @@ import { useState } from 'react';
 import styles from './PricesCard.module.css';
 import CtaButton from '@/components/CtaButton';
 import type { PriceItem } from '@/lib/constants';
-
 function formatPrice(value: number): string {
   return `${value.toLocaleString('ru-RU')}₽`;
 }
@@ -24,17 +23,30 @@ export default function PricesCard({ item, linkText }: PricesCardProps) {
       tabIndex={0}
       onClick={() => setExpanded((v) => !v)}
       onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setExpanded((v) => !v)}
-      className={`flex justify-between gap-[200px] bg-white p-[1.875rem] cursor-pointer relative ${expanded ? 'min-h-[88px]' : 'h-[88px] overflow-hidden'}`}
+      className={`flex justify-between gap-10 bg-white p-[1.875rem] cursor-pointer relative
+        max-lg:flex-col
+        max-md:p-[1.5rem]
+        `}
     >
       {/* Заголовок */}
-      <h2 className="text-[2rem] font-bold font-[Circe] leading-[105%]">{item.title}</h2>
+      <h2 className="text-[2rem] font-bold font-[Circe] leading-[105%] max-w-[600px] w-full 
+      max-xl:max-w-[34%] max-xl:text-[1.7rem]
+      max-md:max-w-[60%]
+      max-sm:text-[1.5rem] max-sm:max-w-[50%]
+      ">{item.title}</h2>
 
+    <div className={`max-w-[768px] flex justify-start w-full ${!expanded ? 'hidden' : styles.contentReveal}
+    max-lg:max-w-full`}
+    >
       <div
-        className={`flex justify-between max-w-[768px] w-full ${expanded ? 'opacity-100 transition-opacity duration-300' : 'opacity-0'}`}
+        className={`flex justify-between w-full gap-[20px]`}
       >
         {/* Описание, ссылка */}
-        <div className="flex flex-col gap-[3.4375rem]">
-            <p className="text-[0.9375rem] max-w-[383px] opacity-50">{item.description}</p>
+        <div className={`flex flex-col w-full gap-[3.4375rem]`}>
+            <p className="text-[0.9375rem] w-[383px] opacity-50
+            max-lg:w-[50%]
+            max-md:w-full
+            ">{item.description}</p>
 
             <CtaButton
               href={href}
@@ -45,13 +57,20 @@ export default function PricesCard({ item, linkText }: PricesCardProps) {
         </div>
 
         {/* Цена */}
-        <div className="flex gap-[15px]">
-            <span className="text-[1.25rem] text-[#E8E8E8] font-bold font-[Circe] line-through leading-[100%] mt-[4px]">
+        <div className="flex gap-[15px] absolute top-[30px] right-[30px]">
+            <span className="text-[1.25rem] text-[#E8E8E8] font-bold font-[Circe] line-through leading-[100%] mt-[4px]
+            max-lg:text-[1rem]
+            ">
             {formatPrice(item.oldPrice)}
             </span>
-            <span className="text-[2.5rem] font-bold font-[Circe] leading-[100%]">{formatPrice(item.newPrice)}</span>
+            <span className="text-[2.5rem] font-bold font-[Circe] leading-[100%]
+            max-lg:text-[2rem]
+            max-md:text-[1.5rem]
+            ">{formatPrice(item.newPrice)}</span>
         </div>
       </div>
+
+    </div>
 
 
       {/* Стрелка справа — показывается только при закрытой карточке */}

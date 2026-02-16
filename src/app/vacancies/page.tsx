@@ -6,7 +6,9 @@ export default function VacanciesPage() {
     return (
       <>
         <Header />
-        <Vacancies />
+        <main>
+          <Vacancies />
+        </main>
         <Footer />
       </>
     );

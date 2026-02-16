@@ -47,7 +47,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
   return (
     <>
       <Header />
-      <BlogHero
+      <main>
+        <BlogHero
         blogPost={post}
         content={heroContent}
         // Передаем breadcrumbs: Статьи / ФИО автора (врача)
@@ -70,6 +71,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         customTitle="Другие статьи"
         customSubtitle="Статьи"
       />
+      </main>
       <Footer />
     </>
   );

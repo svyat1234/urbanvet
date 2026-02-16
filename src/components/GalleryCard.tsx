@@ -15,7 +15,9 @@ export default function GalleryCard({ item, onClick }: GalleryCardProps) {
 
   return (
     <article
-      className='h-[564px] flex relative cursor-pointer'
+      className='h-[564px] flex relative cursor-pointer
+      max-sm:h-[400px]
+      '
       onClick={onClick}
     >
       <div className='flex flex-wrap gap-1 max-w-full h-[42px] absolute z-10 top-[1.875rem] left-[1.875rem]'>

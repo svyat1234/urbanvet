@@ -33,7 +33,8 @@ export default function DepartmentPageContent({ slug, departmentPage }: Departme
   return (
     <>
       <Header />
-      <DepartmentHero data={departmentPage.hero} />
+      <main>
+        <DepartmentHero data={departmentPage.hero} />
       <DepartmentAbout data={departmentPage.about} />
       <CardsSection
         data={
@@ -58,6 +59,7 @@ export default function DepartmentPageContent({ slug, departmentPage }: Departme
       />
       <NewsSection />
       <Appointment />
+      </main>
       <Footer />
     </>
   );

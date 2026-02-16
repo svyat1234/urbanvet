@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './Header.module.css';
 import Container from '@/components/Container';
 import Image from 'next/image';
@@ -29,6 +29,26 @@ const HEADER_NAV_LINKS = [
 
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const searchWrapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isSearchOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (searchWrapRef.current && !searchWrapRef.current.contains(e.target as Node)) {
+        setIsSearchOpen(false);
+      }
+    };
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsSearchOpen(false);
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [isSearchOpen]);
 
   return (
     <header className={`${styles.header} mt-6.75 mb-[3.125rem] h-19.25 relative`}>
@@ -83,8 +103,34 @@ export default function Header() {
         </div>
 
         <div className="flex h-full">
-          <div className={`${styles.searchWrap} min-w-[5.1675rem] h-full flex items-center justify-center border-r border-solid border-[#1D1D1D] px-5`}>
-            <button style={{ backgroundImage: `url('${BASE_PATH}/images/search.svg')` }} className={`block bg-no-repeat bg-center bg-contain w-[1.41rem] h-[1.41rem] hover:opacity-50 transition-opacity duration-300`}></button>
+          <div ref={searchWrapRef} className={`${styles.searchWrap} min-w-[5.1675rem] h-full flex items-center justify-center border-r border-solid border-[#1D1D1D] px-5`}>
+            <button
+              type="button"
+              aria-label="Поиск"
+              aria-expanded={isSearchOpen}
+              style={{ backgroundImage: `url('${BASE_PATH}/images/search.svg')` }}
+              className="block bg-no-repeat bg-center bg-contain w-[1.41rem] h-[1.41rem] hover:opacity-50 transition-opacity duration-300"
+              onClick={() => setIsSearchOpen((v) => !v)}
+            />
+            {isSearchOpen && (
+              <div className={styles.searchDropdown} onClick={(e) => e.stopPropagation()}>
+                <div className={styles.searchInputWrap}>
+                  <input
+                    type="search"
+                    placeholder="Поиск..."
+                    className={styles.searchInput}
+                    autoFocus
+                    aria-label="Поле поиска"
+                  />
+                  <button
+                    type="submit"
+                    aria-label="Найти"
+                    className={styles.searchSubmit}
+                    style={{ backgroundImage: `url('${BASE_PATH}/images/search.svg')` }}
+                  />
+                </div>
+              </div>
+            )}
           </div>
 
           <div className={`${styles.langWrap} min-w-[5.1675rem] flex items-center justify-center`}>

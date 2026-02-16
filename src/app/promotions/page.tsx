@@ -10,13 +10,15 @@ export default function PromotionsPage() {
   return (
     <>
       <Header />
-      <CardsSection
+      <main>
+        <CardsSection
         data={{
           heading: PROMOTION_PAGES.promotions.heading,
           items: PROMOTIONS,
         }}
         renderItem={(item) => <Card data={item as any} href={`/promotions/${item.id}?from=/promotions&fromLabel=Акции`} />}
       />
+      </main>
       <Footer />
     </>
   );

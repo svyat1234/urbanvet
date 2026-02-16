@@ -52,6 +52,77 @@
   opacity: 0.6;
 }
 
+.searchWrap {
+  position: relative;
+}
+
+.searchDropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.25rem;
+  min-width: 20rem;
+  height: 53px;
+  background: #fff;
+  border: 1px solid #1d1d1d36;
+  border-radius: 100px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Circe';
+  padding-top: 4px;
+}
+
+.searchInputWrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+  border-radius: 100px 0 0 100px;
+  padding-left: 20px;
+  background: transparent;
+}
+
+.searchSubmit {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  flex-shrink: 0;
+  width: 53px;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1.41rem;
+  cursor: pointer;
+  border-radius: 0 100px 100px 0;
+  transition: opacity 0.2s ease;
+}
+
+.searchSubmit:hover {
+  opacity: 0.6;
+}
+
+/* Скрыть крестик очистки у type="search" */
+.searchInput::-webkit-search-cancel-button,
+.searchInput::-webkit-search-decoration {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
 .phone {
     padding: 6px 26px;
     font-size: 0.8125rem;
@@ -69,6 +140,9 @@
     }
 }
 
+@media screen and (max-width: 767px) {
+
+}
 @media screen and (max-width: 639px) {
   .modalPanel {
     width: 100%;

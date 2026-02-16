@@ -6,7 +6,9 @@ export default function BlogsPage() {
   return (
     <>
       <Header />
-      <Blogs />
+      <main>
+        <Blogs />
+      </main>
       <Footer />
     </>
   );

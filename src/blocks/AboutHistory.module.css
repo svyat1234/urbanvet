@@ -41,6 +41,6 @@
 
 @media screen and (max-width: 768px) {
   .text:first-child{
-    text-indent: 7.125rem;
+    text-indent: 6rem;
   }
 }

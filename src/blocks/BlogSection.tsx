@@ -23,8 +23,12 @@ export default function BlogSection({ section, className }: BlogSectionProps) {
                 className={`${styles.heading} mb-8`}
             />
             )}
-        <div className='flex justify-end'>
-            <div className="max-w-[50%] w-full">
+        <div className='flex justify-end
+        max-md:justify-start
+        '>
+            <div className="max-w-[50%] w-full
+            max-md:max-w-full
+            ">
                 {/* Контент секции */}
                 <div className={`${styles['blog-section']} space-y-6`}>
                 {section.blocks.map((block, index) => (

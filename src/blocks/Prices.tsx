@@ -13,10 +13,16 @@ export default function Prices() {
   return (
     <section className="py-12.5 bg-[#F9F9F9]">
       <Container>
-      <div className={`flex justify-between items-end`}>
+      <div className={`flex justify-between items-end gap-[50px]
+        max-xl:items-start
+        max-md:flex-col max-md:gap-[30px]
+        `}>
 
         {/* Фильтры */}
-        <div className={`flex gap-5 relative`}>
+        <div className={`flex gap-5 relative
+          max-xl:flex-wrap
+          max-md:order-2
+          `}>
         <button
               className={`sort-menu sort-btn`}
               onClick={() => setIsSortModalOpen((prev) => !prev)}
@@ -33,7 +39,9 @@ export default function Prices() {
               </div>
             )}
 
-            <div className={`flex gap-1`}>
+            <div className={`flex gap-1 
+              max-md:flex-wrap
+              `}>
                 <button className={`sort-btn`}>Раздел</button>
                 <button className={`sort-btn`}>Автор</button>
                 <button className={`sort-btn`}>Ещё...</button>
@@ -42,7 +50,9 @@ export default function Prices() {
                 <input type="text" className={`sort-search`} placeholder='Введите запрос' />
             </div>
 
-            <div className="flex justify-start max-w-[788px] w-full">
+            <div className="flex justify-start max-w-[788px] w-full
+            max-xl:max-w-[400px]
+            ">
                 <Heading
                     level={2}
                     title={PRICES_SECTION.heading.title}
@@ -50,7 +60,10 @@ export default function Prices() {
                 />
             </div>
         </div>
-        <div className="grid grid-cols-1 gap-[10px] mt-[5.125rem]">
+        <div className="grid grid-cols-1 gap-[10px] mt-[5.125rem]
+        max-2xl:mt-12
+        max-md:mt-5
+        ">
           {PRICES.map((item) => (
             <PricesCard
               key={item.id}

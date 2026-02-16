@@ -35,7 +35,8 @@ export default function DoctorPageContent({
   return (
     <>
       <Header />
-      <DoctorHero doctor={doctor} content={heroContent} />
+      <main>
+        <DoctorHero doctor={doctor} content={heroContent} />
       <OtherDoctors currentDoctorKey={doctorKey} heading={otherDoctorsHeading} />
       {services.length > 0 && (
         <CardsSection
@@ -45,6 +46,7 @@ export default function DoctorPageContent({
       )}
       <Appointment/>
       <BlogsCompact />
+      </main>
       <Footer />
     </>
   );

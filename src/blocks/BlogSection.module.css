@@ -108,5 +108,19 @@
 
 .heading h2 {
     max-width: 50%;
-    font-size: 3rem;
+}
+
+
+@media screen and (max-width: 767px) {
+  .heading {
+    flex-direction: column;
+  }
+
+  .heading h2 {
+    max-width: 100%;
+  }
+
+  .blog-section h4 {
+    margin-top: 1rem;
+  }
 }

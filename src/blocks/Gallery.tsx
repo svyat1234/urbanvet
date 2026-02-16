@@ -101,8 +101,16 @@ export default function Gallery() {
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
-          slidesPerView={3}
+          slidesPerView={1}
           spaceBetween={20}
+          breakpoints={{
+            768: {
+              slidesPerView: 2,
+            },
+            1280: {
+              slidesPerView: 3,
+            },
+          }}
           className="w-full"
         >
           {GALLERY_ITEMS.map((item, index) => (
@@ -130,7 +138,7 @@ export default function Gallery() {
           >
             Закрыть
           </button>
-          <Container className='flex justify-center'>
+          <Container className={`flex justify-center`}>
           <div
             className="relative w-fit"
             onClick={(e) => e.stopPropagation()}

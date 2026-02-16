@@ -33,15 +33,40 @@ export default function Blogs() {
 
   useEffect(() => {
     return () => {
-      if (scrollRafRef.current !== null) {
-        cancelAnimationFrame(scrollRafRef.current);
-      }
-      for (const id of timersRef.current) {
-        window.clearTimeout(id);
-      }
+      if (scrollRafRef.current !== null) cancelAnimationFrame(scrollRafRef.current);
+      for (const id of timersRef.current) window.clearTimeout(id);
       timersRef.current = [];
     };
   }, []);
+
+  const getSectionTop = () => {
+    if (!sectionRef.current) return 0;
+    const rect = sectionRef.current.getBoundingClientRect();
+    return Math.max(0, rect.top + (window.scrollY ?? window.pageYOffset));
+  };
+
+  const easeInOutCubic = (t: number) =>
+    t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+  /** Плавный скролл к заданной Y за durationMs. Цель фиксирована. В конце принудительно выставляем scroll. */
+  const smoothScrollTo = (targetY: number, durationMs: number) => {
+    if (scrollRafRef.current !== null) cancelAnimationFrame(scrollRafRef.current);
+    const startY = window.scrollY ?? window.pageYOffset;
+    const startTime = performance.now();
+
+    const step = (now: number) => {
+      const t = Math.min(1, (now - startTime) / durationMs);
+      const eased = easeInOutCubic(t);
+      window.scrollTo(0, startY + (targetY - startY) * eased);
+      if (t < 1) {
+        scrollRafRef.current = requestAnimationFrame(step);
+      } else {
+        scrollRafRef.current = null;
+        window.scrollTo(0, getSectionTop());
+      }
+    };
+    scrollRafRef.current = requestAnimationFrame(step);
+  };
 
   const clearTimers = () => {
     for (const id of timersRef.current) {
@@ -50,54 +75,20 @@ export default function Blogs() {
     timersRef.current = [];
   };
 
-  const easeInOutCubic = (t: number) =>
-    t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-  const smoothScrollTo = (targetY: number, durationMs: number) => {
-    if (scrollRafRef.current !== null) {
-      cancelAnimationFrame(scrollRafRef.current);
-      scrollRafRef.current = null;
-    }
-
-    const startY = window.scrollY || window.pageYOffset;
-    const delta = targetY - startY;
-    const startTime = performance.now();
-
-    const step = (now: number) => {
-      const t = Math.min(1, (now - startTime) / durationMs);
-      const eased = easeInOutCubic(t);
-      window.scrollTo(0, startY + delta * eased);
-
-      if (t < 1) {
-        scrollRafRef.current = requestAnimationFrame(step);
-      } else {
-        scrollRafRef.current = null;
-      }
-    };
-
-    scrollRafRef.current = requestAnimationFrame(step);
-  };
-
-  const getSectionTop = () => {
-    if (!sectionRef.current) return 0;
-    const rect = sectionRef.current.getBoundingClientRect();
-    const scrollTop = window.scrollY || window.pageYOffset;
-    return Math.max(0, rect.top + scrollTop);
-  };
-
   const changePage = (newPage: number) => {
-    // Проверяем валидность страницы ПЕРЕД всеми действиями
     if (newPage < 1 || newPage > totalPages) return;
     if (newPage === currentPage || isTransitioning) return;
 
     clearTimers();
 
-    // Скролл и анимация стартуют одновременно и длятся одинаково.
     const half = Math.floor(TRANSITION_DURATION_MS / 2);
     setIsTransitioning(true);
     setFadeMode('out');
 
-    smoothScrollTo(getSectionTop(), TRANSITION_DURATION_MS);
+    // Цель читаем в следующем кадре (layout готов), скролл 500ms, в конце принудительно к верху секции
+    requestAnimationFrame(() => {
+      smoothScrollTo(getSectionTop(), TRANSITION_DURATION_MS);
+    });
 
     timersRef.current.push(
       window.setTimeout(() => {
@@ -117,30 +108,19 @@ export default function Blogs() {
     changePage(page);
   };
 
-  // Обработчики сортировки (в будущем будут работать через бекенд, если не нужно - удалить)
-  const handleSortByDate = () => {
-    // TODO: сортировка по дате через бекенд
-  };
-
-  const handleSortByCategory = () => {
-    // TODO: сортировка по категории через бекенд
-  };
-
-  const handleSortByAuthor = () => {
-    // TODO: сортировка по автору через бекенд
-  };
-
-  const handleSortMore = () => {
-    // TODO: дополнительные опции сортировки
-  };
-
   return (
     <section ref={sectionRef} className={`py-[3.13rem] bg-[#F9F9F9]`}>
       <Container>
-        <div className={`flex justify-between items-end`}>
+        <div className={`flex justify-between items-end gap-[50px]
+          max-xl:items-start
+          max-md:flex-col max-md:gap-[30px]
+          `}>
 
           {/* Фильтры */}
-          <div className={`flex gap-5 relative`}>
+          <div className={`flex gap-5 relative 
+            max-xl:flex-wrap
+            max-md:order-2
+            `}>
             <button
               className={`sort-menu sort-btn`}
               onClick={() => setIsSortModalOpen((prev) => !prev)}
@@ -157,10 +137,12 @@ export default function Blogs() {
               </div>
             )}
 
-            <div className={`flex gap-1`}>
-              <button className={`sort-btn`} onClick={handleSortByCategory}>Раздел</button>
-              <button className={`sort-btn`} onClick={handleSortByAuthor}>Автор</button>
-              <button className={`sort-btn`} onClick={handleSortMore}>Ещё...</button>
+            <div className={`flex gap-1 
+              max-md:flex-wrap
+              `}>
+              <button className={`sort-btn`}>Раздел</button>
+              <button className={`sort-btn`}>Автор</button>
+              <button className={`sort-btn`}>Ещё...</button>
             </div>
 
             <input type="text" className={`sort-search`} placeholder='Введите запрос' />
@@ -168,14 +150,17 @@ export default function Blogs() {
 
           </div>
 
-          <div className="flex justify-between max-w-[788px] w-full">
+          <div className="flex justify-between max-w-[788px] w-full max-xl:max-w-[400px]">
             <Heading subtitle="блог" title="актуальное" />
           </div>
         </div>
 
         {/* Карточки блог-постов */}
         <div
-          className={`${styles.blogsGrid} mt-20 grid grid-cols-3 gap-5 ${fadeMode === 'out' ? styles.fadeOut : styles.fadeIn}`}
+          className={`${styles.blogsGrid} mt-20 grid grid-cols-3 gap-5 ${fadeMode === 'out' ? styles.fadeOut : styles.fadeIn}
+          max-xl:grid-cols-2 max-xl:mt-12
+          max-md:grid-cols-1
+          `}
           style={
             {
               '--fade-duration': `${Math.floor(TRANSITION_DURATION_MS / 2)}ms`,

@@ -11,10 +11,37 @@ gsap.registerPlugin(ScrollTrigger);
 
 const BONE_COLORS = ['#F2C1D5', '#E3E993', '#ACD9CF'] as const;
 
+const BONE_ANIM_DURATION = 0.25;
+
 export default function AboutHistory() {
   const paragraphsRef = useRef<HTMLParagraphElement[]>([]);
   const [boneColorIndex, setBoneColorIndex] = useState(0);
   const boneRef = useRef<HTMLDivElement | null>(null);
+  const boneAnimatingRef = useRef(false);
+
+  const playBoneAnimation = () => {
+    if (boneAnimatingRef.current) return;
+    boneAnimatingRef.current = true;
+    setBoneColorIndex((prev) => (prev + 1) % BONE_COLORS.length);
+    if (boneRef.current) {
+      gsap.fromTo(
+        boneRef.current,
+        { y: 0 },
+        {
+          y: -8,
+          duration: BONE_ANIM_DURATION,
+          ease: 'power1.out',
+          yoyo: true,
+          repeat: 1,
+          onComplete: () => {
+            boneAnimatingRef.current = false;
+          },
+        }
+      );
+    } else {
+      boneAnimatingRef.current = false;
+    }
+  };
 
   useEffect(() => {
     const paragraphs = paragraphsRef.current.filter(Boolean);
@@ -51,6 +78,7 @@ export default function AboutHistory() {
 
   return (
     <section className='py-[9.375rem]
+    max-lg:py-[5rem]
     max-sm:py-[3.125rem]
     '>
       <Container className='flex justify-between gap-[20px]
@@ -69,27 +97,16 @@ export default function AboutHistory() {
           {/* Картинка кости */}
           <div
             ref={boneRef}
-            className="w-[107px] h-auto absolute left-[15.1875rem] top-[2px] z-10
+            role="button"
+            tabIndex={0}
+            className="w-[107px] h-auto absolute left-[15.1875rem] top-[2px] z-10 cursor-pointer
             max-xl:w-[80px] max-xl:top-0
             max-lg:left-[7rem] max-lg:-top-[2px]
             max-md:left-0
             "
-            onMouseEnter={() => {
-              setBoneColorIndex((prev) => (prev + 1) % BONE_COLORS.length);
-              if (boneRef.current) {
-                gsap.fromTo(
-                  boneRef.current,
-                  { y: 0 },
-                  {
-                    y: -8,
-                    duration: 0.25,
-                    ease: 'power1.out',
-                    yoyo: true,
-                    repeat: 1,
-                  }
-                );
-              }
-            }}
+            onMouseEnter={playBoneAnimation}
+            onClick={playBoneAnimation}
+            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), playBoneAnimation())}
           > 
             <svg
               width="100%"

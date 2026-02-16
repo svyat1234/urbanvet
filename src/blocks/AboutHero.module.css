@@ -4,8 +4,8 @@
     content: '';
     right: 11.83%;
     top: 24.48%;
-    width: 150px;
-    height: 168px;
+    width: 12.87%;
+    aspect-ratio: 150/168;
     background: url("/images/about-big-lap.svg") no-repeat center / cover;
 }
 .imageWrap::before {
@@ -14,8 +14,8 @@
     content: '';
     left: 11%;
     bottom: 12.3%;
-    width: 89px;
-    height: 96px;
+    width: 7.6%;
+    aspect-ratio: 89/96;
     background: url("/images/about-small-lap.svg") no-repeat center / cover;
     z-index: 4;
 }

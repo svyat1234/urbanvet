@@ -25,10 +25,14 @@ export default function PromotionHero({ promotion, content, breadcrumbs }: Promo
   const fromLabel = searchParams.get('fromLabel');
   return (
     <section className={`${styles.hero} py-[3.125rem] bg-[#F9F9F9] mb-[6.25rem]`}>
-      <Container className={`flex items-center justify-between gap-2.5 h-[713px] bg-white`}>
+      <Container className={`flex items-center justify-between gap-2.5 h-[713px] bg-white
+        max-lg:h-auto max-lg:flex-col max-lg:items-start
+        `}>
 
         {/* Изображение */}
-        <div className={`w-[49.875rem] h-full relative`}>
+        <div className={`w-[49.875rem] self-stretch relative
+          max-lg:h-[400px] max-lg:w-full
+          `}>
           {/* BACKEND: изображение акции должно приходить в профиле акции (promotion.image) */}
           <Image
             src={promotion.image ?? serviceImage1}
@@ -39,8 +43,13 @@ export default function PromotionHero({ promotion, content, breadcrumbs }: Promo
         </div>
 
         {/* Правая часть с текстом */}
-        <div className="flex flex-col h-full justify-between p-[4.375rem]">
-          <div className={`flex flex-col gap-[2.5rem]`}>
+        <div className="flex flex-col h-full justify-between p-[4.375rem]
+        max-2xl:p-[3rem]
+        max-lg:p-[2rem] max-lg:h-auto
+        ">
+          <div className={`flex flex-col gap-[2.5rem]
+            max-xl:gap-[2rem]
+            `}>
             {/* Навигация (универсальная).
                 UI: кнопка "назад" работает от history (откуда пришли).
                 Fallback: если страница открыта в новом табе — можно передать `?from=/...&fromLabel=...`
@@ -58,35 +67,46 @@ export default function PromotionHero({ promotion, content, breadcrumbs }: Promo
             </Suspense>
 
             {/* Заголовок */}
-            <h1 className={`text-[3.75rem] font-[Circe] font-normal max-w-[49.125rem] leading-[120%] uppercase`}>
+            <h1 className={`text-[3.75rem] font-[Circe] font-normal max-w-[49.125rem] leading-[120%] uppercase
+              max-2xl:text-[3.5rem]
+              max-xl:text-[3rem]
+              max-lg:text-[2rem]
+              `}>
               {promotion.title}
             </h1>
 
             {/* Текста */}
-            <div className={`flex items-start gap-[3.75rem]`}>
-              <p className={`max-w-[23.75rem] w-full opacity-50 leading-[120%]`}>{content.description[0]}</p>
-              <p className={`max-w-[23.75rem] w-full opacity-50 leading-[120%]`}>{content.description[1]}</p>
+            <div className={`flex items-start gap-[3.75rem]
+              max-xl:flex-col max-xl:gap-4
+              `}>
+              {content.description.map((text,idx) => (
+                <p key={idx} className={`max-w-[23.75rem] w-full opacity-50 leading-[120%]`}>{text}</p>
+              ))}
             </div>
 
             {/* Дата и условие акции */}
-            <div className={`flex gap-[20px] h-[60px]`}>
-                <div className={`flex gap-[4.4px] h-full`}>
+            <div className={`flex gap-[20px]`}>
+                <div className={`flex gap-[4.4px] flex-wrap`}>
+                  <div className="flex gap-1 h-[60px]">
                     <div className={`w-[60px] h-[60px] bg-[#ACD9CF] rounded-[15.27px] ${styles.dateIcon}`}></div>
                     <div className={`px-[1.875rem] h-full bg-[#F9F9F9] rounded-[15.27px] flex items-center gap-1`}>
                         <span className={`${styles.info}`}>{promotion.startsAt}</span>
                         <span className={`${styles.info}`}> - </span>
                         <span className={`${styles.info}`}>{promotion.expiresAt}</span>
                     </div>
+                  </div>
+                  <div className="flex gap-1 h-[60px]">
                     <div className={`w-[60px] h-[60px] rounded-[15.27px] ${styles.conditionsIcon}`}></div>
                     <div className={`px-[1.875rem] h-full bg-[#F9F9F9] rounded-[15.27px] flex items-center`}>
                         <span className={`${styles.info}`}>{promotion.conditions?.join(', ')}</span>
                     </div>
+                  </div>
                 </div>
             </div>
           </div>
 
           {/* Нижняя ссылка */}
-          <CtaButton href={content.cta.href} label={content.cta.label} className={styles.link} />
+          <CtaButton href={content.cta.href} label={content.cta.label} className={`${styles.link} max-lg:mt-10`} />
         </div>
 
       </Container>
