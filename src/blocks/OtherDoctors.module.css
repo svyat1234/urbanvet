@@ -30,8 +30,15 @@
   opacity: 1;
 }
 
-.link:hover {
-  opacity: 0.8 !important;
+@media screen and (min-width: 768px) {
+  .link:hover {
+    opacity: 0.8 !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .link:active {
+    opacity: 0.8 !important;
+  }
 }
 
 

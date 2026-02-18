@@ -62,8 +62,15 @@
   transition: transform 0.2s ease-in-out;
 }
 
-.blog-section img:hover {
-  transform: scale(1.02);
+@media screen and (min-width: 768px) {
+  .blog-section img:hover {
+    transform: scale(1.02);
+  }
+}
+@media screen and (max-width: 767px) {
+  .blog-section img:active {
+    transform: scale(1.02);
+  }
 }
 
 /* Кастомные маркеры для списков */

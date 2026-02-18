@@ -10,10 +10,10 @@ function formatPrice(value: number): string {
 
 interface PricesCardProps {
   item: PriceItem;
-  linkText: string;
+  link?: { href: string; label: string };
 }
 
-export default function PricesCard({ item, linkText }: PricesCardProps) {
+export default function PricesCard({ item, link }: PricesCardProps) {
   const [expanded, setExpanded] = useState(false);
   const href = item.href ?? '#';
 
@@ -48,12 +48,14 @@ export default function PricesCard({ item, linkText }: PricesCardProps) {
             max-md:w-full
             ">{item.description}</p>
 
-            <CtaButton
-              href={href}
-              label={linkText}
-              className={styles.link}
-              onClick={(e) => e.stopPropagation()}
-            />
+            {link && (
+              <CtaButton
+                href={link.href}
+                label={link.label}
+                className={styles.link}
+                onClick={(e) => e.stopPropagation()}
+              />
+            )}
         </div>
 
         {/* Цена */}

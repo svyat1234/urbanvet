@@ -35,10 +35,11 @@ export default function About() {
   };
 
   return (
-    <section className='py-[3.125rem] bg-[#F9F9F9]'>
+    <section className='py-[3.125rem] bg-[#F9F9F9] max-sm:pb-[1.5625rem]'>
       <Container className='flex gap-[4.375rem] bg-white
       max-2xl:gap-[3rem]
       max-lg:flex-col
+      max-sm:gap-0
       '>
       {/* Картинка */}
       <div className="max-w-full w-full self-stretch relative min-h-[200px]
@@ -50,6 +51,7 @@ export default function About() {
       {/* Контент */}
       <div className="flex flex-col gap-[3.125rem] py-[4.375rem] pr-[4.375rem] max-w-[866px] w-full
       max-2xl:py-[2rem] max-2xl:pr-[2rem]
+      max-md:p-[1.5rem]
       max-lg:pl-[2rem]
       max-sm:gap-[2rem]
       ">
@@ -70,7 +72,7 @@ export default function About() {
           </div>
         )}
 
-
+        {/* Карточки */}
         <div className="flex gap-[3.125rem] mt-[2.125rem]
         max-2xl:gap-[2rem]
         max-xl:mt-[1.5rem] max-xl:flex-col
@@ -78,7 +80,11 @@ export default function About() {
         max-sm:flex-col
         ">
 
-        {/* Тут врядли будет больше 2х карточек и они немного разные, поэтому данные идут по индексам */}
+        {/*
+          ---------------------------------------------------------------
+          Тут карточки немного разные, поэтому данные идут по индексам 
+          ---------------------------------------------------------------
+        */}
 
           <div
             className={`${styles.card} flex flex-col relative`}
@@ -88,18 +94,18 @@ export default function About() {
             onBlur={() => handleCardDeactivate(0)}
           >
             <div
-              className="w-[14px] h-full absolute left-0 top-0 transition-colors duration-300"
+              className="w-[14px] max-md:w-[10px] h-full absolute left-0 top-0 transition-colors duration-300"
               style={{ backgroundColor: cardColors[0] }}
             />
             <h3 className="text-[2.5rem] font-bold font-[Circe] leading-[100%]">{addressCard.title}</h3>
-            <a href={addressCard.href ?? '#'} className="text-[0.9375rem] mt-[1.75rem] max-w-[240px] leading-[115%]
+            <a href={addressCard.href ?? '#'} className={`${styles.link} text-[0.9375rem] mt-[1.75rem] max-w-[240px] leading-[115%]
             max-xl:max-w-full
-            ">
+            `}>
               {addressCard.text}
             </a>
             <a
               href={`tel:${addressCard.phone!.replace(/\s/g, '')}`}
-              className="text-[0.875rem] text-white font-medium bg-[#1D1D1D] flex items-center justify-center px-[1.875rem] h-[42px] rounded-[100px] mt-[2.3125rem] w-fit"
+              className={`${styles.phoneLink} text-[0.875rem] text-white font-medium bg-[#1D1D1D] flex items-center justify-center px-[1.875rem] h-[42px] rounded-[100px] mt-[2.3125rem] w-fit`}
             >
               {addressCard.phone}
             </a>
@@ -113,7 +119,7 @@ export default function About() {
             onBlur={() => handleCardDeactivate(1)}
           >
             <div
-              className="w-[14px] h-full absolute left-0 top-0 transition-colors duration-300"
+              className="w-[14px] max-md:w-[10px] h-full absolute left-0 top-0 transition-colors duration-300"
               style={{ backgroundColor: cardColors[1] }}
             />
             <h3 className="text-[2.5rem] font-bold font-[Circe] leading-[100%]">{recordCard.title}</h3>

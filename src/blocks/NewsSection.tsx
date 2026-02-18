@@ -19,7 +19,7 @@ export default function NewsSection() {
     const [featured, ...rest] = latest;
 
     return (
-        <section className={`py-13 bg-[#F9F9F9]`}>
+        <section className={`py-13 bg-[#F9F9F9] max-sm:py-[3.125rem]`}>
             <Container>
                 <div className={`grid grid-cols-3 gap-5
                   max-md:grid-cols-2

@@ -6,6 +6,7 @@ import Container from '@/components/Container';
 import CtaButton from '@/components/CtaButton';
 import Image from 'next/image';
 import PageNav from '@/components/PageNav';
+import { BASE_PATH } from '@/lib/basePath';
 import type { BlogPost, BlogHeroContent } from '@/lib/constants';
 
 interface BlogHeroProps {
@@ -47,7 +48,7 @@ export default function BlogHero({ blogPost, content, breadcrumbs }: BlogHeroPro
                 className={styles.nav}
                 // UI: breadcrumbs "Статьи / ФИО автора (врача)"
                 items={breadcrumbs}
-                defaultItems={[{ label: 'Статьи', href: '/blogs' }]}
+                defaultItems={[{ label: 'Статьи', href: `${BASE_PATH}/blogs` }]}
               />
             </Suspense>
 

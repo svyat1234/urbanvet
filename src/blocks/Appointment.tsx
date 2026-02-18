@@ -513,7 +513,7 @@ export default function Appointment() {
 
   return (
     // Сама секция
-    <section className="pt-[6.25rem]">
+    <section id='appointment' className="pt-[6.25rem] max-md:pt-[3.125rem]">
       <Container>
         <div className="flex justify-between items-end
         max-md:flex-col max-md:justify-start max-md:items-start max-md:gap-10

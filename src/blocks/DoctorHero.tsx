@@ -6,6 +6,7 @@ import Container from '@/components/Container';
 import CtaButton from '@/components/CtaButton';
 import Image from 'next/image';
 import PageNav from '@/components/PageNav';
+import { BASE_PATH } from '@/lib/basePath';
 import type { Doctor, DoctorHeroContent } from '@/lib/constants';
 
 interface DoctorHeroProps {
@@ -17,11 +18,11 @@ interface DoctorHeroProps {
 
 export default function DoctorHero({ doctor, content }: DoctorHeroProps) {
   return (
-    <section className={`${styles.hero} py-[3.125rem]  bg-[#F9F9F9]`}>
+    <section className={`${styles.hero} py-[3.125rem] bg-[#F9F9F9]`}>
       <Container className={`flex items-center justify-between gap-2.5 h-[713px] bg-white
         max-2xl:h-[680px]
         max-xl:h-auto
-        max-md:flex-col max-md:pt-[3rem] max-md:items-start
+        max-md:flex-col max-md:pt-0 max-md:items-start
         `}>
 
         {/* Контент */}
@@ -29,7 +30,7 @@ export default function DoctorHero({ doctor, content }: DoctorHeroProps) {
         <div className="flex flex-col h-full justify-between max-w-[823px] w-full p-[4.375rem] relative
         max-2xl:p-[3rem]
         max-md:order-2
-        max-md:pt-[1rem] max-md:p-[1.5rem]
+        max-md:pt-[1rem] max-md:p-[1.5rem] max-md:pb-[2rem]
         ">
 
             <div className={`flex flex-col gap-[2.5rem]
@@ -41,7 +42,7 @@ export default function DoctorHero({ doctor, content }: DoctorHeroProps) {
                 <Suspense fallback={<div className="h-[2.375rem]" />}>
                   <PageNav
                     className={styles.nav}
-                    items={[{ label: 'Врачи', href: '/doctors' }]}
+                    items={[{ label: 'Врачи', href: `${BASE_PATH}/doctors` }]}
                   />
                 </Suspense>
 
@@ -78,7 +79,8 @@ export default function DoctorHero({ doctor, content }: DoctorHeroProps) {
 
         {/* Изображение */}
         <div className={`${styles.imageWrap} max-w-[49.875rem] w-full self-stretch relative overflow-hidden
-        max-md:w-[50%] max-md:max-w-none max-md:aspect-square max-md:self-auto max-md:ml-[1.5rem]
+        max-md:max-w-full max-md:w-1/2 max-md:aspect-square max-md:self-auto max-md:mt-[2rem] max-md:ml-[1.5rem]
+        max-sm:w-full max-sm:m-0
         `}>
             {/* BACKEND: фото врача должно приходить в профиле врача (doctor.photo) */}
             <Image

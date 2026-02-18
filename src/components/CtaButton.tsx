@@ -1,3 +1,5 @@
+import styles from '@/components/CtaButton.module.css'
+
 interface CtaButtonProps {
   href: string;
   label: string;
@@ -10,7 +12,7 @@ export default function CtaButton({ href, label, className = '', onClick }: CtaB
     <a
       href={href}
       onClick={onClick}
-      className={`flex items-center gap-[4px] h-[2.625rem] ${className}`}
+      className={`flex items-center gap-[4px] h-[2.625rem] w-fit ${className} ${styles.button}`}
     >
       <span className="text-[0.875rem] text-white font-medium bg-[#1D1D1D] flex items-center justify-center px-[1.875rem] h-full rounded-[100px]">
         {label}

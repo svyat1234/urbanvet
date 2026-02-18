@@ -48,8 +48,15 @@
   transition: opacity 0.2s ease;
 }
 
-.modalClose:hover {
-  opacity: 0.6;
+@media screen and (min-width: 768px) {
+  .modalClose:hover {
+    opacity: 0.6;
+  }
+}
+@media screen and (max-width: 767px) {
+  .modalClose:active {
+    opacity: 0.6;
+  }
 }
 
 .searchWrap {
@@ -64,8 +71,8 @@
   min-width: 20rem;
   height: 53px;
   background: #fff;
-  border: 1px solid #1d1d1d36;
-  border-radius: 100px;
+  border: 2px solid #F9F9F9;
+  border-radius: 8px;
   z-index: 50;
   display: flex;
   align-items: center;
@@ -89,7 +96,7 @@
   font-size: 1.2rem;
   border: none;
   outline: none;
-  border-radius: 100px 0 0 100px;
+  border-radius: 8px;
   padding-left: 20px;
   background: transparent;
 }
@@ -112,8 +119,15 @@
   transition: opacity 0.2s ease;
 }
 
-.searchSubmit:hover {
-  opacity: 0.6;
+@media screen and (min-width: 768px) {
+  .searchSubmit:hover {
+    opacity: 0.6;
+  }
+}
+@media screen and (max-width: 767px) {
+  .searchSubmit:active {
+    opacity: 0.6;
+  }
 }
 
 /* Скрыть крестик очистки у type="search" */
@@ -132,19 +146,30 @@
     background-color: var(--dark);
     transition: all 0.2s ease;
     border: 1px solid #ffffff00;
-
-    &:hover {
-        border-color: var(--dark);
-        background-color: #fff;
-        color: var(--dark);
-    }
 }
-
+@media screen and (min-width: 768px) {
+  .phone:hover {
+    border-color: var(--dark);
+    background-color: #fff;
+    color: var(--dark);
+  }
+}
 @media screen and (max-width: 767px) {
-
+  .phone:active {
+    border-color: var(--dark);
+    background-color: #fff;
+    color: var(--dark);
+  }
 }
+
 @media screen and (max-width: 639px) {
   .modalPanel {
     width: 100%;
+  }
+}
+@media screen and (max-width: 639px) {
+  .searchDropdown {
+    width: 90vw;
+    right: calc(-102%)
   }
 }

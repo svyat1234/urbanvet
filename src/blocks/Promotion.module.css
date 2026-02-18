@@ -1,14 +1,15 @@
 .info {
     font-size: 1.225rem;
     font-weight: 500;
+    line-height: 110%;
 }
 
 .dateIcon {
-    background: #ACD9CF url('/images/date.svg') no-repeat center;
+    background: #ACD9CF var(--url-date, url('/images/date.svg')) no-repeat center;
 }
 
 .conditionsIcon {
-    background: #ACD9CF url('/images/quotes.svg') no-repeat center;
+    background: #ACD9CF var(--url-quotes, url('/images/quotes.svg')) no-repeat center;
 }
 
 /* @media screen and (max-width: 1023px) {

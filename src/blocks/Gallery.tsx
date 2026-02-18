@@ -50,7 +50,9 @@ export default function Gallery() {
   const activeItem = activeIndex !== null ? GALLERY_ITEMS[activeIndex] : null;
 
   return (
-    <section className={`py-[3.13rem] mt-[6.25rem] mb-12.5 bg-[#F9F9F9]`}>
+    <section className={`py-[3.13rem] mt-[6.25rem] mb-12.5 bg-[#F9F9F9]
+    max-md:my-10
+    `}>
       <Container className={`flex flex-col gap-10`}>
         <div className={`flex items-end justify-between`}>
           <Heading

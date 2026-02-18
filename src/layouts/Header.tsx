@@ -20,11 +20,12 @@ const HEADER_INFO = {
 } as const;
 
 const HEADER_NAV_LINKS = [
-  { href: '/promotions', label: 'Акции' },
-  { href: '/doctors', label: 'Врачи' },
-  { href: '/vacancies', label: 'Вакансии' },
-  { href: '#', label: 'База знаний' },
-  { href: '#', label: 'Новости' },
+  { href: `${BASE_PATH}/promotions`, label: 'Акции' },
+  { href: `${BASE_PATH}/about`, label: 'О компании' },
+  { href: `${BASE_PATH}/doctors`, label: 'Врачи' },
+  { href: `${BASE_PATH}/vacancies`, label: 'Вакансии' },
+  { href: `${BASE_PATH}/blogs`, label: 'Наш блог' },
+  { href: `${BASE_PATH}/prices`, label: 'Цены' },
 ] as const;
 
 export default function Header() {
@@ -51,7 +52,7 @@ export default function Header() {
   }, [isSearchOpen]);
 
   return (
-    <header className={`${styles.header} mt-6.75 mb-[3.125rem] h-19.25 relative`}>
+    <header className={`${styles.header} mt-6.75 mb-[3.125rem] h-19.25 relative max-sm:my-6`}>
       <Container className="flex items-center justify-between h-full border border-solid border-[#1D1D1D]">
 
         <div className={`min-w-46 flex items-center h-full justify-center

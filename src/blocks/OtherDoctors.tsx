@@ -68,7 +68,7 @@ export default function OtherDoctors({ currentDoctorKey, heading }: OtherDoctors
   }, []);
 
   return (
-    <section className={`${styles.section} pt-12.5 pb-25`}>
+    <section className={`${styles.section} pt-12.5 pb-25 max-md:py-[3.125rem]`}>
       <Container>
         <div className={`${styles.slider} flex gap-[20px]
         max-md:flex-col

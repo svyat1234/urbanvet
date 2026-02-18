@@ -31,7 +31,7 @@ export default function Stats() {
   };
 
   return (
-    <section className="py-[3.125rem]">
+    <section className="py-[3.125rem] max-sm:py-[2rem]">
       <Container className="grid grid-cols-4 gap-[20px] h-[290px]
       max-xl:h-[200px]
       max-lg:h-[170px]

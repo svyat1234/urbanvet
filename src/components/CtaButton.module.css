@@ -1,0 +1,38 @@
+.button span, .button svg, .button svg path {
+    transition: all 0.2s ease-in-out;
+}
+.button span {
+    border: 1px solid #1d1d1d00;
+}
+@media screen and (min-width: 768px) {
+    .button:hover span{
+      background: #1d1d1d00 !important;
+      border: 1px solid #1d1d1d;
+      color: #1d1d1d;
+    }
+    .button:hover svg {
+        animation: jump 0.4s ease-in-out;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .button:active span{
+        background: #1d1d1d00 !important;
+        border: 1px solid #1d1d1d;
+        color: #1d1d1d;
+      }
+      .button:active svg {
+          animation: jump 0.4s ease-in-out;
+      }
+  }
+
+  @keyframes jump {
+    0% {
+        transform: none;
+    }
+    50% {
+        transform: scale(1.05) translate(5px, -5px);
+    }
+    100% {
+        transform: none;
+    }
+  }

@@ -46,9 +46,11 @@
     transition: outline 0.75s ease-in 0.2s; /* уход: длительность и задержка 0.2s */
   }
 
-  .doctorsBlock:hover .doctorImageWrap {
-    outline: 5px solid #ACD9CF;
-    transition: outline 0.2s ease-in 0s; /* при наведении: без задержки */
+  @media screen and (min-width: 0px) {
+    .doctorsBlock:hover .doctorImageWrap {
+      outline: 5px solid #ACD9CF;
+      transition: outline 0.2s ease-in 0s; /* при наведении: без задержки */
+    }
   }
 
   /* Снизу розовый слой с opacity, сверху маска-градиент; при наведении маска уезжает, opacity → 100% */
@@ -157,11 +159,29 @@
   opacity: 0;
 }
 
-.heading:hover .laps::after {
-  opacity: 1;
-  transition: all 0.2s ease-in 0s;
+.doctorLink {
+  transition: all 0.2s ease-in-out;
 }
 
+.doctorLink:active {
+  transform: scale(0.9) !important;
+}
+
+@media screen and (min-width: 0px) {
+  .heading:hover .laps::after {
+    opacity: 1;
+    transition: all 0.2s ease-in 0s;
+  }
+}
+@media screen and (min-width: 767px) {
+  .heading:hover .laps::after {
+    opacity: 1;
+    transition: all 0.2s ease-in 0s;
+  }
+  .doctorLink:hover {
+    transform: scale(1.1);
+  }
+}
 .bird {
   position: absolute;
   content: '';
@@ -198,6 +218,6 @@
     --doctorImageWrapWidth: 90px;
   }
   .doctorImageCards {
-    width: calc(var(--doctorImageWrapWidth) * 1.4);
+    width: calc(var(--doctorImageWrapWidth) * 1.3);
   }
 }

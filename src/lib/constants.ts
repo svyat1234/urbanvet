@@ -18,6 +18,7 @@ import galleryDog from '@/assets/images/gallery/dog.png';
 import vacancyImage from '@/assets/images/vacancies/vacancy.png';
 import heroImageAsset from '@/assets/images/hero.png';
 import type { StaticImageData } from 'next/image';
+import { BASE_PATH } from './basePath';
 
 export interface Doctor {
   id: number;
@@ -330,7 +331,7 @@ export const HOME_PAGE: { hero: HomeHeroData; about: AboutBlockData } = {
     description:
       'Мы используем современное оборудование и работаем с командой опытных ветеринарных хирургов.',
     cta: {
-      href: '#',
+      href: `${BASE_PATH}/doctors/#appointment`,
       label: 'Записаться на приём',
     },
     heroImage: heroImageAsset,
@@ -716,7 +717,10 @@ export const PRICES_SECTION = {
     title: 'наши услуги',
   },
   /** Текст кнопки/ссылки на запись (например, «Записаться на приём»). */
-  linkText: 'Записаться на приём',
+  link: {
+    href: `${BASE_PATH}/doctors/#appointment`,
+    label: 'Записаться на приём',
+  }
 } as const;
 
 export const PRICES: PriceItem[] = [
@@ -1328,8 +1332,8 @@ export const BLOG_PAGES: BlogPagesData = {
   hero: {
     // UI: CTA одинаковый для всех страниц блога (не дублируем в каждом ключе).
     cta: {
-      label: 'Читать далее',
-      href: '#',
+      label: 'Записаться на приём',
+      href: `#appointment`,
     },
   },
   pages: {
@@ -1619,7 +1623,9 @@ export const CONTACTS_BLOCK: ContactsBlockData = {
     { href: '', label: 'Uzbeki' },
     { href: '', label: 'Taksisti' },
   ],
-  cta: { href: '', label: 'Записаться на приём' },
+  cta: { 
+    href: `${BASE_PATH}/doctors/#appointment`, 
+    label: 'Записаться на приём' },
   map: {
     iframeSrc: 'https://yandex.ru/map-widget/v1/?ll=37.497504%2C55.802068&mode=search&oid=27155976882&ol=biz&z=17.02',
     link1: {
@@ -1645,8 +1651,8 @@ export const ABOUT_PAGE: AboutPageData = {
     title: 'здоровье питомца — спокойствие хозяина',
     description: 'Мы используем современное оборудование и работаем с командой опытных ветеринарных хирургов. Наше отделение включает операционную с анестезиологическим и реанимационным оснащением.',
     cta: {
+      href: `${BASE_PATH}/doctors/#appointment`,
       label: 'Записаться на приём',
-      href: '#',
     },
     image: aboutHeroImage,
     imageAlt: 'Ветеринарная клиника Фонда защиты городских животных',
@@ -1943,7 +1949,7 @@ export const DOCTOR_PAGES: DoctorPagesData = {
     // UI: CTA одинаковый для всех страниц врача (не дублируем в каждом ключе).
     cta: {
       label: 'Записаться на приём',
-      href: '#',
+      href: '#appointment',
     },
   },
   services: {

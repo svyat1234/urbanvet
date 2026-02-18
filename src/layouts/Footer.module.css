@@ -6,8 +6,15 @@
     height: fit-content;
 }
 
-.link:hover {
-    opacity: 0.7;
+@media screen and (min-width: 768px) {
+    .link:hover {
+        opacity: 0.7;
+    }
+}
+@media screen and (max-width: 767px) {
+    .link:active {
+        opacity: 0.7;
+    }
 }
 
 .contactLink {
@@ -22,10 +29,19 @@
     align-items: center;
 }
 
-.contactLink:hover {
-    background: var(--dark);
-    color: #fff;
-    border-color: #fff;
+@media screen and (min-width: 768px) {
+    .contactLink:hover {
+        background: var(--dark);
+        color: #fff;
+        border-color: #fff;
+    }
+}
+@media screen and (max-width: 767px) {
+    .contactLink:active {
+        background: var(--dark);
+        color: #fff;
+        border-color: #fff;
+    }
 }
 
 .socialLink {
@@ -44,8 +60,15 @@
     object-fit: cover;
 }
 
-.socialLink:hover {
-    opacity: 0.5;
+@media screen and (min-width: 768px) {
+    .socialLink:hover {
+        opacity: 0.5;
+    }
+}
+@media screen and (max-width: 767px) {
+    .socialLink:active {
+        opacity: 0.5;
+    }
 }
 
 .documentLink {
@@ -55,6 +78,19 @@
     transition: color 0.2s ease-in-out;
 }
 
-.documentLink:hover {
-    color: var(--dark);
+@media screen and (min-width: 768px) {
+    .documentLink:hover {
+        color: var(--dark);
+    }
+}
+@media screen and (max-width: 767px) {
+    .documentLink:active {
+        color: var(--dark);
+    }
+}
+
+@media screen and (max-width: 639px) {
+    .contactLink {
+        padding: 0rem 1.5rem;
+    }
 }

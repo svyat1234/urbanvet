@@ -68,7 +68,7 @@ export default function Prices() {
             <PricesCard
               key={item.id}
               item={item}
-              linkText={PRICES_SECTION.linkText}
+              link={PRICES_SECTION.link}
             />
           ))}
         </div>

@@ -1,6 +1,13 @@
 .card {
   transition: background 0.3s;
 }
-.card:hover {
-  background: #F9F9F9;
+@media screen and (min-width: 768px) {
+  .card:hover {
+    background: #F9F9F9;
+  }
+}
+@media screen and (max-width: 767px) {
+  .card:active {
+    background: #F9F9F9;
+  }
 }

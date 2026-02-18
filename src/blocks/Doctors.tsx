@@ -5,7 +5,7 @@ import Container from '@/components/Container';
 import Heading from '@/components/Heading';
 import Doctor from '@/components/Doctor';
 import type { DoctorsPageData } from '@/lib/constants';
-import styles from './DoctorsHero.module.css';
+import styles from './Doctors.module.css';
 
 export interface DoctorsProps {
   data?: DoctorsPageData | null;
@@ -198,7 +198,7 @@ export default function Doctors({
   if (!data || doctors.length === 0) return null;
 
   return (
-    <section ref={sectionRef} className={`${styles.doctors} pt-25 pb-[3.125rem]`}>
+    <section ref={sectionRef} className={`${styles.doctors} pt-25 pb-[3.125rem] max-sm:py-[3.125rem]`}>
       <Container>
         <div className={`flex items-end justify-between gap-5
           max-md:flex-col max-md:items-start max-md:justify-start

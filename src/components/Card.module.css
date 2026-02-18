@@ -30,9 +30,15 @@
   backdrop-filter: blur(5px);
 }
 
-.card:hover .bgLayer,
-.card:focus-visible .bgLayer {
-  opacity: 1;
+@media screen and (min-width: 768px) {
+  .card:hover .bgLayer {
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 767px) {
+  .card:active .bgLayer {
+    opacity: 1;
+  }
 }
 
 .card {
@@ -45,27 +51,47 @@
   transition: opacity 300ms ease;
 }
 
-.cardWithImage:hover,
-.cardWithImage:focus-visible {
-  opacity: 1;
-  color: #ffffff;
-  transition: color 300ms ease;
+@media screen and (min-width: 768px) {
+  .cardWithImage:hover {
+    opacity: 1;
+    color: #ffffff;
+    transition: color 300ms ease;
+  }
+  .cardWithImage:hover .icon {
+    opacity: 1;
+    color: #ffffff;
+  }
+  .card:not(.cardWithImage):hover .icon {
+    opacity: 1;
+    color: #1D1D1D;
+  }
 }
-
-.cardWithImage:hover .icon,
-.cardWithImage:focus-visible .icon {
-  opacity: 1;
-  color: #ffffff;
-}
-
-.card:not(.cardWithImage):hover .icon,
-.card:not(.cardWithImage):focus-visible .icon {
-  opacity: 1;
-  color: #1D1D1D;
+@media screen and (max-width: 767px) {
+  .cardWithImage:active {
+    opacity: 1;
+    color: #ffffff;
+    transition: color 300ms ease;
+  }
+  .cardWithImage:active .icon {
+    opacity: 1;
+    color: #ffffff;
+  }
+  .card:not(.cardWithImage):active .icon {
+    opacity: 1;
+    color: #1D1D1D;
+  }
 }
 
 @media screen and (max-width: 1280px) {
   .tag {
     padding-inline: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .icon, .icon svg {
+    opacity: 1;
+    width: 40px;
+    height: 40px;
   }
 }

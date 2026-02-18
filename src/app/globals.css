@@ -41,9 +41,17 @@ body {
     align-items: center;
   }
 
-  .sort-btn:hover {
-    background: #acd9cf;
-    border: 1px solid #acd9cf
+  @media screen and (min-width: 768px) {
+    .sort-btn:hover {
+      background: #acd9cf;
+      border: 1px solid #acd9cf;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .sort-btn:active {
+      background: #acd9cf;
+      border: 1px solid #acd9cf;
+    }
   }
 
   
@@ -62,7 +70,7 @@ body {
     transform: translateY(-50%);
     width: 6px;
     height: 11px;
-    background: url('/images/sort.svg') no-repeat center;
+    background: var(--url-sort, url('/images/sort.svg')) no-repeat center;
   }
 
   .sort-search {
@@ -106,11 +114,31 @@ body {
     transform: scaleX(-1) !important;
   }
   
-  .slider-button:hover {
-    background: black !important;
+  @media screen and (min-width: 768px) {
+    .slider-button:hover {
+      background: black !important;
+    }
+    .slider-button:hover svg path {
+      fill: white;
+    }
   }
-  
-  .slider-button:hover svg path {
-    fill: white;
+  @media screen and (max-width: 767px) {
+    .slider-button:active {
+      background: black !important;
+    }
+    .slider-button:active svg path {
+      fill: white;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .slider-button {
+      width: 40px;
+      height: 40px;
+    }
+    .slider-button svg{
+      width: 20px;
+      height: 20px;
+    }
   }
 }

@@ -21,8 +21,15 @@
   transition: opacity 0.2s ease-in-out;
 }
 
-.btn:hover {
-  opacity: 0.8;
+@media screen and (min-width: 768px) {
+  .btn:hover {
+    opacity: 0.8;
+  }
+}
+@media screen and (max-width: 767px) {
+  .btn:active {
+    opacity: 0.8;
+  }
 }
 
 .btnNext {
@@ -45,8 +52,15 @@
   gap: 1.5625rem;
 }
 
-.btnNumber:hover {
-  color: var(--dark)
+@media screen and (min-width: 768px) {
+  .btnNumber:hover {
+    color: var(--dark);
+  }
+}
+@media screen and (max-width: 767px) {
+  .btnNumber:active {
+    color: var(--dark);
+  }
 }
 
 .btnNumber.active {
@@ -72,4 +86,11 @@
 
 .fadeIn {
   opacity: 1;
+}
+
+@media screen and (max-width: 639px) {
+  .btn, .btn svg {
+    width: 45px;
+    height: 45px;
+  }
 }

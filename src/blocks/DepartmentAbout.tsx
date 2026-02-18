@@ -23,7 +23,7 @@ export default function DepartmentAbout({ data }: DepartmentAboutProps) {
   }
 
   return (
-    <section className={`${styles.about} mt-[6.25rem] pt-[3.125rem]`}>
+    <section className={`${styles.about} mt-[6.25rem] pt-[3.125rem] max-md:mt-[3.125rem] max-md:pt-0`}>
       {/* Первый блок */}
       <Container className={`flex justify-between pb-[2.5rem] gap-[20px]
         max-lg:flex-col max-lg:justify-start
@@ -31,7 +31,7 @@ export default function DepartmentAbout({ data }: DepartmentAboutProps) {
         {/* Текста */}
         <div className={`flex gap-[52px] mt-[5rem]
           max-xl:flex-col max-xl:gap-6 max-xl:max-w-[50%] max-xl:w-full
-          max-lg:order-2 max-lg:max-w-full max-lg:mt-[1rem] max-lg:gap-4
+          max-lg:order-2 max-lg:max-w-full max-lg:gap-4 max-lg:mt-0
           `}>
           {data.description.map((text, idx) => (
             <p key={idx} className={styles.aboutText}>{text}</p>
@@ -43,7 +43,7 @@ export default function DepartmentAbout({ data }: DepartmentAboutProps) {
       </Container>
 
       {/* Второй блок со статистикой */}
-      <div className={`bg-[#F9F9F9] w-full pt-[3.125rem] pb-[5.75rem]`}>
+      <div className={`bg-[#F9F9F9] w-full pt-[3.125rem] pb-[5.75rem] max-sm:py-[1.5625rem]`}>
         <Container className={`flex gap-[1.25rem]
           max-lg:flex-col
           `}>

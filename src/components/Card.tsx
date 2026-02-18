@@ -52,7 +52,7 @@ export default function Card({ data, href }: CardProps) {
       {/* Текст, заголовок и иконка */}
       <span className={`relative z-10 flex flex-col gap-[1.875rem]`}>
         <p className={`text-[0.9375rem] leading-[100%] max-w-[350px]`}>{data.description}</p>
-        <span className={`flex justify-between items-end`}>
+        <span className={`flex justify-between items-end gap-2`}>
           <h3 className={`font-[Circe] font-bold text-[2.5rem] leading-[90%] max-w-[350px]
             max-2xl:text-[2rem]
             max-xl:text-[1.5rem]

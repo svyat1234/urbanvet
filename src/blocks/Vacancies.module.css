@@ -17,5 +17,5 @@
     left: 21px;
     top: 50%;
     transform: translateY(-50%);
-    background: url('/images/human.png') no-repeat center / contain;
+    background: var(--url-human, url('/images/human.png')) no-repeat center / contain;
 }

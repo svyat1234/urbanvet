@@ -26,7 +26,7 @@ export default function CardsSection<TItem>({
   const sectionBg = theme === 'light' ? 'bg-white' : 'bg-[#F9F9F9]';
   return (
     <CardsSectionThemeContext.Provider value={theme ?? null}>
-    <section className={`py-[3.125rem] ${sectionBg}`}>
+    <section className={`py-[3.125rem] ${sectionBg} max-sm:py-[1.5625rem]`}>
       <Container className={`flex flex-col gap-[1.25rem]`}>
 
         <div className={`grid grid-cols-3 gap-[1.25rem]

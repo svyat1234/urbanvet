@@ -1,8 +1,15 @@
 .card {
   transition: all 0.1s ease-in-out;
 }
-.card:hover {
-  background: #acd9cf;
+@media screen and (min-width: 768px) {
+  .card:hover {
+    background: #acd9cf;
+  }
+}
+@media screen and (max-width: 767px) {
+  .card:active {
+    background: #acd9cf;
+  }
 }
 
 .sortBtnActive {
@@ -18,13 +25,23 @@
   color: #A8A8A8;
 }
 
-.cardNotActive:hover {
-  background: #F4F4F4;
-  cursor: not-allowed;
+@media screen and (min-width: 768px) {
+  .cardNotActive:hover {
+    background: #F4F4F4;
+    cursor: not-allowed;
+  }
+  .cardNotActive:hover span {
+    color: #A8A8A8;
+  }
 }
-
-.cardNotActive:hover span {
-  color: #A8A8A8;
+@media screen and (max-width: 767px) {
+  .cardNotActive:active {
+    background: #F4F4F4;
+    cursor: not-allowed;
+  }
+  .cardNotActive:active span {
+    color: #A8A8A8;
+  }
 }
 
 .input {
@@ -69,7 +86,7 @@
   height: 100%;
   aspect-ratio: 1/1;;
   border-radius: 50%;
-  background: var(--dark) url("/images/form-icon.svg") no-repeat center center;
+  background: var(--dark) var(--url-form-icon, url("/images/form-icon.svg")) no-repeat center center;
 }
 
 /* Кастомный чекбокс: обёртка и визуальный квадрат 25×25, при отмеченном — фон #ACD9CF */
@@ -117,7 +134,7 @@
   color: inherit;
   display: flex;
   align-items: center;
-  background: #ffffff url("/images/arrow-down.svg") no-repeat right 8.2% center;
+  background: #ffffff var(--url-arrow-down, url("/images/arrow-down.svg")) no-repeat right 8.2% center;
 }
 
 .selectTriggerPlaceholder {
@@ -167,8 +184,15 @@
   transition: color 0.15s ease;
 }
 
-.selectModalClose:hover {
-  color: #666;
+@media screen and (min-width: 768px) {
+  .selectModalClose:hover {
+    color: #666;
+  }
+}
+@media screen and (max-width: 767px) {
+  .selectModalClose:active {
+    color: #666;
+  }
 }
 
 .selectDropdown {
@@ -187,8 +211,15 @@
   border-radius: 8px;
 }
 
-.selectOption:hover {
-  background: #ACD9CF;
+@media screen and (min-width: 768px) {
+  .selectOption:hover {
+    background: #ACD9CF;
+  }
+}
+@media screen and (max-width: 767px) {
+  .selectOption:active {
+    background: #ACD9CF;
+  }
 }
 
 .heading span{
@@ -205,7 +236,7 @@
   transform: translateY(-50%);
   width: 20px;
   height: 21px;
-  background: url("/images/time.png") no-repeat center / cover;
+  background: var(--url-time, url("/images/time.png")) no-repeat center / cover;
 }
 
 @media screen and (max-width: 1279px) {

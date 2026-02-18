@@ -24,6 +24,13 @@
   z-index: -1;
 }
 
-.card:hover .gradient {
-  opacity: 1;
+@media screen and (min-width: 768px) {
+  .card:hover .gradient {
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 767px) {
+  .card:active .gradient {
+    opacity: 1;
+  }
 }

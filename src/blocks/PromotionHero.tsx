@@ -6,6 +6,7 @@ import styles from './Promotion.module.css';
 import Container from '@/components/Container';
 import CtaButton from '@/components/CtaButton';
 import Image from 'next/image';
+import { BASE_PATH } from '@/lib/basePath';
 import PageNav from '@/components/PageNav';
 import type { PromotionItem, PromotionHeroContent } from '@/lib/constants';
 import serviceImage1 from '@/assets/images/services-1.png';
@@ -24,7 +25,9 @@ export default function PromotionHero({ promotion, content, breadcrumbs }: Promo
   const from = searchParams.get('from');
   const fromLabel = searchParams.get('fromLabel');
   return (
-    <section className={`${styles.hero} py-[3.125rem] bg-[#F9F9F9] mb-[6.25rem]`}>
+    <section className={`${styles.hero} py-[3.125rem] bg-[#F9F9F9] mb-[6.25rem]
+    max-md:mb-10
+    `}>
       <Container className={`flex items-center justify-between gap-2.5 h-[713px] bg-white
         max-lg:h-auto max-lg:flex-col max-lg:items-start
         `}>
@@ -46,6 +49,7 @@ export default function PromotionHero({ promotion, content, breadcrumbs }: Promo
         <div className="flex flex-col h-full justify-between p-[4.375rem]
         max-2xl:p-[3rem]
         max-lg:p-[2rem] max-lg:h-auto
+        max-sm:px-[1rem] max-sm:pb-[3.125rem]
         ">
           <div className={`flex flex-col gap-[2.5rem]
             max-xl:gap-[2rem]
@@ -61,7 +65,7 @@ export default function PromotionHero({ promotion, content, breadcrumbs }: Promo
                 items={breadcrumbs}
                 defaultItems={[
                   ...(from && fromLabel ? [{ label: fromLabel, href: from }] : []),
-                  { label: 'Акции', href: '/promotions' }
+                  { label: 'Акции', href: `${BASE_PATH}/promotions` }
                 ]}
               />
             </Suspense>
@@ -88,16 +92,16 @@ export default function PromotionHero({ promotion, content, breadcrumbs }: Promo
             <div className={`flex gap-[20px]`}>
                 <div className={`flex gap-[4.4px] flex-wrap`}>
                   <div className="flex gap-1 h-[60px]">
-                    <div className={`w-[60px] h-[60px] bg-[#ACD9CF] rounded-[15.27px] ${styles.dateIcon}`}></div>
-                    <div className={`px-[1.875rem] h-full bg-[#F9F9F9] rounded-[15.27px] flex items-center gap-1`}>
+                    <div className={`min-w-[60px] h-[60px] bg-[#ACD9CF] rounded-[15.27px] ${styles.dateIcon}`}></div>
+                    <div className={`px-[1.875rem] max-sm:px-[1rem] h-full bg-[#F9F9F9] rounded-[15.27px] flex items-center gap-1`}>
                         <span className={`${styles.info}`}>{promotion.startsAt}</span>
                         <span className={`${styles.info}`}> - </span>
                         <span className={`${styles.info}`}>{promotion.expiresAt}</span>
                     </div>
                   </div>
                   <div className="flex gap-1 h-[60px]">
-                    <div className={`w-[60px] h-[60px] rounded-[15.27px] ${styles.conditionsIcon}`}></div>
-                    <div className={`px-[1.875rem] h-full bg-[#F9F9F9] rounded-[15.27px] flex items-center`}>
+                    <div className={`min-w-[60px] h-[60px] rounded-[15.27px] ${styles.conditionsIcon}`}></div>
+                    <div className={`px-[1.875rem] max-sm:px-[1rem] h-full bg-[#F9F9F9] rounded-[15.27px] flex items-center`}>
                         <span className={`${styles.info}`}>{promotion.conditions?.join(', ')}</span>
                     </div>
                   </div>

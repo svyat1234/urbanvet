@@ -11,7 +11,7 @@ export default function Contacts() {
   const data = CONTACTS_BLOCK;
 
   return (
-    <section className="pt-[6.25rem]">
+    <section className="pt-[6.25rem] max-sm:py-[3.125rem]">
       <Container className="flex gap-[20px] max-lg:flex-col">
         {/* Контент */}
         <div className="flex flex-col flex-1">
@@ -21,6 +21,7 @@ export default function Contacts() {
 
           <div className="flex mt-[3.125rem] flex-1 justify-between items-end gap-[20px]
           max-xl:flex-col items-start justify-start
+          max-sm:mt-8
           ">
             <div className="flex items-end gap-[20px]
             max-2xl:flex-col max-2xl:items-start
@@ -34,7 +35,7 @@ export default function Contacts() {
                 >
                   {data.address}
                 </a>
-                <div className="flex gap-[5px]">
+                <div className="flex gap-[5px] flex-wrap">
                   <a href={`mailto:${data.email}`} className={styles.contactLink}>
                     {data.email}
                   </a>
@@ -65,7 +66,7 @@ export default function Contacts() {
           </div>
 
           {/* Карта */}
-          <div className={`${styles.map}`} style={{ position: 'relative', overflow: 'hidden' }}>
+          <div className={`${styles.map} max-lg:mt-5`} style={{ position: 'relative', overflow: 'hidden' }}>
             <a
               href={data.map.link1.href}
               style={{ color: '#eee', fontSize: 12, position: 'absolute', top: 0 }}

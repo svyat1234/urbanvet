@@ -8,7 +8,7 @@
   right: 4.375rem;
   width: 170px;
   height: 129px;
-  background: url("/images/all-hero-laps.svg") no-repeat center / cover;
+  background: var(--url-all-hero-laps, url("/images/all-hero-laps.svg")) no-repeat center / cover;
 }
 
 .imageWrap {
@@ -23,6 +23,6 @@
   bottom  : 30px;
   width: 35px;
   height: 35px;
-  background: url("/images/doctor-plus.svg") no-repeat center / cover;
+  background: var(--url-doctor-plus, url("/images/doctor-plus.svg")) no-repeat center / cover;
   z-index: 2;
 }

@@ -11,10 +11,19 @@
     align-items: center;
 }
 
-.contactLink:hover {
-    background: var(--dark);
-    color: #fff;
-    border-color: #fff;
+@media screen and (min-width: 768px) {
+    .contactLink:hover {
+        background: var(--dark);
+        color: #fff;
+        border-color: #fff;
+    }
+}
+@media screen and (max-width: 767px) {
+    .contactLink:active {
+        background: var(--dark);
+        color: #fff;
+        border-color: #fff;
+    }
 }
 
 .socialLink {
@@ -30,8 +39,15 @@
     object-fit: cover;
 }
 
-.socialLink:hover {
-    opacity: 0.5;
+@media screen and (min-width: 768px) {
+    .socialLink:hover {
+        opacity: 0.5;
+    }
+}
+@media screen and (max-width: 767px) {
+    .socialLink:active {
+        opacity: 0.5;
+    }
 }
 
 .map {
@@ -47,4 +63,10 @@
     .map iframe {
         height: 300px;
     }   
+}
+
+@media screen and (max-width: 639px) {
+    .contactLink {
+        padding: 0rem 1.5rem;
+    }
 }

@@ -179,7 +179,7 @@ export default function Blogs() {
 
         {/* Пагинация */}
         {totalPages > 1 && (
-          <div className={`flex gap-[1.5625rem] max-w-full w-full justify-center items-center mt-20`}>
+          <div className={`flex gap-[1.5625rem] max-w-full w-full justify-center items-center mt-20 max-md:mt-10`}>
             <button
               className={`${styles.btnPrev} ${styles.btn}`}
               onClick={() => handlePageClick(currentPage - 1)}

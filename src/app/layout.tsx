@@ -76,6 +76,17 @@ const imageVars =
     ['--url-hero-laps' as string]: `url('${BASE_PATH}/images/hero-laps.svg')`,
     ['--url-about-stars' as string]: `url('${BASE_PATH}/images/about-stars.png')`,
     ['--url-lightning' as string]: `url('${BASE_PATH}/images/lightning.png')`,
+      ['--url-all-hero-laps' as string]: `url('${BASE_PATH}/images/all-hero-laps.svg')`,
+    ['--url-doctor-plus' as string]: `url('${BASE_PATH}/images/doctor-plus.svg')`,
+    ['--url-about-big-lap' as string]: `url('${BASE_PATH}/images/about-big-lap.svg')`,
+    ['--url-about-small-lap' as string]: `url('${BASE_PATH}/images/about-small-lap.svg')`,
+    ['--url-date' as string]: `url('${BASE_PATH}/images/date.svg')`,
+    ['--url-quotes' as string]: `url('${BASE_PATH}/images/quotes.svg')`,
+    ['--url-form-icon' as string]: `url('${BASE_PATH}/images/form-icon.svg')`,
+    ['--url-arrow-down' as string]: `url('${BASE_PATH}/images/arrow-down.svg')`,
+    ['--url-time' as string]: `url('${BASE_PATH}/images/time.png')`,
+    ['--url-sort' as string]: `url('${BASE_PATH}/images/sort.svg')`,
+    ['--url-human' as string]: `url('${BASE_PATH}/images/human.png')`,
   } as React.CSSProperties);
 
 export default function RootLayout({

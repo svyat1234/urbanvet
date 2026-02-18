@@ -3,15 +3,16 @@ import styles from './Footer.module.css';
 import Container from '@/components/Container';
 import Link from 'next/link';
 import telegramIcon from '@/assets/images/telegram.svg';
+import { BASE_PATH } from '@/lib/basePath';
 
 export default function Footer() {
   const navLinks = [
-    { href: '/', label: 'Акции' },
-    { href: '/', label: 'Услуги и врачи' },
-    { href: '/', label: 'Врачи' },
-    { href: '/', label: 'Вакансии' },
-    { href: '/', label: 'База знаний' },
-    { href: '/', label: 'Новости' },
+    { href: `${BASE_PATH}/promotions`, label: 'Акции' },
+    { href: `${BASE_PATH}/about`, label: 'О компании' },
+    { href: `${BASE_PATH}/doctors`, label: 'Врачи' },
+    { href: `${BASE_PATH}/vacancies`, label: 'Вакансии' },
+    { href: `${BASE_PATH}/blogs`, label: 'Наш блог' },
+    { href: `${BASE_PATH}/prices`, label: 'Цены' },
   ];
 
   const socialLinksLeft = [
@@ -33,7 +34,7 @@ export default function Footer() {
 
   return (
     <footer className={`mt-[9.375rem] pt-[3.4375rem]
-    max-md:mt-[5rem]
+    max-md:pt-0 max-md:mt-[3rem]
     `}>
         <Container className={`flex flex-col`}>
             <div className={`flex justify-between gap-10 w-full
