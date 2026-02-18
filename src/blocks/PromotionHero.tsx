@@ -6,7 +6,6 @@ import styles from './Promotion.module.css';
 import Container from '@/components/Container';
 import CtaButton from '@/components/CtaButton';
 import Image from 'next/image';
-import { BASE_PATH } from '@/lib/basePath';
 import PageNav from '@/components/PageNav';
 import type { PromotionItem, PromotionHeroContent } from '@/lib/constants';
 import serviceImage1 from '@/assets/images/services-1.png';
@@ -65,7 +64,7 @@ export default function PromotionHero({ promotion, content, breadcrumbs }: Promo
                 items={breadcrumbs}
                 defaultItems={[
                   ...(from && fromLabel ? [{ label: fromLabel, href: from }] : []),
-                  { label: 'Акции', href: `${BASE_PATH}/promotions` }
+                  { label: 'Акции', href: '/promotions' }
                 ]}
               />
             </Suspense>

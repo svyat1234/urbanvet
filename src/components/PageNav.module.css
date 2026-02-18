@@ -1,0 +1,35 @@
+.link {
+    background: #acd9cf00;
+}
+.back svg {
+    fill: #acd9cf00;
+}
+.back, .back svg, .back rect, .link {
+    transition: all 0.2s ease-in-out;
+}
+
+@media screen and (min-width: 768px) {
+    .back:hover svg {
+        fill: #acd9cf;
+    }
+    .back:hover rect {
+        stroke: #acd9cf;
+    }
+    
+    .link:hover {
+        background: #acd9cf;
+        border-color: #acd9cf;
+    }
+}
+@media screen and (max-width: 767px) {
+    .back:active svg {
+        fill: #acd9cf;
+    }
+    .back:active rect {
+        stroke: #acd9cf;
+    }
+    .link:active {
+        background: #acd9cf;
+        border-color: #acd9cf;
+    }
+}

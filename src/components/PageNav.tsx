@@ -2,6 +2,8 @@
 
 import { useCallback, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import styles from '@/components/PageNav.module.css'
+import Link from 'next/link';
 
 export interface PageNavItem {
   label: string;
@@ -90,7 +92,7 @@ export default function PageNav({ items, defaultItems, className }: PageNavProps
 
   return (
     <div className={`flex items-center gap-[10px] flex-wrap ${className || ''}`}>
-      <button type="button" onClick={handleBack} aria-label="Назад" className="h-[2.375rem]">
+      <button type="button" onClick={handleBack} aria-label="Назад" className={`${styles.back} h-[2.375rem]`}>
         <svg
           width="60"
           height="38"
@@ -107,13 +109,13 @@ export default function PageNav({ items, defaultItems, className }: PageNavProps
       </button>
 
       {finalItems.map((item) => (
-        <a
+        <Link
           key={item.href}
           href={item.href}
-          className="h-[2.375rem] flex items-center px-[1.875rem] border border-[#1D1D1D] rounded-[100px]"
+          className={`${styles.link} h-[2.375rem] flex items-center px-[1.875rem] border border-[#1D1D1D] rounded-[100px]`}
         >
           {item.label}
-        </a>
+        </Link>
       ))}
     </div>
   );

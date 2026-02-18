@@ -72,6 +72,15 @@
 }
 
 .button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: calc(50% + 8px + 116px);
+}
+
+.buttonText {
+  display: flex;
+  align-items: center;
   background: var(--dark);
   color: white;
   text-align-last: left;
@@ -80,13 +89,18 @@
   font-size: 1.875rem;
   font-family: 'Circe';
   font-weight: normal;
+  width: 100%;
+  height: 100%;
 }
 
 .buttonIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   aspect-ratio: 1/1;;
   border-radius: 50%;
-  background: var(--dark) var(--url-form-icon, url("/images/form-icon.svg")) no-repeat center center;
+  background: var(--dark);
 }
 
 /* Кастомный чекбокс: обёртка и визуальный квадрат 25×25, при отмеченном — фон #ACD9CF */
@@ -128,13 +142,36 @@
 
 /* Кастомный выбор «Вид питомца» — открывается модальным окном */
 .selectTrigger {
+  position: relative;
   width: 100%;
   text-align: left;
   cursor: pointer;
   color: inherit;
   display: flex;
   align-items: center;
-  background: #ffffff var(--url-arrow-down, url("/images/arrow-down.svg")) no-repeat right 8.2% center;
+}
+
+.selectTrigger::after {
+  position: absolute;
+  content: '';
+  top: 50%;
+  right: 8.2%;
+  transform: translateY(-50%);
+  width: 20px;
+  aspect-ratio: 20/14;
+  background: var(--url-arrow-down, url("/images/arrow-down.svg")) no-repeat right 8.2% / cover;
+  transition: all 0.2s ease-in-out;
+}
+
+@media screen and (min-width: 768px) {
+  .selectTrigger:hover::after{
+    transform: scale(1.15) translateY(-50%);
+  }
+}
+@media screen and (max-width: 767px) {
+  .selectTrigger:active::after{
+    transform: scale(1.15) translateY(-50%);
+  }
 }
 
 .selectTriggerPlaceholder {
@@ -239,16 +276,53 @@
   background: var(--url-time, url("/images/time.png")) no-repeat center / cover;
 }
 
+.buttonText, .buttonIcon {
+  /* border: 2px solid var(--dark) */
+}
+
+.buttonText, .button svg, .buttonIcon{
+  transition: all 0.2s ease-in-out;
+}
+
+
+@media screen and (min-width: 768px) {
+  .button:hover .buttonText {
+    background: #3d3d3d;
+  }
+  .button:hover .buttonIcon {
+    background: #3d3d3d;
+  }
+  .button:hover svg {
+    transform: scale(1.2);
+  }
+}
+@media screen and (max-width: 767px) {
+  .button:active .buttonText {
+    background: #3d3d3d;
+  }
+  .button:active .buttonIcon {
+    background: #3d3d3d;
+  }
+}
+.button:active svg {
+  transform: scale(0.9);
+}
+
 @media screen and (max-width: 1279px) {
   .input, .button {
     height: 80px;
-    padding-left: 2rem;
     font-size: 1.5rem;
+  }
+  .input, .buttonText {
+    padding-left: 2rem;
   }
   .input::placeholder {
     font-size: 1.5rem;
   }
   .button {
+    width: calc(50% + 8px + 80px);
+  }
+  .buttonText {
     font-size: 1.5rem;
   }
 }
@@ -256,13 +330,18 @@
 @media screen and (max-width: 1023px) {
   .input, .button {
     height: 70px;
-    padding-left: 1.5rem;
     font-size: 1.5rem;
+  }
+  .input, .buttonText {
+    padding-left: 1.5rem;
   }
   .input::placeholder {
     font-size: 1.5rem;
   }
   .button {
+    width: calc(50% + 8px + 70px);
+  }
+  .buttonText {
     font-size: 1.5rem;
   }
 }
@@ -274,13 +353,18 @@
 
   .input, .button {
     height: 60px;
-    padding-left: 1rem;
     font-size: 1.3rem;
+  }
+  .input, .buttonText {
+    padding-left: 1rem;
   }
   .input::placeholder {
     font-size: 1.3rem;
   }
   .button {
+    width: 100%;
+  }
+  .buttonText {
     font-size: 1.3rem;
   }
 }

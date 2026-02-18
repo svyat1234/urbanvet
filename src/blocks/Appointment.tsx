@@ -475,18 +475,23 @@ export default function Appointment() {
           </div>
 
           <div className="flex flex-1 max-w-full w-full max-xl:flex-none">
-            <div className="grid w-full grid-cols-2 gap-x-[16px] gap-y-[10px]
-            max-md:grid-cols-1
+            <div className="flex w-full gap-y-[10px] gap-[3.5625rem]
+            max-2xl:gap-[2rem]
+            max-xl:gap-[1rem]
+            max-md:flex-col
             ">
-              <button type="submit" className={`${styles.button} max-md:order-2`}>
-                <span>Записаться</span>
+              <button type="submit" className={`${styles.button} max-md:order-2 flex`}>
+                <span className={`${styles.buttonText}`}>Записаться</span>
+                <span className={`${styles.buttonIcon}`}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21.8175 0C23.0224 -3.99458e-06 24 0.976322 24 2.18133V21.8187C23.9997 23.0234 23.0222 24 21.8175 24C20.613 23.9997 19.6365 23.0232 19.6362 21.8187V7.44956L5.12012 21.9665C4.2681 22.8186 2.88543 22.8186 2.0334 21.9665C1.18182 21.1145 1.18182 19.7329 2.0334 18.8809L16.5509 4.36267H2.18254C0.9776 4.36267 3.99437e-06 3.38635 0 2.18133C3.50834e-05 0.976355 0.977624 3.99453e-06 2.18254 0H21.8175Z" fill="white"/>
+                </svg>
+
+                </span>
               </button>
 
-              <div className="flex flex-1 items-center gap-[3.5625rem]
-              max-2xl:gap-[2rem]
-              max-xl:gap-[1rem]
+              <div className="flex flex-1 items-center 
               ">
-                <div className={`${styles.buttonIcon} max-md:hidden`}></div>
                 <label className={`${styles.checkboxWrap} ${isConsentInvalid ? styles.checkboxWrapError : ''} flex flex-col 
                 max-md:flex-row max-md:items-center
                 `}>
@@ -543,7 +548,7 @@ export default function Appointment() {
 
         <div className="p-[5rem] bg-[#F9F9F9] h-[654px] overflow-y-auto mt-[5rem]
         max-xl:p-[3.5rem]
-        max-md:mt-10
+        max-md:mt-10 max-md:p-[2rem]
         max-sm:p-[1rem]
         ">
           {renderContent()}

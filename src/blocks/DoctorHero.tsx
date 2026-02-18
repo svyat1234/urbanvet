@@ -6,7 +6,6 @@ import Container from '@/components/Container';
 import CtaButton from '@/components/CtaButton';
 import Image from 'next/image';
 import PageNav from '@/components/PageNav';
-import { BASE_PATH } from '@/lib/basePath';
 import type { Doctor, DoctorHeroContent } from '@/lib/constants';
 
 interface DoctorHeroProps {
@@ -42,7 +41,7 @@ export default function DoctorHero({ doctor, content }: DoctorHeroProps) {
                 <Suspense fallback={<div className="h-[2.375rem]" />}>
                   <PageNav
                     className={styles.nav}
-                    items={[{ label: 'Врачи', href: `${BASE_PATH}/doctors` }]}
+                    items={[{ label: 'Врачи', href: '/doctors' }]}
                   />
                 </Suspense>
 

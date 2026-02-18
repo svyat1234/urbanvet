@@ -7,12 +7,12 @@ import { BASE_PATH } from '@/lib/basePath';
 
 export default function Footer() {
   const navLinks = [
-    { href: `${BASE_PATH}/promotions`, label: 'Акции' },
-    { href: `${BASE_PATH}/about`, label: 'О компании' },
-    { href: `${BASE_PATH}/doctors`, label: 'Врачи' },
-    { href: `${BASE_PATH}/vacancies`, label: 'Вакансии' },
-    { href: `${BASE_PATH}/blogs`, label: 'Наш блог' },
-    { href: `${BASE_PATH}/prices`, label: 'Цены' },
+    { href: `/promotions`, label: 'Акции' },
+    { href: `/about`, label: 'О компании' },
+    { href: `/doctors`, label: 'Врачи' },
+    { href: `/vacancies`, label: 'Вакансии' },
+    { href: `/blogs`, label: 'Наш блог' },
+    { href: `/prices`, label: 'Цены' },
   ];
 
   const socialLinksLeft = [

@@ -20,12 +20,12 @@ const HEADER_INFO = {
 } as const;
 
 const HEADER_NAV_LINKS = [
-  { href: `${BASE_PATH}/promotions`, label: 'Акции' },
-  { href: `${BASE_PATH}/about`, label: 'О компании' },
-  { href: `${BASE_PATH}/doctors`, label: 'Врачи' },
-  { href: `${BASE_PATH}/vacancies`, label: 'Вакансии' },
-  { href: `${BASE_PATH}/blogs`, label: 'Наш блог' },
-  { href: `${BASE_PATH}/prices`, label: 'Цены' },
+  { href: `/promotions`, label: 'Акции' },
+  { href: `/about`, label: 'О компании' },
+  { href: `/doctors`, label: 'Врачи' },
+  { href: `/vacancies`, label: 'Вакансии' },
+  { href: `/blogs`, label: 'Наш блог' },
+  { href: `/prices`, label: 'Цены' },
 ] as const;
 
 export default function Header() {
