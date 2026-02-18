@@ -127,13 +127,15 @@ export default function Hero() {
             ref={doctorsBlockRef}
             className={`${styles.doctorsBlock} flex gap-[19px] items-center w-full py-[2.625rem] px-[3.125rem]
             max-xl:p-[2rem]
-            max-sm:p-[1rem]
+            max-sm:p-[1.5rem]
             `}
             onMouseEnter={handleDoctorsBlockMouseEnter}
             onMouseLeave={handleDoctorsBlockMouseLeave}
           >
             <div
-              className="flex gap-[19px] items-center w-full transition-opacity duration-[400ms]"
+              className="flex gap-[19px] items-center w-full transition-opacity duration-[400ms]
+              max-md:flex-col max-md:items-start
+              "
               style={{ opacity: isVisible ? 1 : 0 }}
               onTransitionEnd={handleTransitionEnd}
             >
@@ -169,12 +171,11 @@ export default function Hero() {
               </div>
 
               {/* Информация об основном враче */}
-              <div className="flex flex-col gap-4 max-w-[26.7rem] min-w-0 flex-1  ">
+              <div className="flex flex-col gap-4 max-w-[26.7rem] min-w-0 flex-1 max-sm:gap-2">
                 <h2 className="font-[Circe] font-bold text-[2.5rem] leading-[87%]
                 max-2xl:text-[2rem]
                 max-xl:text-[1.5rem]
-                max-lg:text-[1.3rem]
-                max-sm:text-[1.2rem]
+                max-md:max-w-[250px]
                 ">{mainDoctor.name}</h2>
                 <p className="font-medium text-[0.9375rem] leading-none">{mainDoctor.position}</p>
               </div>

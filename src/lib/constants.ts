@@ -350,13 +350,13 @@ export const HOME_PAGE: { hero: HomeHeroData; about: AboutBlockData } = {
     addressCard: {
       title: 'Адрес',
       text: 'м. Сокол и Панфиловская, Улица Врубеля, 8 (10:00—22:00)',
-      href: '/',
+      href: 'href="https://maps.app.goo.gl/fDZM6ajsEupTQVuo6"',
       phone: '8 (926) 711 18 44',
     },
     recordCard: {
       title: 'Запись',
       text: 'Для онлайн записи выберите специалиста и нужное время',
-      cta: { href: '#', label: 'Запись на приём' },
+      cta: { href: `${BASE_PATH}/doctors/#appointment`, label: 'Запись на приём' },
     },
   },
 };

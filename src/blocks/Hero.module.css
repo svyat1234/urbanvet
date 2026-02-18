@@ -203,7 +203,7 @@
 @media screen  and (max-width: 1024px){
 
   :root {
-    --doctorImageWrapWidth: 70px;
+    --doctorImageWrapWidth: 90px;
   }
 
   .laps {
@@ -218,6 +218,6 @@
     --doctorImageWrapWidth: 90px;
   }
   .doctorImageCards {
-    width: calc(var(--doctorImageWrapWidth) * 1.3);
+    width: calc(var(--doctorImageWrapWidth) * 2);
   }
 }
